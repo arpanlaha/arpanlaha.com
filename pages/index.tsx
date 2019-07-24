@@ -3,10 +3,6 @@ import { Placeholder } from "../components";
 import "../static/style.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render(): JSX.Element {
     return (
       <div className="App">
