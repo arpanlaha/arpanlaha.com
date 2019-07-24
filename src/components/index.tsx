@@ -1,5 +1,3 @@
-import Counter from "./Counter";
-import Instructions from "./Instructions";
-import Show from "./Show";
+import Placeholder from "./Placeholder";
 
-export { Counter, Instructions, Show };
+export { Placeholder };
