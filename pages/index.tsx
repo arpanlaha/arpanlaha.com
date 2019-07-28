@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Placeholder } from "../components";
 import Head from "next/head";
-import "../static/style.css";
+import "../static/style.scss";
 
 class App extends Component {
   render(): JSX.Element {
