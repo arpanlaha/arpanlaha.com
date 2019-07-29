@@ -6,7 +6,7 @@ class App extends Component {
   render(): JSX.Element {
     return (
       <div className="App">
-        <Head description="Arpan Laha's personal website" keywords="Arpan, Laha, Arpan Laha" title="Home" />
+        <Head title="Home" />
         <Placeholder />
       </div>
     );
