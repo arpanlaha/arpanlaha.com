@@ -8,7 +8,7 @@ import Document, {
   NextScript
 } from "next/document";
 
-class MyDocument extends Document {
+export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
@@ -28,5 +28,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;
