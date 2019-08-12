@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Head, Placeholder } from "../components";
+import { Head, NavBar, Placeholder } from "../components";
 import "../static/style.scss";
 
 class App extends Component {
@@ -7,6 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <Head title="Home" />
+        <NavBar />
         <Placeholder />
       </div>
     );

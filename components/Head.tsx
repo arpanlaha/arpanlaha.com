@@ -7,7 +7,7 @@ interface HeadProps extends Props<Component> {
   keywords?: string;
 }
 
-class Head extends Component<HeadProps> {
+export default class Head extends Component<HeadProps> {
   render(): JSX.Element {
     return (
       <NextHead>
@@ -29,5 +29,3 @@ class Head extends Component<HeadProps> {
     );
   }
 }
-
-export default Head;
