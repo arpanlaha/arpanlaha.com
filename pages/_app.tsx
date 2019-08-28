@@ -12,11 +12,9 @@ export default class MyApp extends App {
   render(): JSX.Element {
     const { Component, pageProps } = this.props;
     return (
-      <Container>
-        <PageTransition timeout={300} classNames="page-transition">
-          <Component {...pageProps} />
-        </PageTransition>
-      </Container>
+      <PageTransition timeout={300} classNames="page-transition">
+        <Component {...pageProps} />
+      </PageTransition>
     );
   }
 }
