@@ -1,5 +1,5 @@
 import React, { ErrorInfo } from "react";
-import App, { Container } from "next/app";
+import App from "next/app";
 // @ts-ignore @types/next-page-transitions does not exist
 import { PageTransition } from "next-page-transitions";
 
