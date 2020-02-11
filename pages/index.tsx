@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Head, NavBar, Placeholder } from "../components";
-import "../static/style.scss";
+import "../public/style.scss";
 
 export default class App extends Component {
   render(): JSX.Element {
