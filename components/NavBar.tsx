@@ -1,47 +1,31 @@
-import React, { Component, ReactNode, Props } from "react";
-import {
-  Collapse,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import React, { FunctionComponent, ReactElement } from "react";
 
-interface NavState {
-  collapseOpen: boolean;
-}
+import { Icon, Menu } from "antd";
 
-export default class NavBar extends Component<Props<Component>, NavState> {
-  constructor(props: Props<Component>) {
-    super(props);
-    this.state = {
-      collapseOpen: false
-    };
-    this.toggle = this.toggle.bind(this);
-  }
+const NavBar: FunctionComponent = (): ReactElement => (
+  <Menu mode="horizontal" className="navbar">
+    <Menu.Item key="home">Arpan Laha</Menu.Item>
+    <Menu.Item key="github">
+      <a
+        href="https://github.com/arpanlaha"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon type="github" theme="filled" />
+        GitHub
+      </a>
+    </Menu.Item>
+    <Menu.Item key="linkedin">
+      <a
+        href="https://linkedin.com/arpanlaha"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon type="linkedin" theme="filled" />
+        LinkedIn
+      </a>
+    </Menu.Item>
+  </Menu>
+);
 
-  toggle(): void {
-    this.setState({ collapseOpen: !this.state.collapseOpen });
-  }
-
-  render(): ReactNode {
-    return (
-      <Navbar className="navbar" expand="md">
-        <NavbarBrand href="/">Arpan Laha</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.collapseOpen} navbar>
-          <Nav navbar className="navitems">
-            <NavItem>
-              <NavLink href="https://github.com/arpanlaha">GitHub</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://linkedin.com/arpanlaha">LinkedIn</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    );
-  }
-}
+export default NavBar;

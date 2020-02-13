@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Head, NavBar, Placeholder } from "../components";
-import "../public/style.scss";
+import { Button } from "antd";
 
 export default class App extends Component {
   render(): JSX.Element {
@@ -9,6 +9,7 @@ export default class App extends Component {
         <Head title="Home" />
         <NavBar />
         <Placeholder />
+        <Button>Hello</Button>
       </div>
     );
   }

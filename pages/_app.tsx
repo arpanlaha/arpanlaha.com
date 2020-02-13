@@ -2,6 +2,7 @@ import React, { ErrorInfo } from "react";
 import App from "next/app";
 // @ts-ignore @types/next-page-transitions does not exist
 import { PageTransition } from "next-page-transitions";
+import "../public/style.scss";
 
 export default class MyApp extends App {
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {

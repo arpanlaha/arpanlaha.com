@@ -1,9 +1,19 @@
+@import "~antd/dist/antd.css";
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Nunito Sans Light", "Open Sans", "Roboto", "Oxygen", sans-serif;
+  font-family: "Nunito Sans Light", "Open Sans", "Roboto", "Oxygen", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar {
+  font-size: 24px !important;
+  padding: 8px 0 8px 0 !important;
+  i {
+    font-size: 24px !important;
+  }
 }
 
 .page-transition-enter {
