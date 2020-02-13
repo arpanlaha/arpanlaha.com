@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactElement } from "react";
-
 import { Icon, Menu } from "antd";
 
 const NavBar: FunctionComponent = (): ReactElement => (

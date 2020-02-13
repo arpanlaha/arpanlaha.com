@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React, { FunctionComponent, ReactElement } from "react";
 
-export default class Placeholder extends Component {
-  render(): JSX.Element {
-    return <h1>Website WIP</h1>;
-  }
-}
+const Placeholder: FunctionComponent = (): ReactElement => <h1>Website WIP</h1>;
+
+export default Placeholder;
