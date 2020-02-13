@@ -1,21 +1,16 @@
-import React, { ErrorInfo } from "react";
-import App from "next/app";
+import React, { ReactElement } from "react";
+import { AppProps } from "next/app";
 // @ts-ignore @types/next-page-transitions does not exist
 import { PageTransition } from "next-page-transitions";
 import "../public/style.scss";
 
-export default class MyApp extends App {
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error("Page Error Boundary: ", error);
-    super.componentDidCatch(error, errorInfo);
-  }
+const MyApp = (props: AppProps): ReactElement => {
+  const { Component, pageProps } = props;
+  return (
+    <PageTransition timeout={300} classNames="page-transition">
+      <Component {...pageProps} />
+    </PageTransition>
+  );
+};
 
-  render(): JSX.Element {
-    const { Component, pageProps } = this.props;
-    return (
-      <PageTransition timeout={300} classNames="page-transition">
-        <Component {...pageProps} />
-      </PageTransition>
-    );
-  }
-}
+export default MyApp;
