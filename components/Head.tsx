@@ -28,6 +28,10 @@ export default class Head extends Component<HeadProps> {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
+        <link
+          href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"
+          rel="stylesheet"
+        ></link>
         <title>
           {`${this.props.title ? `${this.props.title} | ` : ""}Arpan Laha`}
         </title>

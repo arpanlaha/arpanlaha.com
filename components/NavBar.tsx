@@ -28,16 +28,16 @@ export default class NavBar extends Component<Props<Component>, NavState> {
 
   render(): ReactNode {
     return (
-      <Navbar expand="md">
+      <Navbar class="navbar" expand="md">
         <NavbarBrand href="/">Arpan Laha</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.collapseOpen} navbar>
           <Nav navbar>
-            <NavItem>Test</NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
+              <NavLink href="https://github.com/arpanlaha">GitHub</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://linkedin.com/arpanlaha">LinkedIn</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

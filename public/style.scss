@@ -1,9 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", "Roboto", "Oxygen", sans-serif;
+  font-family: "Nunito Sans Light", "Open Sans", "Roboto", "Oxygen", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
 }
 
 .page-transition-enter {
@@ -20,4 +25,3 @@ body {
   opacity: 0;
   transition: opacity 300ms;
 }
-
