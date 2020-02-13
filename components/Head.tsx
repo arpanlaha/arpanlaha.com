@@ -1,35 +1,31 @@
-import React, { Component, Props } from "react";
+import React, { FunctionComponent, Props, ReactElement } from "react";
 import NextHead from "next/head";
 
-interface HeadProps extends Props<Component> {
+interface HeadProps extends Props<FunctionComponent> {
   title?: string;
   description?: string;
   keywords?: string;
 }
 
-export default class Head extends Component<HeadProps> {
-  render(): JSX.Element {
-    return (
-      <NextHead>
-        <meta charSet="UTF-8" />
-        <meta
-          name="description"
-          content={this.props.description || "Arpan Laha's personal website"}
-        />
-        <meta
-          name="keywords"
-          content={this.props.keywords || "Arpan, Laha, Arpan Laha"}
-        />
-        <meta name="author" content="Arpan Laha" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"
-          rel="stylesheet"
-        ></link>
-        <title>
-          {`${this.props.title ? `${this.props.title} | ` : ""}Arpan Laha`}
-        </title>
-      </NextHead>
-    );
-  }
-}
+const Head: FunctionComponent<HeadProps> = (props: HeadProps): ReactElement => {
+  const { description, keywords, title } = props;
+  return (
+    <NextHead>
+      <meta charSet="UTF-8" />
+      <meta
+        name="description"
+        content={description || "Arpan Laha's personal website"}
+      />
+      <meta name="keywords" content={keywords || "Arpan, Laha, Arpan Laha"} />
+      <meta name="author" content="Arpan Laha" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"
+        rel="stylesheet"
+      ></link>
+      <title>{`${title ? `${title} | ` : ""}Arpan Laha`}</title>
+    </NextHead>
+  );
+};
+
+export default Head;
