@@ -22,7 +22,8 @@ const Head: FunctionComponent<HeadProps> = (props: HeadProps): ReactElement => {
       <link
         href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"
         rel="stylesheet"
-      ></link>
+        type="text/css"
+      />
       <title>{`${title ? `${title} | ` : ""}Arpan Laha`}</title>
     </NextHead>
   );
