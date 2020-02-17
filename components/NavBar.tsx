@@ -16,7 +16,7 @@ const NavBar: FunctionComponent = (): ReactElement => (
     </Menu.Item>
     <Menu.Item key="linkedin">
       <a
-        href="https://linkedin.com/arpanlaha"
+        href="https://linkedin.com/in/arpanlaha"
         target="_blank"
         rel="noopener noreferrer"
       >
