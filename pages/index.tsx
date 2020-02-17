@@ -1,16 +1,14 @@
-import React, { Component } from "react";
+import React, { FunctionComponent, ReactElement } from "react";
 import { Head, NavBar, Placeholder } from "../components";
 import { Button } from "antd";
 
-export default class App extends Component {
-  render(): JSX.Element {
-    return (
-      <div className="App">
-        <Head title="Home" />
-        <NavBar />
-        <Placeholder />
-        <Button>Hello</Button>
-      </div>
-    );
-  }
-}
+const App: FunctionComponent = (): ReactElement => (
+  <div className="App">
+    <Head title="Home" />
+    <NavBar />
+    <Placeholder />
+    <Button>Hello</Button>
+  </div>
+);
+
+export default App;
