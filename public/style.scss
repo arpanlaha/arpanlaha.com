@@ -11,9 +11,14 @@ body {
   font-family: nunito-sans-light !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0c0c0d !important;
+  color: #fff !important;
 }
 
 .navbar {
+  background: #131315 !important;
+  color: #fff !important;
+
   font-size: 24px !important;
   padding: 8px 0 8px 0 !important;
   i {
