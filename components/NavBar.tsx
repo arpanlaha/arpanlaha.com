@@ -1,10 +1,14 @@
 import React, { FunctionComponent, ReactElement } from "react";
-import { Icon, Layout, Menu } from "antd";
+import "../public/navbar.scss";
 
-const { Header } = Layout;
+// import { Icon, Layout, Menu } from "antd";
+
+// const { Header } = Layout;
 
 const NavBar: FunctionComponent = (): ReactElement => (
-  <Header className="navbar"></Header>
+  <nav className="navbar">
+    <div className="title">Arpan Laha</div>
+  </nav>
   // <Menu mode="horizontal" className="navbar">
   //   <Menu.Item key="home">Arpan Laha</Menu.Item>
   //   <Menu.Item key="github">

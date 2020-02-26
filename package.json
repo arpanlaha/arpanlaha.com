@@ -12,9 +12,11 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
-    "antd": "^3.26.9",
     "next": "^9.2.1",
     "next-fonts": "^1.0.3",
     "next-page-transitions": "^1.0.0-beta.2",
