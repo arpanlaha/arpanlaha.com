@@ -1,14 +1,22 @@
 import React, { ReactElement } from "react";
 import { AppProps } from "next/app";
+import { Layout } from "antd";
 // @ts-ignore @types/next-page-transitions does not exist
 import { PageTransition } from "next-page-transitions";
 import "../public/style.scss";
+
+const { Content, Header } = Layout;
 
 const MyApp = (props: AppProps): ReactElement => {
   const { Component, pageProps } = props;
   return (
     <PageTransition timeout={300} classNames="page-transition">
-      <Component {...pageProps} />
+      <Layout>
+        <Header>Arpan Laha</Header>
+        <Content>
+          <Component {...pageProps} />
+        </Content>
+      </Layout>
     </PageTransition>
   );
 };
