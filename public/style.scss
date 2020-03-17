@@ -1,4 +1,4 @@
-@import "~antd/dist/antd.css";
+// @import "~antd/dist/antd.css";
 @font-face {
   font-family: nunito-sans-light;
   src: url("./fonts/NunitoSans-Light.ttf");
@@ -30,5 +30,5 @@ body {
 
 .ant-layout-header {
   font-size: 32px;
-  background: #fff !important;
+  background: #fff;
 }
