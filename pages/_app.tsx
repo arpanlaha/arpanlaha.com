@@ -4,6 +4,7 @@ import { Layout } from "antd";
 // @ts-ignore @types/next-page-transitions does not exist
 import { PageTransition } from "next-page-transitions";
 import "antd/dist/antd.css";
+import "antd/dist/antd.dark.css";
 import "../public/style.scss";
 
 const { Content, Header } = Layout;
