@@ -10,8 +10,8 @@ module.exports = {
         short_name: "Arpan Laha",
         description: "Arpan Laha's personal website",
         start_url: "/",
-        background_color: "#abcdef",
-        theme_color: "#fedcba",
+        background_color: "#16191d",
+        theme_color: "#16191d",
         display: "standalone",
         icon: "static/favicon.ico"
       }
