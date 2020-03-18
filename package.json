@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "antd": "^4.0.3",
+    "babel-plugin-import": "^1.13.0",
+    "babel-preset-gatsby": "^0.2.36",
     "gatsby": "^2.19.45",
     "gatsby-plugin-react-helmet": "^3.1.24",
     "gatsby-plugin-sass": "^2.1.31",
