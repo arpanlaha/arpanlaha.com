@@ -8,7 +8,7 @@ import "../public/style.scss";
 
 const { Content, Header } = Layout;
 
-const MyApp = (props: AppProps): ReactElement => {
+export default function App(props: AppProps): ReactElement {
   const { Component, pageProps } = props;
   return (
     <PageTransition timeout={300} classNames="page-transition">
@@ -20,6 +20,4 @@ const MyApp = (props: AppProps): ReactElement => {
       </Layout>
     </PageTransition>
   );
-};
-
-export default MyApp;
+}
