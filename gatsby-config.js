@@ -3,7 +3,6 @@
 module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -17,6 +16,9 @@ module.exports = {
         icon: "static/favicon.ico"
       }
     },
+    "gatsby-plugin-offline",
+    "gatsby-plugin-sass",
+
     {
       resolve: "gatsby-plugin-typescript",
       options: {
