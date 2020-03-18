@@ -8,6 +8,7 @@ module.exports = {
         allExtensions: true,
         isTSX: true
       }
-    }
+    },
+    "gatsby-plugin-purgecss"
   ]
 };
