@@ -1,5 +1,5 @@
 import React, { Component, Props, ReactElement } from "react";
-import NextHead from "next/head";
+import { Helmet } from "react-helmet";
 
 interface HeadProps extends Props<Component> {
   title?: string;
@@ -10,7 +10,7 @@ interface HeadProps extends Props<Component> {
 export default function Head(props: HeadProps): ReactElement {
   const { description, keywords, title } = props;
   return (
-    <NextHead>
+    <Helmet>
       <meta charSet="UTF-8" />
       <meta
         name="description"
@@ -20,6 +20,6 @@ export default function Head(props: HeadProps): ReactElement {
       <meta name="author" content="Arpan Laha" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{`${title ? `${title} | ` : ""}Arpan Laha`}</title>
-    </NextHead>
+    </Helmet>
   );
 }

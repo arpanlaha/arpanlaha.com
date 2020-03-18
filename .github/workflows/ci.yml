@@ -49,7 +49,7 @@ jobs:
       - name: npm run build
         run: |
           npm install
-          npx tsc
+          npm run typecheck
 
   build:
     runs-on: ubuntu-latest
