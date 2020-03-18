@@ -1,13 +1,13 @@
-import React, { FunctionComponent, Props, ReactElement } from "react";
+import React, { Component, Props, ReactElement } from "react";
 import NextHead from "next/head";
 
-interface HeadProps extends Props<FunctionComponent> {
+interface HeadProps extends Props<Component> {
   title?: string;
   description?: string;
   keywords?: string;
 }
 
-const Head: FunctionComponent<HeadProps> = (props: HeadProps): ReactElement => {
+export default function Head(props: HeadProps): ReactElement {
   const { description, keywords, title } = props;
   return (
     <NextHead>
@@ -22,6 +22,4 @@ const Head: FunctionComponent<HeadProps> = (props: HeadProps): ReactElement => {
       <title>{`${title ? `${title} | ` : ""}Arpan Laha`}</title>
     </NextHead>
   );
-};
-
-export default Head;
+}
