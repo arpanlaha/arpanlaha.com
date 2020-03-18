@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "GATSBY_TELEMETRY_DISABLED": 1
+      "GATSBY_TELEMETRY_DISABLED": "1"
     }
   }
 }
