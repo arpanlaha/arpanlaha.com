@@ -1,1 +1,1 @@
-# arpanlaha.com [![CircleCI](https://circleci.com/gh/arpanlaha/arpanlaha.com.svg?style=svg)](https://circleci.com/gh/arpanlaha/arpanlaha.com)
+# arpanlaha.com [![build](https://img.shields.io/github/workflow/status/arpanlaha/arpanlaha.com/CI?style=flat-square)](https://github.com/arpanlaha/arpanlaha.com/actions?query=workflow%3ACI)
