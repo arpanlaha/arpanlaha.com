@@ -10,7 +10,7 @@ interface HeadProps extends Props<Component> {
 export default function Head(props: HeadProps): ReactElement {
   const { description, keywords, title } = props;
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: "en" }}>
       <meta charSet="UTF-8" />
       <meta
         name="description"
