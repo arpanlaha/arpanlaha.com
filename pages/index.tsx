@@ -1,12 +1,12 @@
 import React, { FunctionComponent, ReactElement } from "react";
-import { Head, NavBar, Placeholder } from "../components";
+import { Head, Placeholder } from "../components";
+import { Button } from "antd";
 
 const App: FunctionComponent = (): ReactElement => (
   <div className="App">
     <Head title="Home" />
-    <NavBar />
     <Placeholder />
-    <button>Hello</button>
+    <Button>Hello</Button>
   </div>
 );
 

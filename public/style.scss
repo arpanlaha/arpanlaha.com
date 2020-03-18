@@ -1,4 +1,3 @@
-@import "variables";
 @font-face {
   font-family: nunito-sans-light;
   src: url("./fonts/NunitoSans-Light.ttf");
@@ -11,8 +10,6 @@ body {
   font-family: nunito-sans-light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $dark-1;
-  color: $light;
 }
 
 .page-transition-enter {
@@ -28,4 +25,9 @@ body {
 .page-transition-exit-active {
   opacity: 0;
   transition: opacity 300ms;
+}
+
+.ant-layout-header {
+  font-size: 32px;
+  background: #fff;
 }
