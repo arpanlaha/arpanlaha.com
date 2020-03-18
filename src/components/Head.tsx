@@ -18,7 +18,6 @@ export default function Head(props: HeadProps): ReactElement {
       />
       <meta name="keywords" content={keywords || "Arpan, Laha, Arpan Laha"} />
       <meta name="author" content="Arpan Laha" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{`${title ? `${title} | ` : ""}Arpan Laha`}</title>
     </Helmet>
   );
