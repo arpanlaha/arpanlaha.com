@@ -9,6 +9,20 @@ $dark-secondary: #45505e;
 $light-primary: #fff;
 $light-secondary: #b9c0cb;
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -92,15 +106,6 @@ a:hover {
   filter: invert(8%) sepia(7%) saturate(907%) hue-rotate(177deg) brightness(94%)
     contrast(99%);
   animation: fadeIn ease 0.5s;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
 
 .theme-switch-svg:hover {
@@ -198,6 +203,7 @@ a:hover {
   margin: 4vw;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.5s;
 
   p {
     margin: 0;
