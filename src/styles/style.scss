@@ -44,26 +44,61 @@ a:hover {
     color: $light-secondary;
   }
 
-  .theme-switch {
-    color: $light-primary;
+  .theme-switch-svg {
+    filter: invert(100%) sepia(3%) saturate(1035%) hue-rotate(217deg)
+      brightness(117%) contrast(100%);
   }
 
-  .theme-switch:hover {
-    color: $light-secondary;
+  .theme-switch-svg:hover {
+    @media (orientation: landscape) {
+      filter: invert(86%) sepia(14%) saturate(184%) hue-rotate(177deg)
+        brightness(91%) contrast(81%);
+    }
+  }
+
+  .main-image {
+    box-shadow: 0 1px 2vmin 0vmin rgba(255, 255, 255, 0.16);
+  }
+
+  .main-image:hover {
+    box-shadow: 0 1px 1vmin 0.5vmin rgba(255, 255, 255, 0.02),
+      0 1px 2vmin 0.5vmin rgba(255, 255, 255, 0.04),
+      0 1px 4vmin 0.5vmin rgba(255, 255, 255, 0.08);
   }
 }
 
 .theme-switch {
+  width: 6vmin;
+  height: 6vmin;
   position: fixed;
   right: 5vmin;
   top: 5vmin;
+  padding: 0;
+  border: 0;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(255, 255, 255, 0);
   cursor: pointer;
-  transition: color 0.3s;
 }
 
-.theme-switch:hover {
-  color: $dark-secondary;
-  transition: color 0.3s;
+.theme-switch-svg {
+  border-radius: 100%;
+  width: 5vmin;
+  height: 5vmin;
+  transition: filter 0.3s;
+  filter: invert(8%) sepia(7%) saturate(907%) hue-rotate(177deg) brightness(94%)
+    contrast(99%);
+}
+
+.theme-switch-svg:hover {
+  @media (orientation: landscape) {
+    filter: invert(29%) sepia(14%) saturate(674%) hue-rotate(174deg)
+      brightness(94%) contrast(87%);
+    transition: filter 0.3s;
+  }
 }
 
 .panels {

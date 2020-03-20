@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Head, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
   faGithub,
@@ -10,14 +9,25 @@ import {
   faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { graphql } from "gatsby";
+import sun from "../images/sunny-outline.svg";
+import moon from "../images/moon-outline.svg";
 
 import "../styles/style.scss";
 
 interface HomeProps {
   data: {
-    file: {
+    main: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    };
+    sun: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    };
+    moon: {
       childImageSharp: {
         fluid: FluidObject;
       };
@@ -27,26 +37,31 @@ interface HomeProps {
 
 export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
-  const [theme, setTheme] = useState("light");
+  const [light, setLight] = useState(true);
 
-  const switchTheme = (): void =>
-    setTheme(theme === "light" ? "dark" : "light");
+  const switchTheme = (): void => setLight(!light);
 
   useEffect((): void => {
-    theme === "light"
+    light
       ? document.body.classList.remove("dark")
       : document.body.classList.add("dark");
-  }, [theme]);
+  }, [light]);
 
   return (
     <>
-      <Head title="Home" />
-      <FontAwesomeIcon
+      <Head />
+      <button
         className="theme-switch"
-        icon={theme === "light" ? faSun : faMoon}
         onClick={switchTheme}
-        size="3x"
-      />
+        onMouseDown={e => e.preventDefault()}
+      >
+        <img
+          className="theme-switch-svg"
+          src={light ? sun : moon}
+          alt="Theme switch"
+        />
+      </button>
+
       <div className="panels">
         <div className="first-panel">
           <div>
@@ -56,7 +71,7 @@ export default function Home(props: HomeProps): ReactElement {
             <div className="main-image-container">
               <Img
                 className="main-image"
-                fluid={data.file.childImageSharp.fluid}
+                fluid={data.main.childImageSharp.fluid}
                 title="Me"
                 alt="Me"
                 backgroundColor
@@ -119,7 +134,7 @@ export default function Home(props: HomeProps): ReactElement {
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "fb_profile_2019_square_1080.webp" }) {
+    main: file(relativePath: { eq: "fb_profile_2019_square_1080.webp" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
