@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "Nunito Sans Light";
+  src: url("../fonts/NunitoSans-Light.ttf");
+  font-display: block;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Nunito Sans Light";
+  font-family: "Nunito Sans Light", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0 5%;
@@ -9,36 +15,52 @@ body {
 
 .panels {
   display: flex;
-  flex-direction: row;
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+  }
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
 }
 
 .panel {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
+
+  @media (orientation: landscape) {
+    height: 100vh;
+  }
 }
 
 .first-panel {
   @extend .panel;
 
-  width: 40%;
+  @media (orientation: landscape) {
+    width: 40%;
+  }
 }
 
 .second-panel {
   @extend .panel;
 
-  width: 60%;
   font-size: 4vh;
+
+  @media (orientation: landscape) {
+    width: 60%;
+  }
 }
 
 .hello {
   font-size: 3vmin;
+  height: 12vmin;
   text-align: center;
 
   h1 {
-    margin: 3vmin 0;
     font-weight: normal;
+    margin: 0;
   }
 }
 

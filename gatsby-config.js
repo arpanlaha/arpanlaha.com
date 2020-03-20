@@ -18,6 +18,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-offline",
+    "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
     {
@@ -28,10 +29,10 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`)
+        name: "images",
+        path: path.join(__dirname, "src", "images")
       }
     },
     "gatsby-transformer-sharp"
