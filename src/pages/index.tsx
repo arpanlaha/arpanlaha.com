@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { Head } from "../components";
+import React, { ReactElement, useEffect, useState } from "react";
+import { Head, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,10 @@ import {
   faTwitter
 } from "@fortawesome/free-brands-svg-icons";
 import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { graphql } from "gatsby";
+
+import "../styles/style.scss";
 
 interface HomeProps {
   data: {
@@ -24,10 +27,26 @@ interface HomeProps {
 
 export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
+  const [theme, setTheme] = useState("light");
+
+  const switchTheme = (): void =>
+    setTheme(theme === "light" ? "dark" : "light");
+
+  useEffect((): void => {
+    theme === "light"
+      ? document.body.classList.remove("dark")
+      : document.body.classList.add("dark");
+  }, [theme]);
 
   return (
     <>
       <Head title="Home" />
+      <FontAwesomeIcon
+        className="theme-switch"
+        icon={theme === "light" ? faSun : faMoon}
+        onClick={switchTheme}
+        size="3x"
+      />
       <div className="panels">
         <div className="first-panel">
           <div>
@@ -75,12 +94,21 @@ export default function Home(props: HomeProps): ReactElement {
               </ul>
             </p>
             <span className="socials">
-              <FontAwesomeIcon icon={faFacebookF} size="lg" />
-              <FontAwesomeIcon icon={faGithub} size="lg" />
-              <FontAwesomeIcon icon={faInstagram} size="lg" />
-              <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
-              <FontAwesomeIcon icon={faTwitter} size="lg" />
-              <FontAwesomeIcon icon={faFileAlt} size="lg" />
+              <Social
+                href="https://www.facebook.com/arpan.laha99"
+                icon={faFacebookF}
+              />
+              <Social href="https://github.com/arpanlaha" icon={faGithub} />
+              <Social
+                href="https://www.instagram.com/arpanlahaha/"
+                icon={faInstagram}
+              />
+              <Social
+                href="https://www.linkedin.com/in/arpanlaha/"
+                icon={faLinkedinIn}
+              />
+              <Social href="https://twitter.com/arpanlahaha" icon={faTwitter} />
+              <Social href="" icon={faFileAlt} />
             </span>
           </div>
         </div>

@@ -4,18 +4,71 @@
   font-display: block;
 }
 
+$dark-primary: #121417;
+$dark-secondary: #45505e;
+$light-primary: #fff;
+$light-secondary: #b9c0cb;
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans Light", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 5%;
+
+  background-color: $light-primary;
+  color: $dark-primary;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+a {
+  color: $dark-primary;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: $dark-secondary;
+  transition: color 0.3s;
+}
+
+.dark {
+  background-color: $dark-primary;
+  color: $light-primary;
+  transition: background-color 0.5s, color 0.5s;
+
+  a {
+    color: $light-primary;
+  }
+
+  a:hover {
+    color: $light-secondary;
+  }
+
+  .theme-switch {
+    color: $light-primary;
+  }
+
+  .theme-switch:hover {
+    color: $light-secondary;
+  }
+}
+
+.theme-switch {
+  position: fixed;
+  right: 5vmin;
+  top: 5vmin;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.theme-switch:hover {
+  color: $dark-secondary;
+  transition: color 0.3s;
 }
 
 .panels {
   display: flex;
-
+  padding: 0 5%;
   @media (orientation: landscape) {
     flex-direction: row;
   }
@@ -100,7 +153,6 @@ body {
   margin: 4vw;
   display: flex;
   flex-direction: column;
-  // justify-content: start;
 
   p {
     margin: 0;
