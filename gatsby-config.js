@@ -18,6 +18,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-offline",
+    "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
     {

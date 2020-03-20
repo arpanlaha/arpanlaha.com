@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "Nunito Sans Light";
+  src: url("../fonts/NunitoSans-Light.ttf");
+  font-display: swap;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Nunito Sans Light";
+  font-family: "Nunito Sans Light", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0 5%;
