@@ -18,7 +18,18 @@ module.exports = {
       }
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-preload-fonts",
+    // "gatsby-plugin-preload-fonts",
+    {
+      resolve: "gatsby-plugin-prefetch-google-fonts",
+      options: {
+        fonts: [
+          {
+            family: "Nunito Sans",
+            subsets: ["Light"]
+          }
+        ]
+      }
+    },
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
     {
@@ -29,10 +40,10 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`)
+        name: "images",
+        path: path.join(__dirname, "src", "images")
       }
     },
     "gatsby-transformer-sharp"
