@@ -91,6 +91,16 @@ a:hover {
   transition: filter 0.3s;
   filter: invert(8%) sepia(7%) saturate(907%) hue-rotate(177deg) brightness(94%)
     contrast(99%);
+  animation: fadeIn ease 0.5s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .theme-switch-svg:hover {
@@ -219,8 +229,11 @@ a:hover {
   }
 }
 
+.about-text {
+  margin-bottom: 3vh;
+}
+
 .socials {
-  margin-top: 3vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
