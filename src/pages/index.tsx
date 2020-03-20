@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Head, Placeholder } from "../components";
+import { Head } from "../components";
 import Img, { FluidObject } from "gatsby-image";
 import { graphql } from "gatsby";
 
@@ -15,10 +15,11 @@ interface HomeProps {
 
 export default function Home(props: HomeProps): ReactElement {
   return (
-    <div className="App">
+    <>
       <Head title="Home" />
-      <Placeholder />
-      <button>Hello</button>
+      <div className="hello">
+        <h1>Hello!</h1>
+      </div>
       <div className="main-image-container">
         <Img
           className="main-image"
@@ -28,7 +29,7 @@ export default function Home(props: HomeProps): ReactElement {
           backgroundColor
         />
       </div>
-    </div>
+    </>
   );
 }
 

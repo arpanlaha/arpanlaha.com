@@ -12,9 +12,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ant-layout-header {
-  font-size: 32px;
-  background: #fff;
+.hello {
+  font-size: 5vmin;
+  text-align: center;
+  h1 {
+    margin: 2.5vmin 0;
+    font-weight: normal;
+  }
 }
 
 .main-image-container {
@@ -29,7 +33,6 @@ body {
   width: 50vmin;
 
   border-radius: 100%;
-  box-shadow: 0 1vmin 2vmin 1vmin rgba(0, 0, 0, 0.16),
-    0 2vmin 4vmin 2vmin rgba(0, 0, 0, 0.12),
-    0 3vmin 6vmin 3vmin rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 2vmin 1vmin rgba(0, 0, 0, 0.16),
+    0 0 4vmin 2vmin rgba(0, 0, 0, 0.08), 0 0 8vmin 4vmin rgba(0, 0, 0, 0.04);
 }
