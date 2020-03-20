@@ -13,7 +13,7 @@ module.exports = {
         start_url: "/",
         background_color: "#16191d",
         theme_color: "#16191d",
-        display: "standalone",
+        display: "browser",
         icon: "static/favicon.ico"
       }
     },
