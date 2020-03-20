@@ -114,7 +114,7 @@ export default function Home(props: HomeProps): ReactElement {
                 <li>Interests: piano • movies • video games • watches</li>
               </ul>
             </p>
-            <span className="socials">
+            <div className="socials">
               <Social
                 href="https://www.facebook.com/arpan.laha99"
                 icon={faFacebookF}
@@ -141,7 +141,7 @@ export default function Home(props: HomeProps): ReactElement {
                 text="Twitter"
               />
               <Social href="" icon={faFileAlt} text="Resume" />
-            </span>
+            </div>
           </div>
         </div>
       </div>
