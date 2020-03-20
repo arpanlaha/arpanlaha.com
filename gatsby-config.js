@@ -1,4 +1,5 @@
 /* eslint-disable */
+const path = require("path");
 
 module.exports = {
   plugins: [
@@ -18,13 +19,21 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     "gatsby-plugin-sass",
-
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-typescript",
       options: {
         allExtensions: true,
         isTSX: true
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`)
+      }
+    },
+    "gatsby-transformer-sharp"
   ]
 };

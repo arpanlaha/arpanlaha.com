@@ -12,22 +12,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.page-transition-enter {
-  opacity: 0;
-}
-.page-transition-enter-active {
-  opacity: 1;
-  transition: opacity 300ms;
-}
-.page-transition-exit {
-  opacity: 1;
-}
-.page-transition-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
-}
-
 .ant-layout-header {
   font-size: 32px;
   background: #fff;
+}
+
+.main-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main-image {
+  height: 50vmin;
+  width: 50vmin;
+
+  border-radius: 100%;
+  box-shadow: 0 1vmin 2vmin 1vmin rgba(0, 0, 0, 0.16),
+    0 2vmin 4vmin 2vmin rgba(0, 0, 0, 0.12),
+    0 3vmin 6vmin 3vmin rgba(0, 0, 0, 0.08);
 }
