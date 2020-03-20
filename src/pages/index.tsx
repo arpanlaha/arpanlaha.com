@@ -17,17 +17,26 @@ export default function Home(props: HomeProps): ReactElement {
   return (
     <>
       <Head title="Home" />
-      <div className="hello">
-        <h1>Hello!</h1>
-      </div>
-      <div className="main-image-container">
-        <Img
-          className="main-image"
-          fluid={props.data.file.childImageSharp.fluid}
-          title="Me"
-          alt="Me"
-          backgroundColor
-        />
+      <div className="panels">
+        <div className="first-panel">
+          <div>
+            <div className="hello">
+              <h1>Hi, I'm Arpan.</h1>
+            </div>
+            <div className="main-image-container">
+              <Img
+                className="main-image"
+                fluid={props.data.file.childImageSharp.fluid}
+                title="Me"
+                alt="Me"
+                backgroundColor
+              />
+            </div>
+          </div>
+        </div>
+        <div className="second-panel">
+          <p>Hey there!</p>
+        </div>
       </div>
     </>
   );

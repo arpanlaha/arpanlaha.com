@@ -1,22 +1,43 @@
-// @font-face {
-//   font-family: nunito-sans-light;
-//   src: url("./fonts/NunitoSans-Light.ttf");
-//   font-display: swap;
-// }
-
 body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans Light";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 5%;
+}
+
+.panels {
+  display: flex;
+  flex-direction: row;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.first-panel {
+  @extend .panel;
+
+  width: 40%;
+}
+
+.second-panel {
+  @extend .panel;
+
+  width: 60%;
+  font-size: 4vh;
 }
 
 .hello {
-  font-size: 5vmin;
+  font-size: 3vmin;
   text-align: center;
+
   h1 {
-    margin: 2.5vmin 0;
+    margin: 3vmin 0;
     font-weight: normal;
   }
 }
@@ -26,6 +47,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 12vmin;
 }
 
 .main-image {
@@ -33,6 +55,13 @@ body {
   width: 50vmin;
 
   border-radius: 100%;
-  box-shadow: 0 0 2vmin 1vmin rgba(0, 0, 0, 0.16),
-    0 0 4vmin 2vmin rgba(0, 0, 0, 0.08), 0 0 8vmin 4vmin rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.4s;
+  box-shadow: 0 1px 2vmin 0vmin rgba(0, 0, 0, 0.64);
+}
+
+.main-image:hover {
+  box-shadow: 0 1px 1vmin 0.5vmin rgba(0, 0, 0, 0.08),
+    0 1px 2vmin 0.5vmin rgba(0, 0, 0, 0.16),
+    0 1px 4vmin 0.5vmin rgba(0, 0, 0, 0.32);
+  transition: box-shadow 0.4s;
 }
