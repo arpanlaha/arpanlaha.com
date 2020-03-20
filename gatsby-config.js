@@ -18,14 +18,13 @@ module.exports = {
       }
     },
     "gatsby-plugin-offline",
-    // "gatsby-plugin-preload-fonts",
+    "gatsby-plugin-preload-fonts",
     {
       resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
         fonts: [
           {
-            family: "Nunito Sans",
-            subsets: ["Light"]
+            family: "Nunito Sans"
           }
         ]
       }
