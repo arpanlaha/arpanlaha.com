@@ -1,6 +1,15 @@
 import React, { ReactElement } from "react";
 import { Head } from "../components";
 import Img, { FluidObject } from "gatsby-image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faGithub,
+  faInstagram,
+  faLinkedinIn,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
+import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import { graphql } from "gatsby";
 
 interface HomeProps {
@@ -65,6 +74,14 @@ export default function Home(props: HomeProps): ReactElement {
                 <li>Interests: piano • movies • video games • watches</li>
               </ul>
             </p>
+            <span className="socials">
+              <FontAwesomeIcon icon={faFacebookF} size="lg" />
+              <FontAwesomeIcon icon={faGithub} size="lg" />
+              <FontAwesomeIcon icon={faInstagram} size="lg" />
+              <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
+              <FontAwesomeIcon icon={faTwitter} size="lg" />
+              <FontAwesomeIcon icon={faFileAlt} size="lg" />
+            </span>
           </div>
         </div>
       </div>

@@ -48,6 +48,7 @@ body {
   @extend .panel;
 
   @media (orientation: landscape) {
+    padding-right: 5vh;
   }
 }
 
@@ -99,7 +100,7 @@ body {
   margin: 4vw;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  // justify-content: start;
 
   p {
     margin: 0;
@@ -128,5 +129,20 @@ body {
     .small-text {
       font-size: 3vw;
     }
+  }
+}
+
+.socials {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (orientation: landscape) {
+    max-width: 50vh;
+  }
+
+  @media (orientation: portrait) {
+    padding: 0 10%;
   }
 }
