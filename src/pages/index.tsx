@@ -14,6 +14,8 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps): ReactElement {
+  const { data } = props;
+
   return (
     <>
       <Head title="Home" />
@@ -26,7 +28,7 @@ export default function Home(props: HomeProps): ReactElement {
             <div className="main-image-container">
               <Img
                 className="main-image"
-                fluid={props.data.file.childImageSharp.fluid}
+                fluid={data.file.childImageSharp.fluid}
                 title="Me"
                 alt="Me"
                 backgroundColor
