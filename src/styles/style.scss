@@ -235,6 +235,10 @@ a:hover {
   @media (orientation: landscape) {
     max-width: 50vh;
 
+    svg {
+      height: 5vh;
+    }
+
     span {
       margin-top: 1vh;
       font-size: 1.5vh;
@@ -243,6 +247,10 @@ a:hover {
 
   @media (orientation: portrait) {
     padding: 0 10%;
+
+    svg {
+      height: 8vw;
+    }
 
     span {
       font-size: 2vw;
