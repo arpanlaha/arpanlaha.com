@@ -42,9 +42,15 @@ export default function Home(props: HomeProps): ReactElement {
   const switchTheme = (): void => setLight(!light);
 
   useEffect((): void => {
-    light
-      ? document.body.classList.remove("dark")
-      : document.body.classList.add("dark");
+    const theme = localStorage.getItem("theme");
+    if (theme !== null) {
+      setLight(theme === "light");
+    }
+  }, [setLight]);
+
+  useEffect((): void => {
+    document.body.classList[light ? "remove" : "add"]("dark");
+    localStorage.setItem("theme", light ? "light" : "dark");
   }, [light]);
 
   return (
