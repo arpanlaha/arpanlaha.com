@@ -112,18 +112,29 @@ export default function Home(props: HomeProps): ReactElement {
               <Social
                 href="https://www.facebook.com/arpan.laha99"
                 icon={faFacebookF}
+                text="Facebook"
               />
-              <Social href="https://github.com/arpanlaha" icon={faGithub} />
+              <Social
+                href="https://github.com/arpanlaha"
+                icon={faGithub}
+                text="GitHub"
+              />
               <Social
                 href="https://www.instagram.com/arpanlahaha/"
                 icon={faInstagram}
+                text="Instagram"
               />
               <Social
                 href="https://www.linkedin.com/in/arpanlaha/"
                 icon={faLinkedinIn}
+                text="LinkedIn"
               />
-              <Social href="https://twitter.com/arpanlahaha" icon={faTwitter} />
-              <Social href="" icon={faFileAlt} />
+              <Social
+                href="https://twitter.com/arpanlahaha"
+                icon={faTwitter}
+                text="Twitter"
+              />
+              <Social href="" icon={faFileAlt} text="Resume" />
             </span>
           </div>
         </div>
