@@ -22,6 +22,7 @@ body {
 
   @media (orientation: portrait) {
     flex-direction: column;
+    margin-top: 5vh;
   }
 }
 
@@ -32,6 +33,7 @@ body {
 
   @media (orientation: landscape) {
     height: 100vh;
+    width: 50%;
   }
 }
 
@@ -39,23 +41,19 @@ body {
   @extend .panel;
 
   @media (orientation: landscape) {
-    width: 40%;
   }
 }
 
 .second-panel {
   @extend .panel;
 
-  font-size: 4vh;
-
   @media (orientation: landscape) {
-    width: 60%;
   }
 }
 
 .hello {
-  font-size: 3vmin;
-  height: 12vmin;
+  font-size: 2vmax;
+  height: 8vmax;
   text-align: center;
 
   h1 {
@@ -69,12 +67,21 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 12vmin;
+
+  @media (orientation: landscape) {
+    margin-bottom: 8vw;
+  }
+
+  @media (orientation: portrait) {
+    margin-bottom: 2vh;
+  }
 }
 
 .main-image {
   height: 50vmin;
+  max-height: 40vmax;
   width: 50vmin;
+  max-width: 40vmax;
 
   border-radius: 100%;
   transition: box-shadow 0.4s;
@@ -86,4 +93,40 @@ body {
     0 1px 2vmin 0.5vmin rgba(0, 0, 0, 0.16),
     0 1px 4vmin 0.5vmin rgba(0, 0, 0, 0.32);
   transition: box-shadow 0.4s;
+}
+
+.about {
+  margin: 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  p {
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+
+  ul {
+    margin: 0;
+    margin-top: 0.5vh;
+    padding: 0;
+    padding-left: 3vh;
+    list-style-type: "› ";
+  }
+
+  @media (orientation: landscape) {
+    font-size: 3vh;
+
+    .small-text {
+      font-size: 2vh;
+    }
+  }
+
+  @media (orientation: portrait) {
+    font-size: 4vw;
+
+    .small-text {
+      font-size: 3vw;
+    }
+  }
 }

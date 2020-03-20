@@ -37,7 +37,35 @@ export default function Home(props: HomeProps): ReactElement {
           </div>
         </div>
         <div className="second-panel">
-          <p>Hey there!</p>
+          <div className="about">
+            <p>CS@Illinois '21</p>
+            <p>
+              Product Manager | Hack4Impact UIUC
+              <br />
+              <ul className="small-text">
+                <li>Child's Play: directory of games to use as therapy</li>
+                <li>Kiva: financial document collection portal</li>
+                <li>UIC MLI: Spinal X-ray position comparision tool</li>
+                <li>
+                  Kids Save Ocean: sustainability project accelerator (ongoing)
+                </li>
+              </ul>
+            </p>
+            <p>
+              Other stuff:
+              <br />
+              <ul className="small-text">
+                <li>
+                  Internships: Microsoft • UChicago Computation Institute •
+                  FermiLab Mu2e
+                </li>
+                <li>
+                  Extracurriculars: Reflections | Projections • HackIllinois
+                </li>
+                <li>Interests: piano • movies • video games • watches</li>
+              </ul>
+            </p>
+          </div>
         </div>
       </div>
     </>
