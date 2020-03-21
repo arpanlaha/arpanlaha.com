@@ -41,7 +41,6 @@ export default function Home(props: HomeProps): ReactElement {
 
   const switchTheme = (): void => {
     document.getElementById("theme-switch")?.classList.add("no-hover");
-
     setLight(!light);
   };
 

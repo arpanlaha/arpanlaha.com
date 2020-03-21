@@ -165,6 +165,19 @@ button:focus {
       transition: box-shadow 0.2s;
     }
   }
+
+  .error-message {
+    box-shadow: $dark-shadow-card;
+    transition: box-shadow 0.5s;
+  }
+
+  .return {
+    box-shadow: $dark-shadow-button;
+  }
+
+  .return:hover {
+    box-shadow: $dark-shadow-button-inset;
+  }
 }
 
 .theme-switch {
@@ -390,4 +403,42 @@ button:focus {
       font-size: 2vw;
     }
   }
+}
+
+.error-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  width: 40%;
+  border-radius: 1vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3vmin;
+  padding: 5vmin;
+  box-shadow: $light-shadow-card;
+  transition: box-shadow 0.5s;
+
+  p {
+    margin: 0;
+    margin-bottom: 2vmin;
+  }
+}
+
+.return {
+  text-decoration: none;
+  padding: 0.5vmin 2vmin;
+  border-radius: 0.5vmin;
+  box-shadow: $light-shadow-button;
+  transition: box-shadow 0.2s;
+}
+
+.return:hover {
+  box-shadow: $light-shadow-button-inset;
+  transition: box-shadow 0.2s;
 }
