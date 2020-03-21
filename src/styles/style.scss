@@ -4,10 +4,40 @@
   font-display: block;
 }
 
-$dark-primary: #121417;
-$dark-secondary: #45505e;
-$light-primary: #fff;
-$light-secondary: #b9c0cb;
+$light-primary: hsl(215, 16, 92);
+$light-secondary: hsl(215, 16, 76);
+$light-primary-filter: invert(95%) sepia(9%) saturate(83%) hue-rotate(174deg)
+  brightness(100%) contrast(89%);
+$light-secondary-filter: invert(84%) sepia(8%) saturate(320%) hue-rotate(178deg)
+  brightness(93%) contrast(87%);
+$light-shadow-light: hsla(215, 16, 97, 0.5);
+$light-shadow-dark: hsla(215, 16, 68, 0.5);
+$light-shadow-card: -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light,
+  0.5vmin 0.5vmin 0.5vmin 0 $light-shadow-dark;
+$light-shadow-button: -0.3vmin -0.3vmin 0.3vmin 0 $light-shadow-light,
+  0.3vmin 0.3vmin 1vmin 0 $light-shadow-dark, 0 0 0 0 $light-shadow-light inset,
+  0 0 0 0 $light-shadow-dark inset;
+$light-shadow-button-inset: 0 0 0 0 $light-shadow-light,
+  0 0 0 0 $light-shadow-dark,
+  -0.3vmin -0.3vmin 0.3vmin 0 $light-shadow-light inset,
+  0.3vmin 0.3vmin 1vmin 0 $light-shadow-dark inset;
+
+$dark-primary: hsl(215, 16, 12);
+$dark-secondary: hsl(215, 16, 24);
+$dark-primary-filter: invert(6%) sepia(6%) saturate(2468%) hue-rotate(173deg)
+  brightness(101%) contrast(87%);
+$dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
+  brightness(94%) contrast(86%);
+$dark-shadow-light: hsla(215, 16, 16, 0.5);
+$dark-shadow-dark: hsla(215, 16, 8, 0.5);
+$dark-shadow-card: -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light,
+  0.5vmin 0.5vmin 0.5vmin 0 $dark-shadow-dark;
+$dark-shadow-button: -0.3vmin -0.3vmin 0.3vmin 0 $dark-shadow-light,
+  0.3vmin 0.3vmin 1vmin 0 $dark-shadow-dark, 0 0 0 0 $dark-shadow-light inset,
+  0 0 0 0 $dark-shadow-dark inset;
+$dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark,
+  -0.3vmin -0.3vmin 0.3vmin 0 $dark-shadow-light inset,
+  0.3vmin 0.3vmin 1vmin 0 $dark-shadow-dark inset;
 
 @keyframes fade-in-hello {
   0% {
@@ -36,6 +66,7 @@ $light-secondary: #b9c0cb;
 @keyframes fade-in-about {
   0% {
     opacity: 0;
+    // box-shadow: none;
   }
 
   67% {
@@ -69,6 +100,10 @@ a:hover {
   transition: color 0.3s;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .dark {
   background-color: $dark-primary;
   color: $light-primary;
@@ -82,32 +117,59 @@ a:hover {
     color: $light-secondary;
   }
 
+  .theme-switch {
+    box-shadow: $dark-shadow-button;
+    transition: box-shadow 0.5s;
+  }
+
+  .theme-switch:not(.no-hover):hover {
+    box-shadow: $dark-shadow-button-inset;
+    transition: box-shadow 0.2s;
+  }
+
   .theme-switch-svg {
-    filter: invert(100%) sepia(3%) saturate(1035%) hue-rotate(217deg)
-      brightness(117%) contrast(100%);
+    filter: $light-primary-filter;
+    transition: filter 0.5s;
   }
 
   .theme-switch-svg:hover {
     @media (orientation: landscape) {
-      filter: invert(86%) sepia(14%) saturate(184%) hue-rotate(177deg)
-        brightness(91%) contrast(81%);
+      filter: $light-secondary-filter;
+      transition: filter 0.5s;
     }
   }
 
   .main-image {
-    box-shadow: 0 1px 2vmin 0vmin rgba(255, 255, 255, 0.16);
+    box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 100, 0.16);
   }
 
   .main-image:hover {
-    box-shadow: 0 1px 1vmin 0.5vmin rgba(255, 255, 255, 0.02),
-      0 1px 2vmin 0.5vmin rgba(255, 255, 255, 0.04),
-      0 1px 4vmin 0.5vmin rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 1vmin 0.5vmin hsla(0, 0, 100, 0.02),
+      0 1px 2vmin 0.5vmin hsla(0, 0, 100, 0.04),
+      0 1px 4vmin 0.5vmin hsla(0, 0, 100, 0.08);
+  }
+
+  .about {
+    box-shadow: $dark-shadow-card;
+    transition: box-shadow 0.5s;
+  }
+
+  .socials {
+    a {
+      box-shadow: $dark-shadow-button;
+      transition: box-shadow 0.5s;
+    }
+
+    a:hover {
+      box-shadow: $dark-shadow-button-inset;
+      transition: box-shadow 0.2s;
+    }
   }
 }
 
 .theme-switch {
-  width: 6vmin;
-  height: 6vmin;
+  width: 7vmin;
+  height: 7vmin;
   position: fixed;
   right: 5vmin;
   top: 5vmin;
@@ -116,10 +178,19 @@ a:hover {
   border-radius: 100%;
   display: flex;
   flex-direction: column;
+  background-color: hsla(0, 0, 0, 0);
   justify-content: center;
   align-items: center;
-  background-color: hsla(255, 255, 255, 0);
   cursor: pointer;
+  animation: fade-in-about linear 1s;
+
+  box-shadow: $light-shadow-button;
+  transition: box-shadow 0.5s;
+}
+
+.theme-switch:not(.no-hover):hover {
+  box-shadow: $light-shadow-button-inset;
+  transition: box-shadow 0.2s;
 }
 
 .theme-switch-svg {
@@ -127,15 +198,12 @@ a:hover {
   width: 5vmin;
   height: 5vmin;
   transition: filter 0.3s;
-  filter: invert(8%) sepia(7%) saturate(907%) hue-rotate(177deg) brightness(94%)
-    contrast(99%);
-  animation: fade-in-about linear 1s;
+  filter: $dark-primary-filter;
 }
 
 .theme-switch-svg:hover {
   @media (orientation: landscape) {
-    filter: invert(29%) sepia(14%) saturate(674%) hue-rotate(174deg)
-      brightness(94%) contrast(87%);
+    filter: $dark-secondary-filter;
     transition: filter 0.3s;
   }
 }
@@ -215,21 +283,26 @@ a:hover {
 
   border-radius: 100%;
   transition: box-shadow 0.4s;
-  box-shadow: 0 1px 2vmin 0vmin rgba(0, 0, 0, 0.64);
+  box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 0, 0.64);
 }
 
 .main-image:hover {
-  box-shadow: 0 1px 1vmin 0.5vmin rgba(0, 0, 0, 0.08),
-    0 1px 2vmin 0.5vmin rgba(0, 0, 0, 0.16),
-    0 1px 4vmin 0.5vmin rgba(0, 0, 0, 0.32);
+  box-shadow: 0 1px 1vmin 0.5vmin hsla(0, 0, 0, 0.08),
+    0 1px 2vmin 0.5vmin hsla(0, 0, 0, 0.16),
+    0 1px 4vmin 0.5vmin hsla(0, 0, 0, 0.32);
   transition: box-shadow 0.4s;
 }
 
 .about {
   margin: 4vw;
+  padding: 2vmax;
   display: flex;
   flex-direction: column;
   animation: fade-in-about 1s;
+  border-radius: 0.8vmax;
+
+  box-shadow: $light-shadow-card;
+  transition: box-shadow 0.5s;
 
   p {
     margin: 0;
@@ -245,10 +318,10 @@ a:hover {
   }
 
   @media (orientation: landscape) {
-    font-size: 3vh;
+    font-size: 1.6vw;
 
     .small-text {
-      font-size: 2vh;
+      font-size: 1vw;
     }
   }
 
@@ -275,25 +348,42 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+
+    border-radius: 0.5vmax;
+
+    box-shadow: $light-shadow-button;
+    transition: box-shadow 0.5s;
+  }
+
+  a:hover {
+    box-shadow: $light-shadow-button-inset;
+    transition: box-shadow 0.2s;
   }
 
   @media (orientation: landscape) {
-    max-width: 50vh;
+    a {
+      height: 4vw;
+      width: 4vw;
+      padding: 0.2vw;
+      margin: 0.2vw 0;
+    }
 
     svg {
-      height: 5vh;
+      height: 2vmax;
     }
 
     span {
-      font-size: 1.5vh;
+      font-size: 0.7vmax;
     }
   }
 
   @media (orientation: portrait) {
-    padding: 0 10%;
-
-    svg {
+    a {
       height: 8vw;
+      width: 8vw;
+      padding: 1vw;
+      margin: 1vw 0;
     }
 
     span {

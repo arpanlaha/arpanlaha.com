@@ -39,7 +39,18 @@ export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
   const [light, setLight] = useState(true);
 
-  const switchTheme = (): void => setLight(!light);
+  const switchTheme = (): void => {
+    document.getElementById("theme-switch")?.classList.add("no-hover");
+
+    setLight(!light);
+  };
+
+  const themeSwitchLeave = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    e.preventDefault;
+    document.getElementById("theme-switch")?.classList.remove("no-hover");
+  };
 
   useEffect((): void => {
     const theme = localStorage.getItem("theme");
@@ -58,8 +69,10 @@ export default function Home(props: HomeProps): ReactElement {
       <Head />
       <button
         className="theme-switch"
+        id="theme-switch"
         onClick={switchTheme}
         onMouseDown={e => e.preventDefault()}
+        onMouseLeave={themeSwitchLeave}
       >
         <img
           className="theme-switch-svg"
