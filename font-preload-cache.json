@@ -1,11 +1,17 @@
 {
-  "timestamp": 1584683130187,
-  "hash": "16989cee614a1170a234477346bf6dcb",
+  "timestamp": 1584774369691,
+  "hash": "53260b0eb5ca3cf626e0786300172b67",
   "assets": {
     "/dev-404-page/": {
       "/static/NunitoSans-Light-805b7a5f33449f85a0ca6c164426de02.ttf": true
     },
     "/": {
+      "/static/NunitoSans-Light-805b7a5f33449f85a0ca6c164426de02.ttf": true
+    },
+    "/404/": {
+      "/static/NunitoSans-Light-805b7a5f33449f85a0ca6c164426de02.ttf": true
+    },
+    "/404.html": {
       "/static/NunitoSans-Light-805b7a5f33449f85a0ca6c164426de02.ttf": true
     }
   }

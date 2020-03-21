@@ -22,16 +22,6 @@ interface HomeProps {
         fluid: FluidObject;
       };
     };
-    sun: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-    moon: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
   };
 }
 
@@ -167,12 +157,10 @@ export default function Home(props: HomeProps): ReactElement {
 
 export const query = graphql`
   query {
-    main: file(relativePath: { eq: "fb_profile_2019_square_800.webp" }) {
+    main: file(relativePath: { eq: "fb_profile_2019_square_800.jpg" }) {
       childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
         fluid(quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid
         }
       }
     }
