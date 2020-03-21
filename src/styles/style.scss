@@ -12,15 +12,16 @@ $light-secondary-filter: invert(84%) sepia(8%) saturate(320%) hue-rotate(178deg)
   brightness(93%) contrast(87%);
 $light-shadow-light: hsla(215, 16, 97, 0.5);
 $light-shadow-dark: hsla(215, 16, 68, 0.5);
-$light-shadow-card: -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light,
-  0.5vmin 0.5vmin 0.5vmin 0 $light-shadow-dark;
-$light-shadow-button: -0.3vmin -0.3vmin 0.3vmin 0 $light-shadow-light,
-  0.3vmin 0.3vmin 1vmin 0 $light-shadow-dark, 0 0 0 0 $light-shadow-light inset,
+$light-shadow-card: -1vmin -1vmin 1vmin 0 $light-shadow-light,
+  2vmin 2vmin 2vmin 0 $light-shadow-dark;
+$light-shadow-button: -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light,
+  1vmin 1vmin 1vmin 0 $light-shadow-dark, 0 0 0 0 $light-shadow-light inset,
   0 0 0 0 $light-shadow-dark inset;
 $light-shadow-button-inset: 0 0 0 0 $light-shadow-light,
   0 0 0 0 $light-shadow-dark,
-  -0.3vmin -0.3vmin 0.3vmin 0 $light-shadow-light inset,
-  0.3vmin 0.3vmin 1vmin 0 $light-shadow-dark inset;
+  -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light inset,
+  1vmin 1vmin 1vmin 0 $light-shadow-dark inset;
+$light-border: hsla(0, 0, 100, 0.2);
 
 $dark-primary: hsl(215, 16, 12);
 $dark-secondary: hsl(215, 16, 24);
@@ -30,14 +31,17 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   brightness(94%) contrast(86%);
 $dark-shadow-light: hsla(215, 16, 16, 0.5);
 $dark-shadow-dark: hsla(215, 16, 8, 0.5);
-$dark-shadow-card: -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light,
-  0.5vmin 0.5vmin 0.5vmin 0 $dark-shadow-dark;
-$dark-shadow-button: -0.3vmin -0.3vmin 0.3vmin 0 $dark-shadow-light,
-  0.3vmin 0.3vmin 1vmin 0 $dark-shadow-dark, 0 0 0 0 $dark-shadow-light inset,
+$dark-shadow-card: -1vmin -1vmin 1vmin 0 $dark-shadow-light,
+  2vmin 2vmin 2vmin 0 $dark-shadow-dark;
+$dark-shadow-button: -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light,
+  1vmin 1vmin 1vmin 0 $dark-shadow-dark, 0 0 0 0 $dark-shadow-light inset,
   0 0 0 0 $dark-shadow-dark inset;
 $dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark,
-  -0.3vmin -0.3vmin 0.3vmin 0 $dark-shadow-light inset,
-  0.3vmin 0.3vmin 1vmin 0 $dark-shadow-dark inset;
+  -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light inset,
+  1vmin 1vmin 1vmin 0 $dark-shadow-dark inset;
+$dark-border: hsla(0, 0, 0, 0.1);
+
+$transparent: hsla(0, 0, 0, 0);
 
 @keyframes fade-in-hello {
   0% {
@@ -66,7 +70,6 @@ $dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark
 @keyframes fade-in-about {
   0% {
     opacity: 0;
-    // box-shadow: none;
   }
 
   67% {
@@ -76,6 +79,105 @@ $dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark
   100% {
     opacity: 1;
   }
+}
+
+.neu {
+  border-style: solid;
+  border-width: 1px;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.light-neu {
+  @extend .neu;
+
+  border-color: $light-border;
+}
+
+.dark-neu {
+  @extend .neu;
+
+  border-color: $dark-border;
+}
+
+.light-neu-button {
+  @extend .light-neu;
+
+  box-shadow: $light-shadow-button;
+}
+
+.dark-neu-button {
+  @extend .dark-neu;
+
+  border-color: $dark-border;
+  box-shadow: $dark-shadow-button;
+}
+
+.neu-button-inset {
+  transition: box-shadow 0.2s, border-color 0.2s;
+  border-color: $transparent;
+}
+
+.light-neu-button-inset {
+  @extend .neu-button-inset;
+
+  box-shadow: $light-shadow-button-inset;
+}
+
+.dark-neu-button-inset {
+  @extend .neu-button-inset;
+
+  box-shadow: $dark-shadow-button-inset;
+}
+
+.light-neu-card {
+  @extend .light-neu;
+
+  box-shadow: $light-shadow-card;
+}
+
+.dark-neu-card {
+  @extend .dark-neu;
+
+  box-shadow: $dark-shadow-card;
+}
+
+.primary-filter {
+  transition: filter 0.5s;
+}
+
+.dark-primary-filter {
+  @extend .primary-filter;
+
+  filter: $dark-primary-filter;
+}
+
+.light-primary-filter {
+  @extend .primary-filter;
+
+  filter: $light-primary-filter;
+}
+
+.secondary-filter {
+  transition: filter 0.2s;
+}
+
+.dark-secondary-filter {
+  @extend .secondary-filter;
+
+  filter: $dark-secondary-filter;
+}
+
+.light-secondary-filter {
+  @extend .secondary-filter;
+
+  filter: $light-secondary-filter;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -92,12 +194,12 @@ body {
 
 a {
   color: $dark-primary;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
 a:hover {
   color: $dark-secondary;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
 button:focus {
@@ -118,25 +220,23 @@ button:focus {
   }
 
   .theme-switch {
-    box-shadow: $dark-shadow-button;
-    transition: box-shadow 0.5s;
+    @extend .dark-neu-button;
   }
 
   .theme-switch:not(.no-hover):hover {
-    box-shadow: $dark-shadow-button-inset;
-    transition: box-shadow 0.2s;
+    @extend .dark-neu-button-inset;
   }
 
   .theme-switch-svg {
-    filter: $light-primary-filter;
-    transition: filter 0.5s;
+    @extend .light-primary-filter;
   }
 
-  .theme-switch-svg:hover {
-    @media (orientation: landscape) {
-      filter: $light-secondary-filter;
-      transition: filter 0.5s;
-    }
+  .theme-switch-svg:not(.no-hover):hover {
+    @extend .light-secondary-filter;
+  }
+
+  .second-panel {
+    @extend .dark-neu-card;
   }
 
   .main-image {
@@ -150,80 +250,66 @@ button:focus {
   }
 
   .about {
-    box-shadow: $dark-shadow-card;
-    transition: box-shadow 0.5s;
+    @extend .dark-neu-card;
   }
 
   .socials {
     a {
-      box-shadow: $dark-shadow-button;
-      transition: box-shadow 0.5s;
+      @extend .dark-neu-button;
     }
 
     a:hover {
-      box-shadow: $dark-shadow-button-inset;
-      transition: box-shadow 0.2s;
+      @extend .dark-neu-button-inset;
     }
   }
 
   .error-message {
-    box-shadow: $dark-shadow-card;
-    transition: box-shadow 0.5s;
+    @extend .dark-neu-card;
   }
 
   .return {
-    box-shadow: $dark-shadow-button;
+    @extend .dark-neu-button;
   }
 
   .return:hover {
-    box-shadow: $dark-shadow-button-inset;
+    @extend .dark-neu-button-inset;
   }
 }
 
 .theme-switch {
+  @extend .light-neu-button, .center-content;
+
   width: 7vmin;
   height: 7vmin;
   position: fixed;
   right: 5vmin;
   top: 5vmin;
   padding: 0;
-  border: 0;
   border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: hsla(0, 0, 0, 0);
-  justify-content: center;
-  align-items: center;
+  background-color: $transparent;
   cursor: pointer;
   animation: fade-in-about linear 1s;
-
-  box-shadow: $light-shadow-button;
-  transition: box-shadow 0.5s;
 }
 
 .theme-switch:not(.no-hover):hover {
-  box-shadow: $light-shadow-button-inset;
-  transition: box-shadow 0.2s;
+  @extend .light-neu-button-inset;
 }
 
 .theme-switch-svg {
+  @extend .dark-primary-filter;
+
   border-radius: 100%;
   width: 5vmin;
   height: 5vmin;
-  transition: filter 0.3s;
-  filter: $dark-primary-filter;
 }
 
-.theme-switch-svg:hover {
-  @media (orientation: landscape) {
-    filter: $dark-secondary-filter;
-    transition: filter 0.3s;
-  }
+.theme-switch-svg:not(.no-hover):hover {
+  @extend .dark-secondary-filter;
 }
 
 .panels {
   display: flex;
-  padding: 0 5%;
+
   @media (orientation: landscape) {
     flex-direction: row;
   }
@@ -235,9 +321,7 @@ button:focus {
 }
 
 .panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @extend .center-content;
 
   @media (orientation: landscape) {
     height: 100vh;
@@ -249,14 +333,20 @@ button:focus {
   @extend .panel;
 
   @media (orientation: landscape) {
+    padding-left: 5vh;
   }
 }
 
 .second-panel {
-  @extend .panel;
+  @extend .panel, .light-neu-card;
 
   @media (orientation: landscape) {
     padding-right: 5vh;
+  }
+
+  @media (orientation: portrait) {
+    box-shadow: none;
+    border: none;
   }
 }
 
@@ -273,10 +363,9 @@ button:focus {
 }
 
 .main-image-container {
+  @extend .center-content;
+
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   animation: fade-in-image linear 0.666s;
 
   @media (orientation: landscape) {
@@ -289,13 +378,13 @@ button:focus {
 }
 
 .main-image {
-  height: 50vmin;
-  max-height: 40vmax;
-  width: 50vmin;
-  max-width: 40vmax;
+  height: 25vmax;
+  width: 25vmax;
+  min-height: 40vmin;
+  min-width: 40vmin;
 
   border-radius: 100%;
-  transition: box-shadow 0.4s;
+  transition: box-shadow 0.5s;
   box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 0, 0.64);
 }
 
@@ -303,19 +392,18 @@ button:focus {
   box-shadow: 0 1px 1vmin 0.5vmin hsla(0, 0, 0, 0.08),
     0 1px 2vmin 0.5vmin hsla(0, 0, 0, 0.16),
     0 1px 4vmin 0.5vmin hsla(0, 0, 0, 0.32);
-  transition: box-shadow 0.4s;
+  transition: box-shadow 0.5s;
 }
 
 .about {
+  @extend .light-neu-card;
+
   margin: 4vw;
   padding: 2vmax;
   display: flex;
   flex-direction: column;
   animation: fade-in-about 1s;
   border-radius: 0.8vmax;
-
-  box-shadow: $light-shadow-card;
-  transition: box-shadow 0.5s;
 
   p {
     margin: 0;
@@ -357,21 +445,23 @@ button:focus {
   justify-content: space-between;
 
   a {
+    @extend .light-neu-button, .center-content;
+
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
-
     border-radius: 0.5vmax;
-
-    box-shadow: $light-shadow-button;
-    transition: box-shadow 0.5s;
   }
 
   a:hover {
-    box-shadow: $light-shadow-button-inset;
-    transition: box-shadow 0.2s;
+    @extend .light-neu-button-inset;
+  }
+
+  svg {
+    @extend .dark-primary-filter;
+  }
+
+  svg:hover {
+    @extend .dark-secondary-filter;
   }
 
   @media (orientation: landscape) {
@@ -379,7 +469,6 @@ button:focus {
       height: 4vw;
       width: 4vw;
       padding: 0.2vw;
-      margin: 0.2vw 0;
     }
 
     svg {
@@ -406,23 +495,19 @@ button:focus {
 }
 
 .error-page {
+  @extend .center-content;
+
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .error-message {
+  @extend .center-content, .light-neu-card;
+
   width: 40%;
   border-radius: 1vmin;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-size: 3vmin;
   padding: 5vmin;
-  box-shadow: $light-shadow-card;
-  transition: box-shadow 0.5s;
 
   p {
     margin: 0;
@@ -431,14 +516,13 @@ button:focus {
 }
 
 .return {
+  @extend .light-neu-button;
+
   text-decoration: none;
   padding: 0.5vmin 2vmin;
   border-radius: 0.5vmin;
-  box-shadow: $light-shadow-button;
-  transition: box-shadow 0.2s;
 }
 
 .return:hover {
-  box-shadow: $light-shadow-button-inset;
-  transition: box-shadow 0.2s;
+  @extend .light-neu-button-inset;
 }
