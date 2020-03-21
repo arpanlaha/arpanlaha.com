@@ -303,7 +303,6 @@ button:focus {
   width: 7vmin;
   height: 7vmin;
   position: fixed;
-
   padding: 0;
   border-radius: 100%;
   background-color: $transparent;
@@ -313,6 +312,10 @@ button:focus {
 
 .switch:not(.no-hover):hover {
   @extend .light-neu-button-inset;
+
+  .theme-switch-svg {
+    @extend .dark-secondary-filter;
+  }
 }
 
 .theme-switch {
@@ -326,10 +329,6 @@ button:focus {
   border-radius: 100%;
   width: 5vmin;
   height: 5vmin;
-}
-
-.theme-switch-svg:not(.no-hover):hover {
-  @extend .dark-secondary-filter;
 }
 
 .neu-switch {

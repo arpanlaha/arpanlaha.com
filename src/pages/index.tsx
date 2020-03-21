@@ -47,17 +47,13 @@ export default function Home(props: HomeProps): ReactElement {
   }, [light]);
 
   useEffect((): void => {
-    const neuClasses = [
-      "second-panel",
-      "switch",
-      "about",
-      "social"
-    ].map(className => Array.from(document.getElementsByClassName(className)));
-    neuClasses.forEach(neuClass =>
-      neuClass.forEach(neuElement =>
-        neuElement.classList[neu ? "remove" : "add"]("no-neu")
-      )
-    );
+    ["second-panel", "switch", "about", "social"]
+      .map(className => Array.from(document.getElementsByClassName(className)))
+      .forEach(neuClass =>
+        neuClass.forEach(neuElement =>
+          neuElement.classList[neu ? "remove" : "add"]("no-neu")
+        )
+      );
     localStorage.setItem("design", neu ? "neu" : "flat");
   }, [neu]);
 
@@ -66,19 +62,15 @@ export default function Home(props: HomeProps): ReactElement {
     setLight(!light);
   };
 
-  const toggleNeu = (): void => {
+  const switchDesign = (): void => {
     document.getElementById("neu-switch")?.classList.add("no-hover");
     setNeu(!neu);
   };
 
-  const switchLeave = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void => {
-    e.preventDefault;
+  const leaveSwitch = (): void =>
     Array.from(
       document.getElementsByClassName("switch")
     ).forEach(switchElement => switchElement.classList.remove("no-hover"));
-  };
 
   return (
     <>
@@ -88,7 +80,7 @@ export default function Home(props: HomeProps): ReactElement {
         id="theme-switch"
         onClick={switchTheme}
         onMouseDown={e => e.preventDefault()}
-        onMouseLeave={switchLeave}
+        onMouseLeave={leaveSwitch}
       >
         <img
           className="theme-switch-svg"
@@ -99,9 +91,9 @@ export default function Home(props: HomeProps): ReactElement {
       <button
         className="switch neu-switch"
         id="neu-switch"
-        onClick={toggleNeu}
+        onClick={switchDesign}
         onMouseDown={e => e.preventDefault()}
-        onMouseLeave={switchLeave}
+        onMouseLeave={leaveSwitch}
       >
         {neu ? "neu" : "flat"}
       </button>
