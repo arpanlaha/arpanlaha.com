@@ -39,7 +39,7 @@ $dark-shadow-button: -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light,
 $dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark,
   -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light inset,
   1vmin 1vmin 1vmin 0 $dark-shadow-dark inset;
-$dark-border: hsla(0, 0, 0, 0.1);
+$dark-border: hsla(214, 15, 8, 0.1);
 
 $transparent: hsla(0, 0, 0, 0);
 
@@ -70,6 +70,7 @@ $transparent: hsla(0, 0, 0, 0);
 @keyframes fade-in-about {
   0% {
     opacity: 0;
+    box-shadow: none;
   }
 
   67% {
@@ -194,7 +195,6 @@ body {
 
 a {
   color: $dark-primary;
-  transition: color 0.2s;
 }
 
 a:hover {
@@ -217,6 +217,7 @@ button:focus {
 
   a:hover {
     color: $light-secondary;
+    transition: color 0.2s;
   }
 
   .theme-switch {
@@ -260,6 +261,14 @@ button:focus {
 
     a:hover {
       @extend .dark-neu-button-inset;
+
+      img {
+        @extend .light-secondary-filter;
+      }
+    }
+
+    img {
+      @extend .light-primary-filter;
     }
   }
 
@@ -340,6 +349,8 @@ button:focus {
 .second-panel {
   @extend .panel, .light-neu-card;
 
+  animation: fade-in-about linear 1s;
+
   @media (orientation: landscape) {
     padding-right: 5vh;
   }
@@ -402,7 +413,6 @@ button:focus {
   padding: 2vmax;
   display: flex;
   flex-direction: column;
-  animation: fade-in-about 1s;
   border-radius: 0.8vmax;
 
   p {
@@ -454,14 +464,14 @@ button:focus {
 
   a:hover {
     @extend .light-neu-button-inset;
+
+    img {
+      @extend .dark-secondary-filter;
+    }
   }
 
-  svg {
+  img {
     @extend .dark-primary-filter;
-  }
-
-  svg:hover {
-    @extend .dark-secondary-filter;
   }
 
   @media (orientation: landscape) {
@@ -471,7 +481,7 @@ button:focus {
       padding: 0.2vw;
     }
 
-    svg {
+    img {
       height: 2vmax;
     }
 

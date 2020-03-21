@@ -1,10 +1,8 @@
 import React, { ReactElement } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 interface SocialProps {
   href: string;
-  icon: IconDefinition;
+  icon: string;
   text: string;
 }
 
@@ -12,7 +10,7 @@ export default function Social(props: SocialProps): ReactElement {
   const { href, icon, text } = props;
   return (
     <a href={href} target="_blank" rel="noopener noreferrer">
-      <FontAwesomeIcon icon={icon} size="lg" />
+      <img src={icon} alt={text} />
       <span>{text}</span>
     </a>
   );

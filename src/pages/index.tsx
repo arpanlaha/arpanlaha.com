@@ -1,17 +1,16 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Head, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
-import {
-  faFacebookF,
-  faGithub,
-  faInstagram,
-  faLinkedinIn,
-  faTwitter
-} from "@fortawesome/free-brands-svg-icons";
-import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
+
 import { graphql } from "gatsby";
-import sun from "../images/sunny-outline.svg";
-import moon from "../images/moon-outline.svg";
+import facebook from "../images/facebook.svg";
+import file from "../images/file.svg";
+import github from "../images/github.svg";
+import instagram from "../images/instagram.svg";
+import linkedin from "../images/linkedin.svg";
+import moon from "../images/moon.svg";
+import sun from "../images/sun.svg";
+import twitter from "../images/twitter.svg";
 
 import "../styles/style.scss";
 
@@ -123,30 +122,30 @@ export default function Home(props: HomeProps): ReactElement {
             <div className="socials">
               <Social
                 href="https://www.facebook.com/arpan.laha99"
-                icon={faFacebookF}
+                icon={facebook}
                 text="Facebook"
               />
               <Social
                 href="https://github.com/arpanlaha"
-                icon={faGithub}
+                icon={github}
                 text="GitHub"
               />
               <Social
                 href="https://www.instagram.com/arpanlahaha/"
-                icon={faInstagram}
+                icon={instagram}
                 text="Instagram"
               />
               <Social
                 href="https://www.linkedin.com/in/arpanlaha/"
-                icon={faLinkedinIn}
+                icon={linkedin}
                 text="LinkedIn"
               />
               <Social
                 href="https://twitter.com/arpanlahaha"
-                icon={faTwitter}
+                icon={twitter}
                 text="Twitter"
               />
-              <Social href="" icon={faFileAlt} text="Resume" />
+              <Social href="" icon={file} text="Resume" />
             </div>
           </div>
         </div>
