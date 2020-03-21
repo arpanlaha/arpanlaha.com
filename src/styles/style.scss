@@ -9,12 +9,36 @@ $dark-secondary: #45505e;
 $light-primary: #fff;
 $light-secondary: #b9c0cb;
 
-@keyframes fadeIn {
+@keyframes fade-in-hello {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-image {
   0% {
     opacity: 0;
   }
 
   50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-about {
+  0% {
+    opacity: 0;
+  }
+
+  67% {
     opacity: 0;
   }
 
@@ -105,7 +129,7 @@ a:hover {
   transition: filter 0.3s;
   filter: invert(8%) sepia(7%) saturate(907%) hue-rotate(177deg) brightness(94%)
     contrast(99%);
-  animation: fadeIn ease 0.5s;
+  animation: fade-in-about linear 1s;
 }
 
 .theme-switch-svg:hover {
@@ -159,6 +183,7 @@ a:hover {
   font-size: 2vmax;
   height: 8vmax;
   text-align: center;
+  animation: fade-in-hello linear 0.333s;
 
   h1 {
     font-weight: normal;
@@ -171,6 +196,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  animation: fade-in-image linear 0.666s;
 
   @media (orientation: landscape) {
     margin-bottom: 8vw;
@@ -203,7 +229,7 @@ a:hover {
   margin: 4vw;
   display: flex;
   flex-direction: column;
-  animation: fadeIn 0.5s;
+  animation: fade-in-about 1s;
 
   p {
     margin: 0;
