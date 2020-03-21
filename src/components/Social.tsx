@@ -9,7 +9,7 @@ interface SocialProps {
 export default function Social(props: SocialProps): ReactElement {
   const { href, icon, text } = props;
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a className="social" href={href} target="_blank" rel="noopener noreferrer">
       <img src={icon} alt={text} />
       <span>{text}</span>
     </a>

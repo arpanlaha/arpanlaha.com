@@ -193,6 +193,13 @@ body {
   transition: background-color 0.5s, color 0.5s;
 }
 
+.no-neu {
+  transition: border-color 0.5s box-shadow 0.5s;
+
+  border-color: $transparent !important;
+  box-shadow: none !important;
+}
+
 a {
   color: $dark-primary;
 }
@@ -220,24 +227,31 @@ button:focus {
     transition: color 0.2s;
   }
 
-  .theme-switch {
+  .switch {
     @extend .dark-neu-button;
+    color: $light-primary;
   }
 
-  .theme-switch:not(.no-hover):hover {
+  .switch:not(.no-hover):hover {
     @extend .dark-neu-button-inset;
+    color: $light-secondary;
+
+    .theme-switch-svg {
+      @extend .light-secondary-filter;
+    }
   }
 
   .theme-switch-svg {
     @extend .light-primary-filter;
   }
 
-  .theme-switch-svg:not(.no-hover):hover {
-    @extend .light-secondary-filter;
-  }
-
   .second-panel {
     @extend .dark-neu-card;
+
+    @media (orientation: portrait) {
+      box-shadow: none;
+      border-color: $transparent;
+    }
   }
 
   .main-image {
@@ -254,21 +268,19 @@ button:focus {
     @extend .dark-neu-card;
   }
 
-  .socials {
-    a {
-      @extend .dark-neu-button;
-    }
-
-    a:hover {
-      @extend .dark-neu-button-inset;
-
-      img {
-        @extend .light-secondary-filter;
-      }
-    }
+  .social {
+    @extend .dark-neu-button;
 
     img {
       @extend .light-primary-filter;
+    }
+  }
+
+  .social:hover {
+    @extend .dark-neu-button-inset;
+
+    img {
+      @extend .light-secondary-filter;
     }
   }
 
@@ -285,14 +297,13 @@ button:focus {
   }
 }
 
-.theme-switch {
+.switch {
   @extend .light-neu-button, .center-content;
 
   width: 7vmin;
   height: 7vmin;
   position: fixed;
-  right: 5vmin;
-  top: 5vmin;
+
   padding: 0;
   border-radius: 100%;
   background-color: $transparent;
@@ -300,8 +311,13 @@ button:focus {
   animation: fade-in-about linear 1s;
 }
 
-.theme-switch:not(.no-hover):hover {
+.switch:not(.no-hover):hover {
   @extend .light-neu-button-inset;
+}
+
+.theme-switch {
+  right: 5vmin;
+  top: 5vmin;
 }
 
 .theme-switch-svg {
@@ -314,6 +330,20 @@ button:focus {
 
 .theme-switch-svg:not(.no-hover):hover {
   @extend .dark-secondary-filter;
+}
+
+.neu-switch {
+  font-size: 2vmin;
+
+  @media (orientation: landscape) {
+    right: 15vmin;
+    top: 5vmin;
+  }
+
+  @media (orientation: portrait) {
+    right: 5vmin;
+    top: 15vmin;
+  }
 }
 
 .panels {
@@ -357,7 +387,7 @@ button:focus {
 
   @media (orientation: portrait) {
     box-shadow: none;
-    border: none;
+    border: $transparent;
   }
 }
 
@@ -453,36 +483,26 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
 
-  a {
-    @extend .light-neu-button, .center-content;
+.social {
+  @extend .light-neu-button, .center-content;
 
-    text-decoration: none;
-    justify-content: space-evenly;
-    border-radius: 0.5vmax;
-  }
-
-  a:hover {
-    @extend .light-neu-button-inset;
-
-    img {
-      @extend .dark-secondary-filter;
-    }
-  }
+  text-decoration: none;
+  justify-content: space-evenly;
+  border-radius: 0.5vmax;
 
   img {
     @extend .dark-primary-filter;
   }
 
   @media (orientation: landscape) {
-    a {
-      height: 4vw;
-      width: 4vw;
-      padding: 0.2vw;
-    }
+    height: 4vw;
+    width: 4vw;
+    padding: 0.2vw;
 
     img {
-      height: 2vmax;
+      height: 2vw;
     }
 
     span {
@@ -491,16 +511,26 @@ button:focus {
   }
 
   @media (orientation: portrait) {
-    a {
-      height: 8vw;
-      width: 8vw;
-      padding: 1vw;
-      margin: 1vw 0;
+    height: 8vw;
+    width: 8vw;
+    padding: 1vw;
+    margin: 1vw 0;
+
+    img {
+      height: 4vw;
     }
 
     span {
-      font-size: 2vw;
+      font-size: 1.5vw;
     }
+  }
+}
+
+.social:hover {
+  @extend .light-neu-button-inset;
+
+  img {
+    @extend .dark-secondary-filter;
   }
 }
 

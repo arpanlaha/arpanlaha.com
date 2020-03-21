@@ -27,40 +27,68 @@ interface HomeProps {
 export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
   const [light, setLight] = useState(true);
-
-  const switchTheme = (): void => {
-    document.getElementById("theme-switch")?.classList.add("no-hover");
-    setLight(!light);
-  };
-
-  const themeSwitchLeave = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void => {
-    e.preventDefault;
-    document.getElementById("theme-switch")?.classList.remove("no-hover");
-  };
+  const [neu, setNeu] = useState(true);
 
   useEffect((): void => {
     const theme = localStorage.getItem("theme");
     if (theme !== null) {
       setLight(theme === "light");
     }
-  }, [setLight]);
+
+    const design = localStorage.getItem("design");
+    if (design !== null) {
+      setNeu(design === "neu");
+    }
+  }, [setLight, setNeu]);
 
   useEffect((): void => {
     document.body.classList[light ? "remove" : "add"]("dark");
     localStorage.setItem("theme", light ? "light" : "dark");
   }, [light]);
 
+  useEffect((): void => {
+    const neuClasses = [
+      "second-panel",
+      "switch",
+      "about",
+      "social"
+    ].map(className => Array.from(document.getElementsByClassName(className)));
+    neuClasses.forEach(neuClass =>
+      neuClass.forEach(neuElement =>
+        neuElement.classList[neu ? "remove" : "add"]("no-neu")
+      )
+    );
+    localStorage.setItem("design", neu ? "neu" : "flat");
+  }, [neu]);
+
+  const switchTheme = (): void => {
+    document.getElementById("theme-switch")?.classList.add("no-hover");
+    setLight(!light);
+  };
+
+  const toggleNeu = (): void => {
+    document.getElementById("neu-switch")?.classList.add("no-hover");
+    setNeu(!neu);
+  };
+
+  const switchLeave = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    e.preventDefault;
+    Array.from(
+      document.getElementsByClassName("switch")
+    ).forEach(switchElement => switchElement.classList.remove("no-hover"));
+  };
+
   return (
     <>
       <Head />
       <button
-        className="theme-switch"
+        className="switch theme-switch"
         id="theme-switch"
         onClick={switchTheme}
         onMouseDown={e => e.preventDefault()}
-        onMouseLeave={themeSwitchLeave}
+        onMouseLeave={switchLeave}
       >
         <img
           className="theme-switch-svg"
@@ -68,7 +96,15 @@ export default function Home(props: HomeProps): ReactElement {
           alt="Theme switch"
         />
       </button>
-
+      <button
+        className="switch neu-switch"
+        id="neu-switch"
+        onClick={toggleNeu}
+        onMouseDown={e => e.preventDefault()}
+        onMouseLeave={switchLeave}
+      >
+        {neu ? "neu" : "flat"}
+      </button>
       <div className="panels">
         <div className="first-panel">
           <div>
@@ -118,7 +154,6 @@ export default function Home(props: HomeProps): ReactElement {
                 </ul>
               </p>
             </div>
-
             <div className="socials">
               <Social
                 href="https://www.facebook.com/arpan.laha99"
