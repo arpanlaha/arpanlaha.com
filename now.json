@@ -3,5 +3,18 @@
     "env": {
       "GATSBY_TELEMETRY_DISABLED": "1"
     }
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    },
+    {
+      "src": "static/resume.pdf",
+      "use": "@now/static"
+    }
+  ]
 }

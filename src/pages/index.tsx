@@ -145,7 +145,7 @@ export default function Home(props: HomeProps): ReactElement {
                 icon={twitter}
                 text="Twitter"
               />
-              <Social href="" icon={file} text="Resume" />
+              <Social href="/static/resume.pdf" icon={file} text="Resume" />
             </div>
           </div>
         </div>
