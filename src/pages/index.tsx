@@ -53,7 +53,7 @@ export default function Home(props: HomeProps): ReactElement {
       )
       .forEach((neuClass) =>
         neuClass.forEach((neuElement) =>
-          neuElement.classList[neu ? "remove" : "add"]("no-neu")
+          neuElement.classList[neu ? "remove" : "add"]("flat")
         )
       );
     localStorage.setItem("design", neu ? "neu" : "flat");
@@ -77,7 +77,6 @@ export default function Home(props: HomeProps): ReactElement {
   return (
     <>
       <Head />
-
       <button
         className="switch theme-switch"
         id="theme-switch"
@@ -86,8 +85,13 @@ export default function Home(props: HomeProps): ReactElement {
         onMouseLeave={leaveSwitch}
       >
         <img
-          className="theme-switch-svg"
+          className="theme-switch-svg switch-current"
           src={light ? sun : moon}
+          alt="Theme switch"
+        />
+        <img
+          className="theme-switch-svg switch-other"
+          src={light ? moon : sun}
           alt="Theme switch"
         />
       </button>
@@ -98,7 +102,8 @@ export default function Home(props: HomeProps): ReactElement {
         onMouseDown={(e) => e.preventDefault()}
         onMouseLeave={leaveSwitch}
       >
-        {neu ? "neu" : "flat"}
+        <span className="switch-current">{neu ? "neu" : "flat"}</span>
+        <span className="switch-other">{neu ? "flat" : "neu"}</span>
       </button>
       <div className="panels">
         <div className="first-panel">

@@ -11,12 +11,12 @@ export default function ErrorPage(): ReactElement {
     }
     const design = localStorage.getItem("design");
     if (design === "flat") {
-      ["second-panel", "switch", "about", "social"]
-        .map((className) =>
+      ["error-message", "return"]
+        .map(className =>
           Array.from(document.getElementsByClassName(className))
         )
-        .forEach((neuClass) =>
-          neuClass.forEach((neuElement) => neuElement.classList.add("no-neu"))
+        .forEach(neuClass =>
+          neuClass.forEach(neuElement => neuElement.classList.add("flat"))
         );
     }
   });

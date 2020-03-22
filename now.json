@@ -4,17 +4,10 @@
       "GATSBY_TELEMETRY_DISABLED": "1"
     }
   },
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@now/static-build",
-      "config": {
-        "distDir": "public"
-      }
-    },
-    {
-      "src": "static/resume.pdf",
-      "use": "@now/static"
+      "src": ".*",
+      "dest": "/404"
     }
   ]
 }

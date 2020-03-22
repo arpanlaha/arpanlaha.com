@@ -5,11 +5,11 @@
 }
 
 $light-primary: hsl(215, 16, 92);
-$light-secondary: hsl(215, 16, 76);
+$light-secondary: hsl(215, 16, 68);
 $light-primary-filter: invert(95%) sepia(9%) saturate(83%) hue-rotate(174deg)
   brightness(100%) contrast(89%);
-$light-secondary-filter: invert(84%) sepia(8%) saturate(320%) hue-rotate(178deg)
-  brightness(93%) contrast(87%);
+$light-secondary-filter: invert(69%) sepia(8%) saturate(506%) hue-rotate(175deg)
+  brightness(97%) contrast(90%);
 $light-shadow-light: hsla(215, 16, 97, 0.5);
 $light-shadow-dark: hsla(215, 16, 68, 0.5);
 $light-shadow-card: -1vmin -1vmin 1vmin 0 $light-shadow-light,
@@ -85,6 +85,7 @@ $transparent: hsla(0, 0, 0, 0);
 .neu {
   border-style: solid;
   border-width: 1px;
+  // transition: border-color 0.5s, box-shadow 0.5s, color 0.5s;
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
@@ -114,7 +115,7 @@ $transparent: hsla(0, 0, 0, 0);
 }
 
 .neu-button-inset {
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s, color 0.2s;
   border-color: $transparent;
 }
 
@@ -143,7 +144,7 @@ $transparent: hsla(0, 0, 0, 0);
 }
 
 .primary-filter {
-  transition: filter 0.5s;
+  transition: filter 0.5s, opacity 0.2s;
 }
 
 .dark-primary-filter {
@@ -159,7 +160,7 @@ $transparent: hsla(0, 0, 0, 0);
 }
 
 .secondary-filter {
-  transition: filter 0.2s;
+  transition: filter 0.2s, opacity 0.2s;
 }
 
 .dark-secondary-filter {
@@ -193,10 +194,16 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.no-neu {
+.flat {
   border-color: $transparent !important;
   box-shadow: none !important;
-  transition: border-color 0.5s box-shadow 0.5s;
+  transition: border-color 0.5s box-shadow 0.5s text-decoration 0.5s opacity
+    0.2s;
+
+  a:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.2s;
+  }
 }
 
 a {
@@ -308,12 +315,47 @@ a:hover {
   font-family: "Nunito Sans Light";
 }
 
+.no-hover {
+  .switch-current {
+    transition: none;
+  }
+
+  .switch-other {
+    transition: none;
+  }
+}
+
 .switch:not(.no-hover):hover {
   @extend .light-neu-button-inset;
 
   .theme-switch-svg {
     @extend .dark-secondary-filter;
   }
+
+  .switch-current {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .switch-other {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+}
+
+.switch-content {
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+.switch-current {
+  @extend .switch-content;
+  opacity: 1;
+}
+
+.switch-other {
+  @extend .switch-content;
+  opacity: 0;
 }
 
 .theme-switch {
