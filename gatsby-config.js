@@ -14,8 +14,8 @@ module.exports = {
         background_color: "#1a1e23",
         theme_color: "#1a1e23",
         display: "browser",
-        icon: "static/favicon.ico",
-      },
+        icon: "static/logo.svg"
+      }
     },
     "gatsby-plugin-offline",
     "gatsby-plugin-preload-fonts",
@@ -25,16 +25,16 @@ module.exports = {
       resolve: "gatsby-plugin-typescript",
       options: {
         allExtensions: true,
-        isTSX: true,
-      },
+        isTSX: true
+      }
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: path.join(__dirname, "src", "images"),
-      },
+        path: path.join(__dirname, "src", "images")
+      }
     },
-    "gatsby-transformer-sharp",
-  ],
+    "gatsby-transformer-sharp"
+  ]
 };
