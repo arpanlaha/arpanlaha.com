@@ -9,6 +9,16 @@ export default function ErrorPage(): ReactElement {
     if (theme === "dark") {
       document.body.classList.add("dark");
     }
+    const design = localStorage.getItem("design");
+    if (design === "flat") {
+      ["second-panel", "switch", "about", "social"]
+        .map((className) =>
+          Array.from(document.getElementsByClassName(className))
+        )
+        .forEach((neuClass) =>
+          neuClass.forEach((neuElement) => neuElement.classList.add("no-neu"))
+        );
+    }
   });
 
   return (

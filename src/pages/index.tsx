@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Head, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
-
 import { graphql } from "gatsby";
+
 import facebook from "../images/facebook.svg";
 import file from "../images/file.svg";
 import github from "../images/github.svg";
@@ -77,6 +77,7 @@ export default function Home(props: HomeProps): ReactElement {
   return (
     <>
       <Head />
+
       <button
         className="switch theme-switch"
         id="theme-switch"

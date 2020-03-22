@@ -185,19 +185,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans Light", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
   background-color: $light-primary;
   color: $dark-primary;
   transition: background-color 0.5s, color 0.5s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .no-neu {
-  transition: border-color 0.5s box-shadow 0.5s;
-
   border-color: $transparent !important;
   box-shadow: none !important;
+  transition: border-color 0.5s box-shadow 0.5s;
 }
 
 a {
@@ -207,10 +206,6 @@ a {
 a:hover {
   color: $dark-secondary;
   transition: color 0.2s;
-}
-
-button:focus {
-  outline: 0;
 }
 
 .dark {
@@ -229,11 +224,13 @@ button:focus {
 
   .switch {
     @extend .dark-neu-button;
+
     color: $light-primary;
   }
 
   .switch:not(.no-hover):hover {
     @extend .dark-neu-button-inset;
+
     color: $light-secondary;
 
     .theme-switch-svg {
