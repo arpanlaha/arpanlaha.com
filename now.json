@@ -13,7 +13,7 @@
     {
       "src": "/(.*)",
       "status": 308,
-      "headers": { "Location": "/404" }
+      "headers": { "Location": "/page-not-found" }
     }
   ]
 }
