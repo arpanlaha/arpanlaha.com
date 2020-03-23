@@ -180,7 +180,7 @@ export default function Home(props: HomeProps): ReactElement {
                 icon={twitter}
                 text="Twitter"
               />
-              <Social href="/static/resume.pdf" icon={file} text="Resume" />
+              <Social href="/resume.pdf" icon={file} text="Resume" />
             </div>
           </div>
         </div>

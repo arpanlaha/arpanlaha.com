@@ -85,7 +85,6 @@ $transparent: hsla(0, 0, 0, 0);
 .neu {
   border-style: solid;
   border-width: 1px;
-  // transition: border-color 0.5s, box-shadow 0.5s, color 0.5s;
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
@@ -197,13 +196,7 @@ body {
 .flat {
   border-color: $transparent !important;
   box-shadow: none !important;
-  transition: border-color 0.5s box-shadow 0.5s text-decoration 0.5s opacity
-    0.2s;
-
-  a:hover {
-    text-decoration: underline;
-    transition: text-decoration 0.2s;
-  }
+  transition: border-color 0.5s box-shadow 0.5s;
 }
 
 a {
@@ -212,6 +205,7 @@ a {
 
 a:hover {
   color: $dark-secondary;
+  text-decoration: underline;
   transition: color 0.2s;
 }
 

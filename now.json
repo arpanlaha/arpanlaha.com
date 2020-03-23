@@ -4,9 +4,10 @@
       "GATSBY_TELEMETRY_DISABLED": "1"
     }
   },
-  "rewrites": [
+  "routes": [
+    { "handle": "filesystem" },
     {
-      "src": ".*",
+      "src": "/(.*)",
       "dest": "/404"
     }
   ]
