@@ -1,0 +1,48 @@
+@import "common";
+
+.error-page {
+  @extend .center-content;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.error-message {
+  @extend .center-content, .light-neu-card;
+
+  width: 40%;
+  border-radius: 1vmin;
+  font-size: 3vmin;
+  padding: 5vmin;
+
+  p {
+    margin: 0;
+    margin-bottom: 2vmin;
+  }
+}
+
+.return {
+  @extend .light-neu-button;
+
+  text-decoration: none;
+  padding: 0.5vmin 2vmin;
+  border-radius: 0.5vmin;
+}
+
+.return:hover {
+  @extend .light-neu-button-inset;
+}
+
+.dark {
+  .error-message {
+    @extend .dark-neu-card;
+  }
+
+  .return {
+    @extend .dark-neu-button;
+  }
+
+  .return:hover {
+    @extend .dark-neu-button-inset;
+  }
+}

@@ -1,0 +1,376 @@
+@import "common";
+
+@keyframes fade-in-hello {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-image {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-content {
+  0% {
+    opacity: 0;
+    box-shadow: none;
+  }
+
+  67% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.switch {
+  @extend .light-neu-button, .center-content;
+
+  width: 7vmin;
+  height: 7vmin;
+  position: fixed;
+  padding: 0;
+  border-radius: 100%;
+  background-color: $transparent;
+  cursor: pointer;
+  animation: fade-in-content linear 1s;
+  font-family: "Nunito Sans Light";
+}
+
+.no-hover {
+  .switch-current {
+    transition: none;
+  }
+
+  .switch-other {
+    transition: none;
+  }
+}
+
+.switch:not(.no-hover):hover {
+  @extend .light-neu-button-inset;
+
+  .theme-switch-svg {
+    @extend .dark-secondary-filter;
+  }
+
+  .switch-current {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .switch-other {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+}
+
+.switch-content {
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+.switch-current {
+  @extend .switch-content;
+  opacity: 1;
+}
+
+.switch-other {
+  @extend .switch-content;
+  opacity: 0;
+}
+
+.theme-switch {
+  right: 5vmin;
+  top: 5vmin;
+}
+
+.theme-switch-svg {
+  @extend .dark-primary-filter;
+
+  border-radius: 100%;
+  width: 5vmin;
+  height: 5vmin;
+}
+
+.neu-switch {
+  font-size: 2vmin;
+
+  @media (orientation: landscape) {
+    right: 15vmin;
+    top: 5vmin;
+  }
+
+  @media (orientation: portrait) {
+    right: 5vmin;
+    top: 15vmin;
+  }
+}
+
+.panels {
+  display: flex;
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+  }
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+    margin-top: 5vh;
+  }
+}
+
+.panel {
+  @extend .center-content;
+
+  @media (orientation: landscape) {
+    height: 100vh;
+    width: 50%;
+  }
+}
+
+.first-panel {
+  @extend .panel;
+
+  @media (orientation: landscape) {
+    padding-left: 5vh;
+  }
+}
+
+.second-panel {
+  @extend .panel, .light-neu-card;
+
+  animation: fade-in-content linear 1s;
+
+  @media (orientation: landscape) {
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    padding-right: 5vh;
+  }
+
+  @media (orientation: portrait) {
+    box-shadow: none;
+    border: none;
+  }
+}
+
+.hello {
+  font-size: 2vmax;
+  height: 8vmax;
+  text-align: center;
+  animation: fade-in-hello linear 0.333s;
+
+  h1 {
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+.main-image-container {
+  @extend .center-content;
+
+  width: 100%;
+  animation: fade-in-image linear 0.666s;
+
+  @media (orientation: landscape) {
+    margin-bottom: 8vw;
+  }
+
+  @media (orientation: portrait) {
+    margin-bottom: 2vh;
+  }
+}
+
+.main-image {
+  height: 25vmax;
+  width: 25vmax;
+  min-height: 40vmin;
+  min-width: 40vmin;
+
+  border-radius: 100%;
+  transition: box-shadow 0.5s;
+  box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 0, 0.64);
+}
+
+.main-image:hover {
+  box-shadow: 0 1px 1vmin 0.5vmin hsla(0, 0, 0, 0.08),
+    0 1px 2vmin 0.5vmin hsla(0, 0, 0, 0.16),
+    0 1px 4vmin 0.5vmin hsla(0, 0, 0, 0.32);
+  transition: box-shadow 0.5s;
+}
+
+.about {
+  @extend .light-neu-card;
+
+  margin: 4vw;
+  padding: 2vmax;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8vmax;
+
+  p {
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+
+  ul {
+    margin: 0;
+    margin-top: 0.5vh;
+    padding: 0;
+    padding-left: 3vh;
+    list-style-type: "› ";
+  }
+
+  @media (orientation: landscape) {
+    font-size: 1.6vw;
+
+    .small-text {
+      font-size: 1vw;
+    }
+  }
+
+  @media (orientation: portrait) {
+    font-size: 4vw;
+
+    .small-text {
+      font-size: 3vw;
+    }
+  }
+}
+
+.about-text {
+  margin-bottom: 3vh;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.social {
+  @extend .light-neu-button, .center-content;
+
+  text-decoration: none;
+  justify-content: space-evenly;
+  border-radius: 0.5vmax;
+
+  img {
+    @extend .dark-primary-filter;
+  }
+
+  @media (orientation: landscape) {
+    height: 4vw;
+    width: 4vw;
+    padding: 0.2vw;
+
+    img {
+      height: 2vw;
+    }
+
+    span {
+      font-size: 0.7vmax;
+    }
+  }
+
+  @media (orientation: portrait) {
+    height: 8vw;
+    width: 8vw;
+    padding: 1vw;
+    margin: 1vw 0;
+
+    img {
+      height: 4vw;
+    }
+
+    span {
+      font-size: 1.5vw;
+    }
+  }
+}
+
+.social:hover {
+  @extend .light-neu-button-inset;
+
+  img {
+    @extend .dark-secondary-filter;
+  }
+}
+
+.dark {
+  .switch {
+    @extend .dark-neu-button;
+
+    color: $light-primary;
+  }
+
+  .switch:not(.no-hover):hover {
+    @extend .dark-neu-button-inset;
+
+    color: $light-secondary;
+
+    .theme-switch-svg {
+      @extend .light-secondary-filter;
+    }
+  }
+
+  .theme-switch-svg {
+    @extend .light-primary-filter;
+  }
+
+  .second-panel {
+    @extend .dark-neu-card;
+
+    @media (orientation: portrait) {
+      box-shadow: none;
+      border-color: $transparent;
+    }
+  }
+
+  .main-image {
+    box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 100, 0.16);
+  }
+
+  .main-image:hover {
+    box-shadow: 0 1px 1vmin 0.5vmin hsla(0, 0, 100, 0.02),
+      0 1px 2vmin 0.5vmin hsla(0, 0, 100, 0.04),
+      0 1px 4vmin 0.5vmin hsla(0, 0, 100, 0.08);
+  }
+
+  .about {
+    @extend .dark-neu-card;
+  }
+
+  .social {
+    @extend .dark-neu-button;
+
+    img {
+      @extend .light-primary-filter;
+    }
+  }
+
+  .social:hover {
+    @extend .dark-neu-button-inset;
+
+    img {
+      @extend .light-secondary-filter;
+    }
+  }
+}

@@ -12,7 +12,7 @@ import moon from "../images/moon.svg";
 import sun from "../images/sun.svg";
 import twitter from "../images/twitter.svg";
 
-import "../styles/style.scss";
+import "../styles/main.scss";
 
 interface HomeProps {
   data: {
@@ -47,7 +47,7 @@ export default function Home(props: HomeProps): ReactElement {
   }, [light]);
 
   useEffect((): void => {
-    ["second-panel", "switch", "about", "social"]
+    ["switch", "second-panel", "main-image", "about", "social"]
       .map((className) =>
         Array.from(document.getElementsByClassName(className))
       )

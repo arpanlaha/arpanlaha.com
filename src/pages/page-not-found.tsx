@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
 import { Head } from "../components";
 
-import "../styles/style.scss";
+import "../styles/error.scss";
 
 export default function ErrorPage(): ReactElement {
   useEffect((): void => {
