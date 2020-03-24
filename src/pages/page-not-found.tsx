@@ -5,7 +5,6 @@ import "../styles/error.scss";
 
 export default function ErrorPage(): ReactElement {
   useEffect((): void => {
-    console.log("hello");
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
       document.body.classList.add("dark");
