@@ -183,7 +183,6 @@ $transparent: hsla(0, 0, 0, 0);
 
 body {
   margin: 0;
-
   font-family: "Nunito Sans Light", sans-serif;
   background-color: $light-primary;
   color: $dark-primary;
@@ -415,9 +414,9 @@ a:hover {
   animation: fade-in-content linear 1s;
 
   @media (orientation: landscape) {
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
     padding-right: 5vh;
   }
 
