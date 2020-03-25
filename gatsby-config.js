@@ -21,6 +21,7 @@ module.exports = {
     "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-split-css",
     {
       resolve: "gatsby-plugin-typescript",
       options: {

@@ -1,5 +1,15 @@
 @import "common";
 
+$light-primary-filter: invert(95%) sepia(9%) saturate(83%) hue-rotate(174deg)
+  brightness(100%) contrast(89%);
+$light-secondary-filter: invert(69%) sepia(8%) saturate(506%) hue-rotate(175deg)
+  brightness(97%) contrast(90%);
+
+$dark-primary-filter: invert(6%) sepia(6%) saturate(2468%) hue-rotate(173deg)
+  brightness(101%) contrast(87%);
+$dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
+  brightness(94%) contrast(86%);
+
 @keyframes fade-in-hello {
   0% {
     opacity: 0;
@@ -37,6 +47,38 @@
   100% {
     opacity: 1;
   }
+}
+
+.primary-filter {
+  transition: filter 0.5s, opacity 0.2s;
+}
+
+.dark-primary-filter {
+  @extend .primary-filter;
+
+  filter: $dark-primary-filter;
+}
+
+.light-primary-filter {
+  @extend .primary-filter;
+
+  filter: $light-primary-filter;
+}
+
+.secondary-filter {
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.dark-secondary-filter {
+  @extend .secondary-filter;
+
+  filter: $dark-secondary-filter;
+}
+
+.light-secondary-filter {
+  @extend .secondary-filter;
+
+  filter: $light-secondary-filter;
 }
 
 .switch {

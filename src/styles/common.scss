@@ -6,10 +6,6 @@
 
 $light-primary: hsl(215, 16, 92);
 $light-secondary: hsl(215, 16, 68);
-$light-primary-filter: invert(95%) sepia(9%) saturate(83%) hue-rotate(174deg)
-  brightness(100%) contrast(89%);
-$light-secondary-filter: invert(69%) sepia(8%) saturate(506%) hue-rotate(175deg)
-  brightness(97%) contrast(90%);
 $light-shadow-light: hsla(215, 16, 97, 0.5);
 $light-shadow-dark: hsla(215, 16, 68, 0.5);
 $light-shadow-card: -1vmin -1vmin 1vmin 0 $light-shadow-light,
@@ -25,10 +21,6 @@ $light-border: hsla(0, 0, 100, 0.2);
 
 $dark-primary: hsl(215, 16, 12);
 $dark-secondary: hsl(215, 16, 24);
-$dark-primary-filter: invert(6%) sepia(6%) saturate(2468%) hue-rotate(173deg)
-  brightness(101%) contrast(87%);
-$dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
-  brightness(94%) contrast(86%);
 $dark-shadow-light: hsla(215, 16, 16, 0.5);
 $dark-shadow-dark: hsla(215, 16, 8, 0.5);
 $dark-shadow-card: -1vmin -1vmin 1vmin 0 $dark-shadow-light,
@@ -50,9 +42,8 @@ $transparent: hsla(0, 0, 0, 0);
 }
 
 .light-neu {
-  @extend .neu;
-
   border-color: $light-border;
+  @extend .neu;
 }
 
 .dark-neu {
@@ -101,38 +92,6 @@ $transparent: hsla(0, 0, 0, 0);
   @extend .dark-neu;
 
   box-shadow: $dark-shadow-card;
-}
-
-.primary-filter {
-  transition: filter 0.5s, opacity 0.2s;
-}
-
-.dark-primary-filter {
-  @extend .primary-filter;
-
-  filter: $dark-primary-filter;
-}
-
-.light-primary-filter {
-  @extend .primary-filter;
-
-  filter: $light-primary-filter;
-}
-
-.secondary-filter {
-  transition: filter 0.2s, opacity 0.2s;
-}
-
-.dark-secondary-filter {
-  @extend .secondary-filter;
-
-  filter: $dark-secondary-filter;
-}
-
-.light-secondary-filter {
-  @extend .secondary-filter;
-
-  filter: $light-secondary-filter;
 }
 
 .center-content {
