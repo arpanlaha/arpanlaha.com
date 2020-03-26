@@ -9,14 +9,14 @@ $light-secondary: hsl(215, 16, 68);
 $light-shadow-light: hsla(215, 16, 97, 0.5);
 $light-shadow-dark: hsla(215, 16, 68, 0.5);
 $light-shadow-card: -1vmin -1vmin 1vmin 0 $light-shadow-light,
-  2vmin 2vmin 2vmin 0 $light-shadow-dark;
+  1.5vmin 1.5vmin 1.5vmin 0 $light-shadow-dark;
 $light-shadow-button: -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light,
-  1vmin 1vmin 1vmin 0 $light-shadow-dark, 0 0 0 0 $light-shadow-light inset,
-  0 0 0 0 $light-shadow-dark inset;
+  0.8vmin 0.8vmin 0.8vmin 0 $light-shadow-dark,
+  0 0 0 0 $light-shadow-light inset, 0 0 0 0 $light-shadow-dark inset;
 $light-shadow-button-inset: 0 0 0 0 $light-shadow-light,
   0 0 0 0 $light-shadow-dark,
   -0.5vmin -0.5vmin 0.5vmin 0 $light-shadow-light inset,
-  1vmin 1vmin 1vmin 0 $light-shadow-dark inset;
+  0.8vmin 0.8vmin 0.8vmin 0 $light-shadow-dark inset;
 $light-border: hsla(0, 0, 100, 0.2);
 
 $dark-primary: hsl(215, 16, 12);
@@ -24,13 +24,13 @@ $dark-secondary: hsl(215, 16, 24);
 $dark-shadow-light: hsla(215, 16, 16, 0.5);
 $dark-shadow-dark: hsla(215, 16, 8, 0.5);
 $dark-shadow-card: -1vmin -1vmin 1vmin 0 $dark-shadow-light,
-  2vmin 2vmin 2vmin 0 $dark-shadow-dark;
+  1.5vmin 1.5vmin 1.5vmin 0 $dark-shadow-dark;
 $dark-shadow-button: -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light,
-  1vmin 1vmin 1vmin 0 $dark-shadow-dark, 0 0 0 0 $dark-shadow-light inset,
+  0.8vmin 0.8vmin 0.8vmin 0 $dark-shadow-dark, 0 0 0 0 $dark-shadow-light inset,
   0 0 0 0 $dark-shadow-dark inset;
 $dark-shadow-button-inset: 0 0 0 0 $dark-shadow-light, 0 0 0 0 $dark-shadow-dark,
   -0.5vmin -0.5vmin 0.5vmin 0 $dark-shadow-light inset,
-  1vmin 1vmin 1vmin 0 $dark-shadow-dark inset;
+  0.8vmin 0.8vmin 0.8vmin 0 $dark-shadow-dark inset;
 $dark-border: hsla(214, 15, 8, 0.1);
 
 $transparent: hsla(0, 0, 0, 0);
