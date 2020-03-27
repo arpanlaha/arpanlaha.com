@@ -10,13 +10,18 @@ interface HeadProps extends Props<Component> {
 export default function Head(props: HeadProps): ReactElement {
   const { description, keywords, title } = props;
   return (
-    <Helmet htmlAttributes={{ lang: "en" }}>
+    <Helmet htmlAttributes={{ lang: "en" }} defer={false}>
       <meta charSet="UTF-8" />
       <meta
         name="description"
-        content={description || "Arpan Laha's personal website"}
+        content={description ?? "CS @ Illinois | Product @ Hack4Impact"}
       />
-      <meta name="keywords" content={keywords || "Arpan, Laha, Arpan Laha"} />
+      <meta
+        name="keywords"
+        content={
+          keywords ?? "Arpan, Laha, Arpan Laha, Hack4Impact, UIUC, Illinois"
+        }
+      />
       <meta name="author" content="Arpan Laha" />
       <title>{title ?? "Arpan Laha"}</title>
     </Helmet>

@@ -3,13 +3,12 @@ const path = require("path");
 
 module.exports = {
   plugins: [
-    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "Arpan Laha",
         short_name: "Arpan Laha",
-        description: "Arpan Laha's personal website",
+        description: "CS @ Illinois | Product @ Hack4Impact",
         start_url: "/",
         background_color: "#1a1e23",
         theme_color: "#1a1e23",
@@ -18,6 +17,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-preload-fonts",
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
