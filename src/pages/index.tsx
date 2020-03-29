@@ -48,9 +48,11 @@ export default function Home(props: HomeProps): ReactElement {
 
   useEffect((): void => {
     ["switch", "second-panel", "main-image", "about", "social"]
-      .map(className => Array.from(document.getElementsByClassName(className)))
-      .forEach(neuClass =>
-        neuClass.forEach(neuElement =>
+      .map((className) =>
+        Array.from(document.getElementsByClassName(className))
+      )
+      .forEach((neuClass) =>
+        neuClass.forEach((neuElement) =>
           neuElement.classList[neu ? "remove" : "add"]("flat")
         )
       );
@@ -70,7 +72,7 @@ export default function Home(props: HomeProps): ReactElement {
   const leaveSwitch = (): void =>
     Array.from(
       document.getElementsByClassName("switch")
-    ).forEach(switchElement => switchElement.classList.remove("no-hover"));
+    ).forEach((switchElement) => switchElement.classList.remove("no-hover"));
 
   return (
     <>
@@ -79,7 +81,7 @@ export default function Home(props: HomeProps): ReactElement {
         className="switch theme-switch"
         id="theme-switch"
         onClick={switchTheme}
-        onMouseDown={e => e.preventDefault()}
+        onMouseDown={(e) => e.preventDefault()}
         onMouseLeave={leaveSwitch}
       >
         <img
@@ -97,7 +99,7 @@ export default function Home(props: HomeProps): ReactElement {
         className="switch neu-switch"
         id="neu-switch"
         onClick={switchDesign}
-        onMouseDown={e => e.preventDefault()}
+        onMouseDown={(e) => e.preventDefault()}
         onMouseLeave={leaveSwitch}
       >
         <span className="switch-current">{neu ? "neu" : "flat"}</span>
