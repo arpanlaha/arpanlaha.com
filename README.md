@@ -11,7 +11,6 @@ I use this as an opportunity/excuse to try out new tech trends, and it's way ove
 Currently, this is built on [Gatsby](https://www.gatsbyjs.org/) for performance optimization, with use of the following plugins:
 
 - [gatsby-plugin-manifest](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest) and [gatsby-plugin-react-helmet](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet) for SEO
-- [gatsby-plugin-offline](https://www.gatsbyjs.org/packages/gatsby-plugin-offline) for PWA support (completely unnecessary)
 - [gatsby-plugin-preload-fonts](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts) for font load optimization
 - [gatsby-plugin-sass](https://www.gatsbyjs.org/packages/gatsby-plugin-sass) and [gatsby-plugin-typescript](https://www.gatsbyjs.org/packages/gatsby-plugin-typescript) for language support
 - [gatsby-plugin-split-css](https://www.gatsbyjs.org/packages/gatsby-plugin-split-css) for CSS code-splitting by page
