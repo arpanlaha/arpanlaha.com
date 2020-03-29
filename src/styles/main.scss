@@ -10,45 +10,6 @@ $dark-primary-filter: invert(6%) sepia(6%) saturate(2468%) hue-rotate(173deg)
 $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   brightness(94%) contrast(86%);
 
-@keyframes fade-in-hello {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-image {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-content {
-  0% {
-    opacity: 0;
-    box-shadow: none;
-  }
-
-  67% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .primary-filter {
   transition: filter 0.5s, opacity 0.2s;
 }
@@ -81,6 +42,15 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   filter: $light-secondary-filter;
 }
 
+body {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 0.01s;
+}
+
 .switch {
   @extend .light-neu-button, .center-content;
 
@@ -91,7 +61,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   border-radius: 100%;
   background-color: $transparent;
   cursor: pointer;
-  animation: fade-in-content linear 1s;
   font-family: "Nunito Sans Light";
 }
 
@@ -155,13 +124,13 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   font-size: 2vmin;
 
   @media (orientation: landscape) {
-    right: 15vmin;
-    top: 5vmin;
+    right: 15vh;
+    top: 5vh;
   }
 
   @media (orientation: portrait) {
-    right: 5vmin;
-    top: 15vmin;
+    right: 5vw;
+    top: 15vw;
   }
 }
 
@@ -198,8 +167,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
 .second-panel {
   @extend .panel, .light-neu-card;
 
-  animation: fade-in-content linear 1s;
-
   @media (orientation: landscape) {
     border-top: none !important;
     border-right: none !important;
@@ -217,7 +184,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   font-size: 2vmax;
   height: 8vmax;
   text-align: center;
-  animation: fade-in-hello linear 0.333s;
 
   h1 {
     font-weight: normal;
@@ -229,7 +195,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   @extend .center-content;
 
   width: 100%;
-  animation: fade-in-image linear 0.666s;
 
   @media (orientation: landscape) {
     margin-bottom: 8vw;
@@ -263,13 +228,18 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
 
   margin: 4vw;
   padding: 2vmax;
-  display: flex;
-  flex-direction: column;
   border-radius: 0.8vmax;
+}
+
+.about-text {
+  margin-bottom: 3vh;
+}
+
+.about-text-section {
+  margin-bottom: 2vh;
 
   p {
     margin: 0;
-    margin-bottom: 2vh;
   }
 
   ul {
@@ -283,7 +253,7 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   @media (orientation: landscape) {
     font-size: 1.6vw;
 
-    .small-text {
+    ul {
       font-size: 1vw;
     }
   }
@@ -291,14 +261,10 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   @media (orientation: portrait) {
     font-size: 4vw;
 
-    .small-text {
+    ul {
       font-size: 3vw;
     }
   }
-}
-
-.about-text {
-  margin-bottom: 3vh;
 }
 
 .socials {
@@ -328,7 +294,7 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
     }
 
     span {
-      font-size: 0.7vmax;
+      font-size: 0.7vw;
     }
   }
 
@@ -343,7 +309,7 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
     }
 
     span {
-      font-size: 1.5vw;
+      font-size: 2vw;
     }
   }
 }

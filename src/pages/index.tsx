@@ -29,6 +29,8 @@ export default function Home(props: HomeProps): ReactElement {
   const [light, setLight] = useState(true);
   const [neu, setNeu] = useState(true);
 
+  useEffect((): void => document.body.classList.add("show"), []);
+
   useEffect((): void => {
     const theme = localStorage.getItem("theme");
     if (theme !== null) {
@@ -125,11 +127,12 @@ export default function Home(props: HomeProps): ReactElement {
         <div className="second-panel">
           <div className="about">
             <div className="about-text">
-              <p>CS@Illinois '21</p>
-              <p>
-                Product Manager | Hack4Impact UIUC
-                <br />
-                <ul className="small-text">
+              <div className="about-text-section">
+                <p>CS@Illinois '21</p>
+              </div>
+              <div className="about-text-section">
+                <p>Product Manager | Hack4Impact UIUC</p>
+                <ul>
                   <li>Child's Play: directory of games to use as therapy</li>
                   <li>Kiva: financial document collection portal</li>
                   <li>UIC MLI: Spinal X-ray position comparision tool</li>
@@ -138,11 +141,10 @@ export default function Home(props: HomeProps): ReactElement {
                     (ongoing)
                   </li>
                 </ul>
-              </p>
-              <p>
-                Other stuff:
-                <br />
-                <ul className="small-text">
+              </div>
+              <div className="about-text-section">
+                <p>Other stuff</p>
+                <ul>
                   <li>
                     Internships: Microsoft • UChicago Computation Institute •
                     FermiLab Mu2e
@@ -152,35 +154,37 @@ export default function Home(props: HomeProps): ReactElement {
                   </li>
                   <li>Interests: piano • movies • video games • watches</li>
                 </ul>
-              </p>
+              </div>
             </div>
-            <div className="socials">
-              <Social
-                href="https://www.facebook.com/arpan.laha99"
-                icon={facebook}
-                text="Facebook"
-              />
-              <Social
-                href="https://github.com/arpanlaha"
-                icon={github}
-                text="GitHub"
-              />
-              <Social
-                href="https://www.instagram.com/arpanlahaha/"
-                icon={instagram}
-                text="Instagram"
-              />
-              <Social
-                href="https://www.linkedin.com/in/arpanlaha/"
-                icon={linkedin}
-                text="LinkedIn"
-              />
-              <Social
-                href="https://twitter.com/arpanlahaha"
-                icon={twitter}
-                text="Twitter"
-              />
-              <Social href="/resume.pdf" icon={file} text="Resume" />
+            <div className="socials-container">
+              <div className="socials">
+                <Social
+                  href="https://www.facebook.com/arpan.laha99"
+                  icon={facebook}
+                  text="Facebook"
+                />
+                <Social
+                  href="https://github.com/arpanlaha"
+                  icon={github}
+                  text="GitHub"
+                />
+                <Social
+                  href="https://www.instagram.com/arpanlahaha/"
+                  icon={instagram}
+                  text="Instagram"
+                />
+                <Social
+                  href="https://www.linkedin.com/in/arpanlaha/"
+                  icon={linkedin}
+                  text="LinkedIn"
+                />
+                <Social
+                  href="https://twitter.com/arpanlahaha"
+                  icon={twitter}
+                  text="Twitter"
+                />
+                <Social href="/resume.pdf" icon={file} text="Resume" />
+              </div>
             </div>
           </div>
         </div>
