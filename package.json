@@ -14,10 +14,10 @@
     "preload-fonts": "gatsby-preload-fonts",
     "serve": "gatsby serve",
     "start": "npm run develop",
-    "typecheck": "npx tsc"
+    "typecheck": "tsc"
   },
   "dependencies": {
-    "gatsby": "^2.20.8",
+    "gatsby": "^2.20.9",
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-manifest": "^2.3.3",
     "gatsby-plugin-offline": "^3.1.2",
