@@ -48,7 +48,7 @@ body {
 
 .show {
   opacity: 1;
-  transition: opacity 0.01s;
+  transition: opacity 0.01s, background-color 0.5s, color 0.5s;
 }
 
 .switch {
