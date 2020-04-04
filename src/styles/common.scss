@@ -35,66 +35,67 @@ $dark-border: hsla(214, 15, 8, 0.1);
 
 $transparent: hsla(0, 0, 0, 0);
 
-.neu {
+@mixin neu {
   border-style: solid;
   border-width: 1px;
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
-.light-neu {
+@mixin light-neu {
+  @include neu;
+
   border-color: $light-border;
-  @extend .neu;
 }
 
-.dark-neu {
-  @extend .neu;
+@mixin dark-neu {
+  @include neu;
 
   border-color: $dark-border;
 }
 
-.light-neu-button {
-  @extend .light-neu;
+@mixin light-neu-button {
+  @include light-neu;
 
   box-shadow: $light-shadow-button;
 }
 
-.dark-neu-button {
-  @extend .dark-neu;
+@mixin dark-neu-button {
+  @include dark-neu;
 
   border-color: $dark-border;
   box-shadow: $dark-shadow-button;
 }
 
-.neu-button-inset {
+@mixin neu-button-inset {
   transition: box-shadow 0.2s, border-color 0.2s, color 0.2s;
   border-color: $transparent;
 }
 
-.light-neu-button-inset {
-  @extend .neu-button-inset;
+@mixin light-neu-button-inset {
+  @include neu-button-inset;
 
   box-shadow: $light-shadow-button-inset;
 }
 
-.dark-neu-button-inset {
-  @extend .neu-button-inset;
+@mixin dark-neu-button-inset {
+  @include neu-button-inset;
 
   box-shadow: $dark-shadow-button-inset;
 }
 
-.light-neu-card {
-  @extend .light-neu;
+@mixin light-neu-card {
+  @include light-neu;
 
   box-shadow: $light-shadow-card;
 }
 
-.dark-neu-card {
-  @extend .dark-neu;
+@mixin dark-neu-card {
+  @include dark-neu;
 
   box-shadow: $dark-shadow-card;
 }
 
-.center-content {
+@mixin center-content {
   display: flex;
   flex-direction: column;
   justify-content: center;

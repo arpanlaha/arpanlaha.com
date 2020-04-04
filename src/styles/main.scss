@@ -10,36 +10,50 @@ $dark-primary-filter: invert(6%) sepia(6%) saturate(2468%) hue-rotate(173deg)
 $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   brightness(94%) contrast(86%);
 
-.primary-filter {
+@mixin primary-filter {
   transition: filter 0.5s, opacity 0.2s;
 }
 
-.dark-primary-filter {
-  @extend .primary-filter;
+@mixin dark-primary-filter {
+  @include primary-filter;
 
   filter: $dark-primary-filter;
 }
 
-.light-primary-filter {
-  @extend .primary-filter;
+@mixin light-primary-filter {
+  @include primary-filter;
 
   filter: $light-primary-filter;
 }
 
-.secondary-filter {
+@mixin secondary-filter {
   transition: filter 0.2s, opacity 0.2s;
 }
 
-.dark-secondary-filter {
-  @extend .secondary-filter;
+@mixin dark-secondary-filter {
+  @include secondary-filter;
 
   filter: $dark-secondary-filter;
 }
 
-.light-secondary-filter {
-  @extend .secondary-filter;
+@mixin light-secondary-filter {
+  @include secondary-filter;
 
   filter: $light-secondary-filter;
+}
+
+@mixin switch-content {
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+@mixin panel {
+  @include center-content;
+
+  @media (orientation: landscape) {
+    height: 100vh;
+    width: 50%;
+  }
 }
 
 body {
@@ -52,7 +66,8 @@ body {
 }
 
 .switch {
-  @extend .light-neu-button, .center-content;
+  @include light-neu-button;
+  @include center-content;
 
   width: 7vmin;
   height: 7vmin;
@@ -75,10 +90,10 @@ body {
 }
 
 .switch:not(.no-hover):hover {
-  @extend .light-neu-button-inset;
+  @include light-neu-button-inset;
 
   .theme-switch-svg {
-    @extend .dark-secondary-filter;
+    @include dark-secondary-filter;
   }
 
   .switch-current {
@@ -92,18 +107,13 @@ body {
   }
 }
 
-.switch-content {
-  position: absolute;
-  transition: opacity 0.2s;
-}
-
 .switch-current {
-  @extend .switch-content;
+  @include switch-content;
   opacity: 1;
 }
 
 .switch-other {
-  @extend .switch-content;
+  @include switch-content;
   opacity: 0;
 }
 
@@ -113,7 +123,7 @@ body {
 }
 
 .theme-switch-svg {
-  @extend .dark-primary-filter;
+  @include dark-primary-filter;
 
   border-radius: 100%;
   width: 5vmin;
@@ -147,17 +157,8 @@ body {
   }
 }
 
-.panel {
-  @extend .center-content;
-
-  @media (orientation: landscape) {
-    height: 100vh;
-    width: 50%;
-  }
-}
-
 .first-panel {
-  @extend .panel;
+  @include panel;
 
   @media (orientation: landscape) {
     padding-left: 5vh;
@@ -165,7 +166,8 @@ body {
 }
 
 .second-panel {
-  @extend .panel, .light-neu-card;
+  @include panel;
+  @include light-neu-card;
 
   @media (orientation: landscape) {
     border-top: none !important;
@@ -192,7 +194,7 @@ body {
 }
 
 .main-image-container {
-  @extend .center-content;
+  @include center-content;
 
   width: 100%;
 
@@ -224,7 +226,7 @@ body {
 }
 
 .about {
-  @extend .light-neu-card;
+  @include light-neu-card;
 
   margin: 4vw;
   padding: 2vmax;
@@ -274,14 +276,15 @@ body {
 }
 
 .social {
-  @extend .light-neu-button, .center-content;
+  @include light-neu-button;
+  @include center-content;
 
   text-decoration: none;
   justify-content: space-evenly;
   border-radius: 0.5vmax;
 
   img {
-    @extend .dark-primary-filter;
+    @include dark-primary-filter;
   }
 
   @media (orientation: landscape) {
@@ -315,36 +318,36 @@ body {
 }
 
 .social:hover {
-  @extend .light-neu-button-inset;
+  @include light-neu-button-inset;
 
   img {
-    @extend .dark-secondary-filter;
+    @include dark-secondary-filter;
   }
 }
 
 .dark {
   .switch {
-    @extend .dark-neu-button;
+    @include dark-neu-button;
 
     color: $light-primary;
   }
 
   .switch:not(.no-hover):hover {
-    @extend .dark-neu-button-inset;
+    @include dark-neu-button-inset;
 
     color: $light-secondary;
 
     .theme-switch-svg {
-      @extend .light-secondary-filter;
+      @include light-secondary-filter;
     }
   }
 
   .theme-switch-svg {
-    @extend .light-primary-filter;
+    @include light-primary-filter;
   }
 
   .second-panel {
-    @extend .dark-neu-card;
+    @include dark-neu-card;
 
     @media (orientation: portrait) {
       box-shadow: none;
@@ -363,22 +366,22 @@ body {
   }
 
   .about {
-    @extend .dark-neu-card;
+    @include dark-neu-card;
   }
 
   .social {
-    @extend .dark-neu-button;
+    @include dark-neu-button;
 
     img {
-      @extend .light-primary-filter;
+      @include light-primary-filter;
     }
   }
 
   .social:hover {
-    @extend .dark-neu-button-inset;
+    @include dark-neu-button-inset;
 
     img {
-      @extend .light-secondary-filter;
+      @include light-secondary-filter;
     }
   }
 }

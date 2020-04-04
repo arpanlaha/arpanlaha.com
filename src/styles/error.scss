@@ -1,14 +1,15 @@
 @import "common";
 
 .error-page {
-  @extend .center-content;
+  @include center-content;
 
   width: 100vw;
   height: 100vh;
 }
 
 .error-message {
-  @extend .center-content, .light-neu-card;
+  @include center-content;
+  @include light-neu-card;
 
   width: 40%;
   border-radius: 1vmin;
@@ -22,7 +23,7 @@
 }
 
 .return {
-  @extend .light-neu-button;
+  @include light-neu-button;
 
   text-decoration: none;
   padding: 0.5vmin 2vmin;
@@ -30,19 +31,19 @@
 }
 
 .return:hover {
-  @extend .light-neu-button-inset;
+  @include light-neu-button-inset;
 }
 
 .dark {
   .error-message {
-    @extend .dark-neu-card;
+    @include dark-neu-card;
   }
 
   .return {
-    @extend .dark-neu-button;
+    @include dark-neu-button;
   }
 
   .return:hover {
-    @extend .dark-neu-button-inset;
+    @include dark-neu-button-inset;
   }
 }
