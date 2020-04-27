@@ -117,8 +117,7 @@ export default function Home(props: HomeProps): ReactElement {
               <Img
                 className="main-image"
                 fluid={data.main.childImageSharp.fluid}
-                title="Me"
-                alt="Me"
+                alt="Arpan Laha"
                 backgroundColor
               />
             </div>
