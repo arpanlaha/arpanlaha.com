@@ -130,7 +130,7 @@ export default function Home(props: HomeProps): ReactElement {
                 <p>CS@Illinois '21</p>
               </div>
               <div className="about-text-section">
-                <p>Product Manager | Hack4Impact UIUC</p>
+                <p>Co-Director | Hack4Impact UIUC</p>
                 <ul>
                   <li>Child's Play: directory of games to use as therapy</li>
                   <li>Kiva: financial document collection portal</li>
