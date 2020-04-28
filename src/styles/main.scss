@@ -66,35 +66,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   text-decoration: none;
   justify-content: space-evenly;
   border-radius: 0.5vmax;
-
-  @media (orientation: landscape) {
-    height: 4vw;
-    width: 4vw;
-    padding: 0.2vw;
-
-    img {
-      height: 2vw;
-    }
-
-    span {
-      font-size: 0.7vw;
-    }
-  }
-
-  @media (orientation: portrait) {
-    height: 8vw;
-    width: 8vw;
-    padding: 1vw;
-    margin: 1vw 0;
-
-    img {
-      height: 4vw;
-    }
-
-    span {
-      font-size: 2vw;
-    }
-  }
 }
 
 body {
@@ -341,10 +312,7 @@ body {
 .h4i-project {
   @include light-neu-button;
   @include center-content;
-
-  text-decoration: none;
-  justify-content: space-evenly;
-  border-radius: 0.5vmax;
+  @include content-button;
 
   @media (orientation: landscape) {
     width: 6vw;
@@ -400,6 +368,35 @@ body {
 
   img {
     @include dark-primary-filter;
+  }
+
+  @media (orientation: landscape) {
+    height: 4vw;
+    width: 4vw;
+    padding: 0.2vw;
+
+    img {
+      height: 2vw;
+    }
+
+    span {
+      font-size: 0.7vw;
+    }
+  }
+
+  @media (orientation: portrait) {
+    height: 8vw;
+    width: 8vw;
+    padding: 1vw;
+    margin: 1vw 0;
+
+    img {
+      height: 4vw;
+    }
+
+    span {
+      font-size: 2vw;
+    }
   }
 }
 
