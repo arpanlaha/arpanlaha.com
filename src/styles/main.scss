@@ -368,9 +368,7 @@ body {
   @include content-button;
 
   .social-filter {
-    img {
-      @include dark-primary-filter;
-    }
+    @include dark-primary-filter;
   }
 
   @media (orientation: landscape) {
