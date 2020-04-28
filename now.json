@@ -11,7 +11,11 @@
       "dest": "/logo.svg"
     },
     {
-      "src": "^((?!robots.txt).)*$",
+      "src": "/robots.txt",
+      "status": 404
+    },
+    {
+      "src": ".*",
       "status": 308,
       "headers": { "Location": "/page-not-found" }
     }

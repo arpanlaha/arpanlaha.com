@@ -8,7 +8,7 @@ module.exports = {
       options: {
         name: "Arpan Laha",
         short_name: "Arpan Laha",
-        description: "CS @ Illinois | Product @ Hack4Impact",
+        description: "CS @ Illinois | Co-Director @ Hack4Impact UIUC",
         start_url: "/",
         background_color: "#1a1e23",
         theme_color: "#1a1e23",

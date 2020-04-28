@@ -14,12 +14,15 @@ export default function Head(props: HeadProps): ReactElement {
       <meta charSet="UTF-8" />
       <meta
         name="description"
-        content={description ?? "CS @ Illinois | Product @ Hack4Impact"}
+        content={
+          description ?? "CS @ Illinois | Co-Director @ Hack4Impact UIUC"
+        }
       />
       <meta
         name="keywords"
         content={
-          keywords ?? "Arpan, Laha, Arpan Laha, Hack4Impact, UIUC, Illinois"
+          keywords ??
+          "Arpan, Laha, Arpan Laha, Hack4Impact, UIUC, Illinois, University of Illinois at Urbana-Champaign, University of Illinois, Computer Science, Product"
         }
       />
       <meta name="author" content="Arpan Laha" />

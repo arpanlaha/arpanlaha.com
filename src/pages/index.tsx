@@ -18,21 +18,18 @@ import uic from "../images/uic.svg";
 
 import "../styles/main.scss";
 
-interface FluidImage {
-  childImageSharp: {
-    fluid: FluidObject;
-  };
-}
-
 interface HomeProps {
   data: {
-    main: FluidImage;
+    main: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    };
   };
 }
 
 export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
-  const { main } = data;
   const [light, setLight] = useState(true);
   const [neu, setNeu] = useState(true);
 
@@ -123,7 +120,7 @@ export default function Home(props: HomeProps): ReactElement {
             <div className="main-image-container">
               <Img
                 className="main-image"
-                fluid={main.childImageSharp.fluid}
+                fluid={data.main.childImageSharp.fluid}
                 alt="Arpan Laha"
                 backgroundColor
               />
