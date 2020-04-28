@@ -1,31 +1,38 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { Head, Social } from "../components";
+import { H4IProject, Head, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
 import { graphql } from "gatsby";
 
+import childsPlay from "../images/childs-play.svg";
 import facebook from "../images/facebook.svg";
+import fateMaker from "../images/fatemaker.svg";
 import file from "../images/file.svg";
 import github from "../images/github.svg";
+import kiva from "../images/kiva.svg";
 import instagram from "../images/instagram.svg";
 import linkedin from "../images/linkedin.svg";
 import moon from "../images/moon.svg";
 import sun from "../images/sun.svg";
 import twitter from "../images/twitter.svg";
+import uic from "../images/uic.svg";
 
 import "../styles/main.scss";
 
+interface FluidImage {
+  childImageSharp: {
+    fluid: FluidObject;
+  };
+}
+
 interface HomeProps {
   data: {
-    main: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
+    main: FluidImage;
   };
 }
 
 export default function Home(props: HomeProps): ReactElement {
   const { data } = props;
+  const { main } = data;
   const [light, setLight] = useState(true);
   const [neu, setNeu] = useState(true);
 
@@ -116,7 +123,7 @@ export default function Home(props: HomeProps): ReactElement {
             <div className="main-image-container">
               <Img
                 className="main-image"
-                fluid={data.main.childImageSharp.fluid}
+                fluid={main.childImageSharp.fluid}
                 alt="Arpan Laha"
                 backgroundColor
               />
@@ -127,22 +134,40 @@ export default function Home(props: HomeProps): ReactElement {
           <div className="about">
             <div className="about-text">
               <div className="about-text-section">
-                <p>CS@Illinois '21</p>
+                <h1>CS@Illinois '21</h1>
               </div>
               <div className="about-text-section">
-                <p>Co-Director | Hack4Impact UIUC</p>
-                <ul>
-                  <li>Child's Play: directory of games to use as therapy</li>
-                  <li>Kiva: financial document collection portal</li>
-                  <li>UIC MLI: Spinal X-ray position comparision tool</li>
-                  <li>
-                    Kids Save Ocean: sustainability project accelerator
-                    (ongoing)
-                  </li>
-                </ul>
+                <h1>Co-Director | Hack4Impact UIUC</h1>
+                <h2>Past projects:</h2>
+                <div className="h4i-projects">
+                  <H4IProject
+                    href="https://github.com/hack4impact-uiuc/childs-play-tool"
+                    icon={childsPlay}
+                    project="Child's Play"
+                    description="Fall 2018 - SWE"
+                  />
+                  <H4IProject
+                    href="https://github.com/hack4impact-uiuc/kiva-portfolio-tool"
+                    icon={kiva}
+                    project="Kiva"
+                    description="Spring 2019 - PM"
+                  />
+                  <H4IProject
+                    href="https://github.com/hack4impact-uiuc/mli-client"
+                    icon={uic}
+                    project="UIC MLI"
+                    description="Fall 2019 - PM"
+                  />
+                  <H4IProject
+                    href="https://github.com/hack4impact-uiuc/kids-save-ocean"
+                    icon={fateMaker}
+                    project="FateMaker"
+                    description="Spring 2020 - PM"
+                  />
+                </div>
               </div>
               <div className="about-text-section">
-                <p>Other stuff</p>
+                <h1>Other stuff</h1>
                 <ul>
                   <li>
                     Internships: Microsoft • UChicago Computation Institute •

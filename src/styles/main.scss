@@ -56,6 +56,47 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   }
 }
 
+@mixin button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@mixin content-button {
+  text-decoration: none;
+  justify-content: space-evenly;
+  border-radius: 0.5vmax;
+
+  @media (orientation: landscape) {
+    height: 4vw;
+    width: 4vw;
+    padding: 0.2vw;
+
+    img {
+      height: 2vw;
+    }
+
+    span {
+      font-size: 0.7vw;
+    }
+  }
+
+  @media (orientation: portrait) {
+    height: 8vw;
+    width: 8vw;
+    padding: 1vw;
+    margin: 1vw 0;
+
+    img {
+      height: 4vw;
+    }
+
+    span {
+      font-size: 2vw;
+    }
+  }
+}
+
 body {
   opacity: 0;
 }
@@ -244,16 +285,33 @@ body {
     margin: 0;
   }
 
+  h1 {
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 0.3vw;
+  }
+
+  h2 {
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 0.15vw;
+  }
+
   ul {
     margin: 0;
-    margin-top: 0.5vh;
     padding: 0;
     padding-left: 3vh;
     list-style-type: "› ";
   }
 
   @media (orientation: landscape) {
-    font-size: 1.6vw;
+    h1 {
+      font-size: 1.6vw;
+    }
+
+    h2 {
+      font-size: 1.2vw;
+    }
 
     ul {
       font-size: 1vw;
@@ -261,21 +319,26 @@ body {
   }
 
   @media (orientation: portrait) {
-    font-size: 4vw;
+    h1 {
+      font-size: 4vw;
+    }
+
+    h2 {
+      font-size: 3vw;
+    }
 
     ul {
-      font-size: 3vw;
+      font-size: 2.5vw;
     }
   }
 }
 
-.socials {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.h4i-projects {
+  @include button-row;
+  margin-top: 0.5vw;
 }
 
-.social {
+.h4i-project {
   @include light-neu-button;
   @include center-content;
 
@@ -283,37 +346,60 @@ body {
   justify-content: space-evenly;
   border-radius: 0.5vmax;
 
-  img {
-    @include dark-primary-filter;
-  }
-
   @media (orientation: landscape) {
-    height: 4vw;
-    width: 4vw;
-    padding: 0.2vw;
+    width: 6vw;
+    padding: 0.5vw;
 
     img {
-      height: 2vw;
+      height: 2.5vw;
+      margin-bottom: 0.25vw;
     }
 
     span {
-      font-size: 0.7vw;
+      font-size: 1vw;
+    }
+
+    sub {
+      font-size: 0.6vw;
     }
   }
 
   @media (orientation: portrait) {
-    height: 8vw;
-    width: 8vw;
+    // height: 8vw;
+    width: 12vw;
     padding: 1vw;
     margin: 1vw 0;
 
     img {
-      height: 4vw;
+      height: 5vw;
+      margin-bottom: 0.5vw;
     }
 
     span {
       font-size: 2vw;
     }
+
+    sub {
+      font-size: 1.2vw;
+    }
+  }
+}
+
+.h4i-project:hover {
+  @include light-neu-button-inset;
+}
+
+.socials {
+  @include button-row;
+}
+
+.social {
+  @include center-content;
+  @include light-neu-button;
+  @include content-button;
+
+  img {
+    @include dark-primary-filter;
   }
 }
 
@@ -369,9 +455,16 @@ body {
     @include dark-neu-card;
   }
 
+  .h4i-project {
+    @include dark-neu-button;
+  }
+
+  .h4i-project:hover {
+    @include dark-neu-button-inset;
+  }
+
   .social {
     @include dark-neu-button;
-
     img {
       @include light-primary-filter;
     }
@@ -379,7 +472,6 @@ body {
 
   .social:hover {
     @include dark-neu-button-inset;
-
     img {
       @include light-secondary-filter;
     }

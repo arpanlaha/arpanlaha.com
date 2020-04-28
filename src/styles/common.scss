@@ -37,7 +37,7 @@ $transparent: hsla(0, 0, 0, 0);
 
 @mixin neu {
   border-style: solid;
-  border-width: 1px;
+  border-width: 0.2vmin;
   transition: border-color 0.5s, box-shadow 0.5s;
 }
 
