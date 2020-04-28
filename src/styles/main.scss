@@ -320,6 +320,7 @@ body {
 
     img {
       height: 2.5vw;
+      max-width: 5vw;
       margin-bottom: 0.25vw;
     }
 
@@ -333,13 +334,13 @@ body {
   }
 
   @media (orientation: portrait) {
-    // height: 8vw;
     width: 12vw;
     padding: 1vw;
     margin: 1vw 0;
 
     img {
       height: 5vw;
+      max-width: 10vw;
       margin-bottom: 0.5vw;
     }
 
