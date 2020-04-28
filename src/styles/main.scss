@@ -366,8 +366,10 @@ body {
   @include light-neu-button;
   @include content-button;
 
-  img {
-    @include dark-primary-filter;
+  .social-filter {
+    img {
+      @include dark-primary-filter;
+    }
   }
 
   @media (orientation: landscape) {
@@ -403,7 +405,7 @@ body {
 .social:hover {
   @include light-neu-button-inset;
 
-  img {
+  .social-filter {
     @include dark-secondary-filter;
   }
 }
@@ -462,14 +464,16 @@ body {
 
   .social {
     @include dark-neu-button;
-    img {
+
+    .social-filter {
       @include light-primary-filter;
     }
   }
 
   .social:hover {
     @include dark-neu-button-inset;
-    img {
+
+    .social-filter {
       @include light-secondary-filter;
     }
   }

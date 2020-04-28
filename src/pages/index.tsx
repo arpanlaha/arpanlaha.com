@@ -191,6 +191,7 @@ export default function Home(props: HomeProps): ReactElement {
                   href="https://github.com/arpanlaha"
                   icon={github}
                   text="GitHub"
+                  filter
                 />
                 <Social
                   href="https://www.instagram.com/arpanlahaha/"
@@ -207,7 +208,7 @@ export default function Home(props: HomeProps): ReactElement {
                   icon={twitter}
                   text="Twitter"
                 />
-                <Social href="/resume.pdf" icon={file} text="Resume" />
+                <Social href="/resume.pdf" icon={file} text="Resume" filter />
               </div>
             </div>
           </div>
@@ -219,7 +220,7 @@ export default function Home(props: HomeProps): ReactElement {
 
 export const query = graphql`
   query {
-    main: file(relativePath: { eq: "fb_profile_2019_square_800.jpg" }) {
+    main: file(relativePath: { eq: "main.jpg" }) {
       childImageSharp {
         fluid(quality: 80) {
           ...GatsbyImageSharpFluid
