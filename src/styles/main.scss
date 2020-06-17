@@ -144,16 +144,8 @@ body {
 
 .neu-switch {
   font-size: 2vmin;
-
-  @media (orientation: landscape) {
-    right: 15vh;
-    top: 5vh;
-  }
-
-  @media (orientation: portrait) {
-    right: 5vw;
-    top: 15vw;
-  }
+  right: 5vmin;
+  top: 15vmin;
 }
 
 .panels {
@@ -304,7 +296,8 @@ body {
   }
 }
 
-.h4i-projects {
+.h4i-projects,
+.side-projects {
   @include button-row;
   margin-top: 0.5vw;
 }
@@ -354,8 +347,15 @@ body {
   }
 }
 
-.h4i-project:hover {
+.h4i-project:hover,
+.side-project:hover {
   @include light-neu-button-inset;
+}
+
+.side-project {
+  @include light-neu-button;
+  @include center-content;
+  @include content-button;
 }
 
 .socials {
@@ -453,11 +453,13 @@ body {
     @include dark-neu-card;
   }
 
-  .h4i-project {
+  .h4i-project,
+  .side-project {
     @include dark-neu-button;
   }
 
-  .h4i-project:hover {
+  .h4i-project:hover,
+  .side-project:hover {
     @include dark-neu-button-inset;
   }
 

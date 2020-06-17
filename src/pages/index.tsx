@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { H4IProject, Head, Social } from "../components";
+import { H4IProject, Head, SideProject, Social } from "../components";
 import Img, { FluidObject } from "gatsby-image";
 import { graphql } from "gatsby";
 
@@ -160,6 +160,21 @@ export default function Home(props: HomeProps): ReactElement {
                     icon={fateMaker}
                     project="FateMaker"
                     description="Spring 2020 - PM"
+                  />
+                </div>
+              </div>
+              <div className="about-text-section">
+                <h1>Projects</h1>
+                <div className="side-projects">
+                  <SideProject
+                    project="Harmonizer"
+                    href="https://github.com/arpanlaha/harmonizer"
+                    description="Harmonize your melodies"
+                  />
+                  <SideProject
+                    project="Spectrum"
+                    href="https://github.com/arpanlaha/spectrum"
+                    description="Random art with Rust + WebAssembly + WebGL"
                   />
                 </div>
               </div>
