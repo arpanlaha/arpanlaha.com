@@ -15,7 +15,7 @@ export default function SideProject(props: SideProjectProps): ReactElement {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <h1>{project}</h1>
+      <h2>{project}</h2>
       <p>{description}</p>
     </a>
   );

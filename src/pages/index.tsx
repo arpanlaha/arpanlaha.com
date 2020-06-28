@@ -164,17 +164,17 @@ export default function Home(props: HomeProps): ReactElement {
                 </div>
               </div>
               <div className="about-text-section">
-                <h1>Projects</h1>
+                <h1>Side Projects</h1>
                 <div className="side-projects">
                   <SideProject
                     project="Harmonizer"
                     href="https://github.com/arpanlaha/harmonizer"
-                    description="Harmonize your melodies"
+                    description="Harmonize your melodies."
                   />
                   <SideProject
                     project="Spectrum"
                     href="https://github.com/arpanlaha/spectrum"
-                    description="Random art with Rust + WebAssembly + WebGL"
+                    description="Random art with Rust + WebAssembly."
                   />
                 </div>
               </div>

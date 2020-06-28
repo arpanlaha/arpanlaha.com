@@ -356,6 +356,20 @@ body {
   @include light-neu-button;
   @include center-content;
   @include content-button;
+
+  padding: 1vmin;
+
+  @media (orientation: landscape) {
+    p {
+      font-size: 0.8vw;
+    }
+  }
+
+  @media (orientation: portrait) {
+    p {
+      font-size: 2vw;
+    }
+  }
 }
 
 .socials {
