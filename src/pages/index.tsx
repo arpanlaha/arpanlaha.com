@@ -168,12 +168,12 @@ export default function Home(props: HomeProps): ReactElement {
                 <div className="side-projects">
                   <SideProject
                     project="Harmonizer"
-                    href="https://github.com/arpanlaha/harmonizer"
+                    href="https://harmonizer.arpanlaha.com"
                     description="Harmonize your melodies."
                   />
                   <SideProject
                     project="Spectrum"
-                    href="https://github.com/arpanlaha/spectrum"
+                    href="https://spectrum.arpanlaha.com"
                     description="Random art with Rust + WebAssembly."
                   />
                 </div>
