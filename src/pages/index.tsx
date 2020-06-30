@@ -53,7 +53,15 @@ export default function Home(props: HomeProps): ReactElement {
   }, [light]);
 
   useEffect((): void => {
-    ["switch", "second-panel", "main-image", "about", "social", "h4i-project"]
+    [
+      "switch",
+      "second-panel",
+      "main-image",
+      "about",
+      "social",
+      "h4i-project",
+      "side-project",
+    ]
       .map((className) =>
         Array.from(document.getElementsByClassName(className))
       )
