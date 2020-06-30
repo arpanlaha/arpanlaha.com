@@ -68,15 +68,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   border-radius: 0.5vmax;
 }
 
-body {
-  opacity: 0;
-}
-
-.show {
-  opacity: 1;
-  transition: opacity 0.01s, background-color 0.5s, color 0.5s;
-}
-
 .switch {
   @include light-neu-button;
   @include center-content;
