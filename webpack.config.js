@@ -4,11 +4,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: [
-    "./src/index.ts",
-    "./src/styles/main.scss",
-    "./src/styles/error.scss",
-  ],
+  entry: {
+    index: ["./src/index.ts", "./src/styles/main.scss"],
+    "page-not-found": ["./src/page-not-found.ts", "./src/styles/error.scss"],
+  },
+
   module: {
     rules: [
       {
@@ -46,7 +46,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.js",
+    filename: "[name].js",
   },
   mode: "production",
   plugins: [
