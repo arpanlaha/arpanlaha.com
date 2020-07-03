@@ -68,15 +68,6 @@ $dark-secondary-filter: invert(19%) sepia(16%) saturate(763%) hue-rotate(173deg)
   border-radius: 0.5vmax;
 }
 
-body {
-  opacity: 0;
-}
-
-.show {
-  opacity: 1;
-  transition: opacity 0.01s, background-color 0.5s, color 0.5s;
-}
-
 .switch {
   @include light-neu-button;
   @include center-content;
@@ -174,15 +165,15 @@ body {
   @include light-neu-card;
 
   @media (orientation: landscape) {
-    border-top: none !important;
-    border-right: none !important;
-    border-bottom: none !important;
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
     padding-right: 5vh;
   }
 
   @media (orientation: portrait) {
     box-shadow: none;
-    border: none;
+    border: 0;
   }
 }
 
@@ -219,7 +210,7 @@ body {
 
   border-radius: 100%;
   transition: box-shadow 0.5s;
-  box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 0, 0.64);
+  box-shadow: 0 1px 2vmin 0 hsla(0, 0, 0, 0.64);
 }
 
 .main-image:hover {
@@ -454,7 +445,7 @@ body {
   }
 
   .main-image {
-    box-shadow: 0 1px 2vmin 0vmin hsla(0, 0, 100, 0.16);
+    box-shadow: 0 1px 2vmin 0 hsla(0, 0, 100, 0.16);
   }
 
   .main-image:hover {
