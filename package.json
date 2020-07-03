@@ -7,11 +7,12 @@
     "build": "rm -rf dist && webpack --config webpack.config.js && npm run minify",
     "format": "prettier --write \"**/*.{js,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{js,json,md,css}\"",
-    "minify": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype dist/index.html -o dist/index.html",
+    "minify": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --input-dir dist --output-dir dist --file-ext html",
     "lint": "eslint src && stylelint \"static/**/*.css\" && markdownlint README.md",
     "lint:fix": "eslint src && stylelint \"static/**/*.css\" && markdownlint --fix README.md",
     "serve": "static-server dist",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "temp": "html-minifier-terser --help"
   },
   "devDependencies": {
     "@hack4impact-uiuc/eslint-plugin": "^2.0.1",
