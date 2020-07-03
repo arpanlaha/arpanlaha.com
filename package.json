@@ -12,7 +12,7 @@
     "lint:fix": "eslint src && stylelint \"src/**/*.scss\" && markdownlint --fix README.md",
     "serve": "static-server dist",
     "start": "webpack-dev-server",
-    "temp": "html-minifier-terser --help"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@hack4impact-uiuc/eslint-plugin": "^2.0.1",
