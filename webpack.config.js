@@ -13,7 +13,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
           {
             loader: "file-loader",
