@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: ["./src/index.ts", "./src/styles/main.scss"],
   module: {
     rules: [
       {
@@ -14,7 +14,26 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "static/[name].css",
+            },
+          },
+          {
+            loader: "extract-loader",
+          },
+          {
+            loader: "css-loader?-url",
+          },
+          {
+            loader: "postcss-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
       },
     ],
   },

@@ -1,4 +1,4 @@
-import "./styles/main.scss";
+// import "./styles/main.scss";
 
 let theme = localStorage.getItem("theme") ?? "light";
 let design = localStorage.getItem("design") ?? "neu";
