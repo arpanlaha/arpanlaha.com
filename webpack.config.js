@@ -4,7 +4,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: ["./src/index.ts", "./src/styles/main.scss"],
+  entry: [
+    "./src/index.ts",
+    "./src/styles/main.scss",
+    "./src/styles/error.scss",
+  ],
   module: {
     rules: [
       {
@@ -49,6 +53,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/index.html", to: "." },
+        { from: "src/page-not-found.html", to: "." },
         { from: "static", to: "static" },
       ],
     }),
