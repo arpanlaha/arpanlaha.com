@@ -3,7 +3,7 @@
     { "handle": "filesystem" },
     {
       "src": "/favicon.ico",
-      "dest": "/logo.svg"
+      "dest": "/static/logo.svg"
     },
     {
       "src": "/robots.txt",
