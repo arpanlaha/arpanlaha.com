@@ -30,6 +30,7 @@
     "sass-loader": "^9.0.2",
     "static-server": "^2.2.1",
     "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-config-standard": "^20.0.0",
     "ts-loader": "^8.0.1",
     "typescript": "^3.9.7",
@@ -40,8 +41,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arpanlaha/arpanlaha.com.git"
-  },
-  "dependencies": {
-    "stylelint-config-sass-guidelines": "^7.0.0"
   }
 }
