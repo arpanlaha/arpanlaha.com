@@ -1,84 +1,181 @@
-// import "./styles/main.scss";
+type CubicCoefficents = [number, number, number, number];
 
-let theme = localStorage.getItem("theme") ?? "light";
-let design = localStorage.getItem("design") ?? "neu";
+interface Ribbon {
+  path: CubicCoefficents;
+  width: CubicCoefficents;
+}
 
-const updateTheme = (): void => {
-  document.body.classList[theme === "light" ? "remove" : "add"]("dark");
+enum ShaderType {
+  Fragment = "Fragment",
+  Vertex = "Vertex",
+}
 
-  (document.getElementById(
-    "theme-switch-current"
-  ) as HTMLImageElement).src = `/static/${
-    theme === "light" ? "sun" : "moon"
-  }.svg`;
+/**
+ * Returns a random number between (-1, 1).
+ */
+function generatePathCoefficient(): number {
+  return Math.random() * 2 - 1;
+}
 
-  (document.getElementById(
-    "theme-switch-other"
-  ) as HTMLImageElement).src = `/static/${
-    theme === "light" ? "moon" : "sun"
-  }.svg`;
-};
+function generateRibbon(): Ribbon {
+  return {
+    path: [
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+    ],
+    width: [Math.random(), Math.random(), Math.random(), Math.random()],
+  };
+}
 
-const updateDesign = (): void => {
-  [
-    "switch",
-    "second-panel",
-    "main-image",
-    "about",
-    "social",
-    "h4i-project",
-    "side-project",
-  ]
-    .map((className) => Array.from(document.getElementsByClassName(className)))
-    .forEach((neuClass) =>
-      neuClass.forEach((neuElement) =>
-        neuElement.classList[design === "neu" ? "remove" : "add"]("flat")
-      )
-    );
+const DEVICE_SCALE = window.devicePixelRatio;
+const WIDTH = document.body.clientWidth * DEVICE_SCALE;
+const HEIGHT = document.body.clientHeight * DEVICE_SCALE;
 
-  (document.getElementById(
-    "design-switch-current"
-  ) as HTMLSpanElement).textContent = design === "neu" ? "neu" : "flat";
+function compileShader(
+  context: WebGLRenderingContext,
+  source: string,
+  type: ShaderType
+): WebGLShader | null {
+  const shader = context.createShader(
+    type === ShaderType.Fragment
+      ? context.FRAGMENT_SHADER
+      : context.VERTEX_SHADER
+  );
 
-  (document.getElementById(
-    "design-switch-other"
-  ) as HTMLSpanElement).textContent = design === "neu" ? "flat" : "neu";
-};
+  if (shader === null) {
+    return null;
+  }
 
-updateTheme();
-updateDesign();
+  context.shaderSource(shader, source);
+  context.compileShader(shader);
 
-const themeSwitch = document.getElementById(
-  "theme-switch"
-) as HTMLButtonElement;
+  return context.getShaderParameter(shader, context.COMPILE_STATUS)
+    ? shader
+    : null;
+}
 
-const designSwitch = document.getElementById(
-  "design-switch"
-) as HTMLButtonElement;
+const vertexSource = `
+attribute vec4 a_position;
+void main(void) {
+  gl_Position = a_position;
+}
+`;
 
-themeSwitch.addEventListener("click", function () {
-  this.classList.add("no-hover");
-  theme = theme === "light" ? "dark" : "light";
-  localStorage.setItem("theme", theme === "light" ? "light" : "dark");
-  updateTheme();
-});
+function generateFragmentSource(ribbon: Ribbon): string {
+  return `
+#define RPATH_A ${ribbon.path[0]}
+#define RPATH_B ${ribbon.path[1]}
+#define RPATH_C ${ribbon.path[2]}
+#define RPATH_D ${ribbon.path[3]}
+#define RWIDTH_A ${ribbon.width[0]}
+#define RWIDTH_B ${ribbon.width[1]}
+#define RWIDTH_C ${ribbon.width[2]}
+#define RWIDTH_D ${ribbon.width[3]}
+#define WIDTH ${WIDTH}.
+#define HEIGHT ${HEIGHT}.
 
-themeSwitch.addEventListener("mousedown", (e) => e.preventDefault());
+precision highp float;
 
-themeSwitch.addEventListener("mouseleave", function () {
-  this.classList.remove("no-hover");
-});
+void main() {
+  float x = (gl_FragCoord[0] / WIDTH) * 2. - 1.;
+  float y = (gl_FragCoord[1] / HEIGHT) * 2. - 1.;
 
-designSwitch.addEventListener("click", function () {
-  this.classList.add("no-hover");
-  design = design === "neu" ? "flat" : "neu";
-  localStorage.setItem("design", design === "neu" ? "neu" : "flat");
+  float ribbon_path = RPATH_A * x * x * x + RPATH_B * x * x + RPATH_C * x + RPATH_D;
+  float ribbon_width = RWIDTH_A * x * x * x + RWIDTH_B * x * x + RWIDTH_C * x + RWIDTH_D;
+  float ribbon_width_factor = 10. * ribbon_width / HEIGHT;
 
-  updateDesign();
-});
+  float distance = min(abs(y - ribbon_path) - ribbon_width_factor, 0.);
+  float distance_factor = 1. / (distance + 1.);
+  gl_FragColor = vec4(0., 0.415, 1., 1. - distance_factor);
+}
+`;
+}
 
-designSwitch.addEventListener("mousedown", (e) => e.preventDefault());
+function run(): void {
+  const ribbon = generateRibbon();
+  const canvas = document.getElementById("canvas-webgl") as HTMLCanvasElement;
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  canvas.style.width = `${document.body.clientWidth}px`;
+  canvas.style.height = `${document.body.clientHeight}px`;
 
-designSwitch.addEventListener("mouseleave", function () {
-  this.classList.remove("no-hover");
-});
+  const context = canvas.getContext("webgl", {
+    preserveDrawingBuffer: true,
+  }) as WebGLRenderingContext;
+
+  if (context === null) {
+    console.log("error context");
+    return;
+  }
+
+  const fragmentSource = generateFragmentSource(ribbon);
+  console.log(fragmentSource);
+
+  const vertexShader = compileShader(context, vertexSource, ShaderType.Vertex);
+  if (vertexShader === null) {
+    console.log("error vertex");
+    return;
+  }
+
+  const fragmentShader = compileShader(
+    context,
+    fragmentSource,
+    ShaderType.Fragment
+  );
+  if (fragmentShader === null) {
+    console.log("error fragment");
+    console.log(context.getError());
+    return;
+  }
+  const program = context.createProgram();
+
+  if (program === null) {
+    console.log("error program");
+    return;
+  }
+
+  context.attachShader(program, vertexShader);
+  context.attachShader(program, fragmentShader);
+  context.linkProgram(program);
+
+  if (!context.getProgramParameter(program, context.LINK_STATUS)) {
+    console.log("error link");
+  }
+
+  context.useProgram(program);
+
+  const positionAttributeLocation = context.getAttribLocation(
+    program,
+    "a_position"
+  );
+  const vertexCoords = [-1, -1, 1, -1, 1, 1 - 1, 1];
+  const buffer = context.createBuffer();
+
+  if (buffer === null) {
+    console.log("error buffer");
+    return;
+  }
+
+  context.bindBuffer(context.ARRAY_BUFFER, buffer);
+
+  const vertexArray = new Float32Array(vertexCoords);
+
+  context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
+
+  context.enableVertexAttribArray(positionAttributeLocation);
+
+  context.vertexAttribPointer(
+    positionAttributeLocation,
+    2,
+    context.FLOAT,
+    false,
+    0,
+    0
+  );
+
+  context.drawArrays(context.TRIANGLE_FAN, 0, 4);
+}
+
+run();

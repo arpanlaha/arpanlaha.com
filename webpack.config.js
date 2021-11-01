@@ -29,7 +29,7 @@ module.exports = {
             loader: "extract-loader",
           },
           {
-            loader: "css-loader?-url",
+            loader: "css-loader",
           },
           {
             loader: "postcss-loader",

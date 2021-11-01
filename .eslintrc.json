@@ -5,6 +5,6 @@
     "plugin:@hack4impact-uiuc/typescript"
   ],
   "rules": {
-    "no-console": "error"
+    "@typescript-eslint/no-magic-numbers": "off"
   }
 }
