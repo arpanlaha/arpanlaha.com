@@ -25,7 +25,12 @@ function generateRibbon(): Ribbon {
       generatePathCoefficient(),
       generatePathCoefficient(),
     ],
-    width: [Math.random(), Math.random(), Math.random(), Math.random()],
+    width: [
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+      generatePathCoefficient(),
+    ],
   };
 }
 
@@ -58,6 +63,7 @@ function compileShader(
 
 const vertexSource = `
 attribute vec4 a_position;
+
 void main(void) {
   gl_Position = a_position;
 }
@@ -83,12 +89,12 @@ void main() {
   float y = (gl_FragCoord[1] / HEIGHT) * 2. - 1.;
 
   float ribbon_path = RPATH_A * x * x * x + RPATH_B * x * x + RPATH_C * x + RPATH_D;
-  float ribbon_width = RWIDTH_A * x * x * x + RWIDTH_B * x * x + RWIDTH_C * x + RWIDTH_D;
-  float ribbon_width_factor = 10. * ribbon_width / HEIGHT;
+  float ribbon_width = abs(RWIDTH_A * x * x * x + RWIDTH_B * x * x + RWIDTH_C * x + RWIDTH_D);
+  float ribbon_width_factor = 30. * ribbon_width / HEIGHT;
 
-  float distance = min(abs(y - ribbon_path) - ribbon_width_factor, 0.);
-  float distance_factor = 1. / (distance + 1.);
-  gl_FragColor = vec4(0., 0.415, 1., 1. - distance_factor);
+  float distance = max(abs(y - ribbon_path) - ribbon_width_factor, 0.);
+  float distance_factor = 1. / (10. * distance + 1.);
+  gl_FragColor = vec4(0., 0.415, 1., distance_factor);
 }
 `;
 }
@@ -103,12 +109,15 @@ function run(): void {
 
   const context = canvas.getContext("webgl", {
     preserveDrawingBuffer: true,
+    premultipliedAlpha: false, // Ask for non-premultiplied alpha
   }) as WebGLRenderingContext;
 
   if (context === null) {
     console.log("error context");
     return;
   }
+
+  context.viewport(0, 0, WIDTH, HEIGHT);
 
   const fragmentSource = generateFragmentSource(ribbon);
   console.log(fragmentSource);
@@ -144,13 +153,6 @@ function run(): void {
     console.log("error link");
   }
 
-  context.useProgram(program);
-
-  const positionAttributeLocation = context.getAttribLocation(
-    program,
-    "a_position"
-  );
-  const vertexCoords = [-1, -1, 1, -1, 1, 1 - 1, 1];
   const buffer = context.createBuffer();
 
   if (buffer === null) {
@@ -160,9 +162,16 @@ function run(): void {
 
   context.bindBuffer(context.ARRAY_BUFFER, buffer);
 
-  const vertexArray = new Float32Array(vertexCoords);
+  const vertexArray = new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]);
 
   context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
+
+  const positionAttributeLocation = context.getAttribLocation(
+    program,
+    "a_position"
+  );
+
+  context.useProgram(program);
 
   context.enableVertexAttribArray(positionAttributeLocation);
 
