@@ -12,7 +12,8 @@
     "lint:fix": "eslint src && stylelint \"src/**/*.scss\" && markdownlint --fix README.md",
     "serve": "static-server dist",
     "start": "webpack-dev-server",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "temp": "mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && tsc && npm run serve"
   },
   "devDependencies": {
     "@hack4impact-uiuc/eslint-plugin": "^2.0.1",
@@ -25,12 +26,10 @@
     "file-loader": "^6.0.0",
     "html-minifier-terser": "^6.0.2",
     "markdownlint-cli": "^0.29.0",
-    "node-sass": "^6.0.1",
-    "postcss": "^8.3.11",
-    "postcss-loader": "^6.2.0",
     "prettier": "^2.0.5",
     "sass-loader": "^12.3.0",
     "static-server": "^2.2.1",
+    "style-loader": "^3.3.1",
     "stylelint": "^14.0.1",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^23.0.0",

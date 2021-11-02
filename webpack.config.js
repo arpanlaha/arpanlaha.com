@@ -5,8 +5,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    index: ["./src/index.ts", "./src/styles/main.scss"],
-    "page-not-found": ["./src/page-not-found.ts", "./src/styles/error.scss"],
+    index: ["./src/index.ts", "./src/main.css"],
   },
 
   module: {
@@ -17,27 +16,21 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: "style-loader",
             options: {
-              name: "static/[name].css",
+              insert: "head", // insert style tag inside of <head>
+              injectType: "singletonStyleTag", // this is for wrap all your style in just one style tag
             },
           },
-          {
-            loader: "extract-loader",
-          },
-          {
-            loader: "css-loader",
-          },
-          {
-            loader: "postcss-loader",
-          },
-          {
-            loader: "sass-loader",
-          },
+          "css-loader",
         ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
     ],
   },
@@ -53,7 +46,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/index.html", to: "." },
-        { from: "src/page-not-found.html", to: "." },
         { from: "static", to: "static" },
       ],
     }),

@@ -34,10 +34,6 @@ function generateRibbon(): Ribbon {
   };
 }
 
-const DEVICE_SCALE = window.devicePixelRatio;
-const WIDTH = document.body.clientWidth * DEVICE_SCALE;
-const HEIGHT = document.body.clientHeight * DEVICE_SCALE;
-
 function compileShader(
   context: WebGLRenderingContext,
   source: string,
@@ -69,7 +65,11 @@ void main(void) {
 }
 `;
 
-function generateFragmentSource(ribbon: Ribbon): string {
+function generateFragmentSource(
+  ribbon: Ribbon,
+  width: number,
+  height: number
+): string {
   return `
 #define RPATH_A ${ribbon.path[0]}
 #define RPATH_B ${ribbon.path[1]}
@@ -79,8 +79,8 @@ function generateFragmentSource(ribbon: Ribbon): string {
 #define RWIDTH_B ${ribbon.width[1]}
 #define RWIDTH_C ${ribbon.width[2]}
 #define RWIDTH_D ${ribbon.width[3]}
-#define WIDTH ${WIDTH}.
-#define HEIGHT ${HEIGHT}.
+#define WIDTH ${Math.round(width)}.
+#define HEIGHT ${Math.round(height)}.
 
 precision highp float;
 
@@ -100,10 +100,17 @@ void main() {
 }
 
 function run(): void {
+  const DEVICE_SCALE = window.devicePixelRatio;
+  const WIDTH = document.body.clientWidth * DEVICE_SCALE;
+  const HEIGHT = document.body.clientHeight * DEVICE_SCALE;
+
   const ribbon = generateRibbon();
   const canvas = document.getElementById("canvas-webgl") as HTMLCanvasElement;
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
+  console.log(document.body.clientWidth);
+  console.log(document.body.clientHeight);
+  console.log(DEVICE_SCALE);
   canvas.style.width = `${document.body.clientWidth}px`;
   canvas.style.height = `${document.body.clientHeight}px`;
 
@@ -119,8 +126,7 @@ function run(): void {
 
   context.viewport(0, 0, WIDTH, HEIGHT);
 
-  const fragmentSource = generateFragmentSource(ribbon);
-  console.log(fragmentSource);
+  const fragmentSource = generateFragmentSource(ribbon, WIDTH, HEIGHT);
 
   const vertexShader = compileShader(context, vertexSource, ShaderType.Vertex);
   if (vertexShader === null) {
@@ -135,6 +141,7 @@ function run(): void {
   );
   if (fragmentShader === null) {
     console.log("error fragment");
+    console.log(fragmentSource);
     console.log(context.getError());
     return;
   }
@@ -188,3 +195,4 @@ function run(): void {
 }
 
 run();
+document.getElementById("cover")?.classList.add("hide-cover");
