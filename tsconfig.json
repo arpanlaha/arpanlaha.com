@@ -6,11 +6,10 @@
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "dist",
-    "pretty": true,
     "removeComments": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es2017"
   },
   "include": ["src"]
 }

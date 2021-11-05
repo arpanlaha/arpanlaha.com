@@ -108,9 +108,6 @@ function run(): void {
   const canvas = document.getElementById("canvas-webgl") as HTMLCanvasElement;
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
-  console.log(document.body.clientWidth);
-  console.log(document.body.clientHeight);
-  console.log(DEVICE_SCALE);
   canvas.style.width = `${document.body.clientWidth}px`;
   canvas.style.height = `${document.body.clientHeight}px`;
 
