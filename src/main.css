@@ -6,19 +6,35 @@
   src: local("Whitney Light"), url("/static/whitney.woff2") format("woff2");
 }
 
+:root {
+  --glass-gradient: radial-gradient(#19191980, #19191910);
+  --glass-border: #66666633;
+  --coda-color: #f63;
+  --hr-color: #99999966;
+  --project-background: #66666633;
+  --project-background-hover: #99999933;
+  --project-border-color: #66666666;
+
+  --rounded-border-radius: 1vw;
+  --h1-size: 3.5vw;
+  --h2-size: 1.4vw;
+  --h3-size: 1.2vw;
+  --text-size: 0.8vw;
+
+  --main-picture-size: 20vw;
+  --right-panel-width: 60vw;
+  --project-width: 15vw;
+  --social-size: 5vw;
+}
+
 body {
   font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
     sans-serif;
-
-  position: absolute;
   margin: 0;
   width: 100vw;
   height: 100vh;
   background-color: #000;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 canvas {
@@ -27,11 +43,10 @@ canvas {
 }
 
 .glass {
-  background: radial-gradient(rgba(25, 25, 25, 0.5), rgba(25, 25, 25, 0.05)),
-    url("/static/noise.svg");
+  background: var(--glass-gradient), url("/static/noise.svg");
   backdrop-filter: blur(20px);
   border: 1px solid rgba(102, 102, 102, 0.2);
-  border-radius: 1vw;
+  border-radius: var(--rounded-border-radius);
 }
 
 main {
@@ -46,6 +61,13 @@ main {
   justify-content: space-evenly;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 h1,
 h2,
 h3 {
@@ -54,21 +76,19 @@ h3 {
 }
 
 h1 {
-  font-size: 3.5vw;
+  font-size: var(--h1-size);
 }
 
 h2 {
-  font-size: 1.4vw;
+  font-size: var(--h2-size);
 }
 
 h3 {
-  font-size: 1.2vw;
+  font-size: var(--h3-size);
 }
 
-p {
-  font-size: 1.5vw;
-  margin-top: 0;
-  margin-bottom: 1vw;
+span {
+  font-size: var(--h4-size);
 }
 
 a {
@@ -97,14 +117,14 @@ a {
 
 #main-picture {
   border-radius: 50%;
-  width: 20vw;
-  height: 20vw;
+  width: var(--main-picture-size);
+  height: var(--main-picture-size);
 }
 
 #right {
   box-sizing: border-box;
-  width: 60vw;
-  padding: 2vw;
+  width: var(--right-panel-width);
+  padding: 2%;
 }
 
 #coda-link {
@@ -112,7 +132,7 @@ a {
 }
 
 #coda-link:hover {
-  color: #f63;
+  color: var(--coda-color);
   transition: color 0.1s;
 }
 
@@ -124,24 +144,8 @@ hr {
   width: 90%;
   margin: 0;
   margin-bottom: 1vw;
-  border: 0.5px solid rgba(153, 153, 153, 0.4);
+  border: 0.5px solid var(--hr-color);
   border-radius: 0.25px;
-}
-
-.card {
-  border-radius: 1vw;
-  border: 1px solid rgba(102, 102, 102, 0.4);
-  background-color: rgba(102, 102, 102, 0.2);
-  transition: background-color 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.card:hover {
-  background-color: rgba(153, 153, 153, 0.2);
-  transition: background-color 0.1s;
 }
 
 #project-row {
@@ -149,26 +153,30 @@ hr {
 }
 
 .project {
-  width: 15vw;
+  width: var(--project-width);
+  border-radius: var(--rounded-border-radius);
+  background-color: var(--project-background);
 
-  padding: 2vw 0;
+  border: 1px solid var(--project-border-color);
+
+  padding: 10% 0;
+  transition: background-color 0.2s;
 }
 
-.project p {
-  font-size: 0.8vw;
-  margin-bottom: 0;
-  border-radius: 1em;
+.project:hover {
+  background-color: var(--project-background-hover);
+  transition: background-color 0.1s;
 }
 
 .social {
-  height: 5vw;
-  width: 5vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  height: var(--social-size);
+  width: var(--social-size);
   position: relative;
   color: #ccc;
+}
+
+.social img {
+  height: 40%;
 }
 
 .social-white {
@@ -183,12 +191,4 @@ hr {
 .social-white:hover {
   opacity: 0;
   transition: opacity 0.1s;
-}
-
-.social img {
-  height: 2vw;
-}
-
-.social span {
-  font-size: 0.8vw;
 }
