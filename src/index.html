@@ -33,8 +33,15 @@
 
     <link rel="shortcut icon" href="/static/logo.svg" />
     <link rel="manifest" href="/static/manifest.json" />
-    <link rel="stylesheet" type="text/css" href="/main.css" />
     <link as="script" rel="preload" href="/index.js" />
+    <link as="style" rel="preload" href="/main.css" />
+    <link as="image" rel="preload" href="/static/facebook-white.svg" />
+    <link as="image" rel="preload" href="/static/github-white.svg" />
+    <link as="image" rel="preload" href="/static/instagram-white.svg" />
+    <link as="image" rel="preload" href="/static/linkedin-white.svg" />
+    <link as="style" rel="preload" href="/static/twitter-white.svg" />
+    <link as="image" rel="preload" href="/static/main.jpg" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
 
     <title>Arpan Laha</title>
   </head>
@@ -45,12 +52,19 @@
     <main class="row">
       <section id="left">
         <h1>Hi, I'm Arpan.</h1>
-        <img id="main-picture" src="/static/main.jpg" />
+        <img
+          id="main-picture"
+          src="/static/main.jpg"
+          width="500"
+          height="500"
+          alt="Arpan Laha"
+        />
       </section>
       <section id="right" class="glass">
         <h2>
-          Software Engineer at <a href="https://coda.io">Coda</a> | San
-          Francisco ↔ Illinois
+          Software Engineer at
+          <a id="coda-link" href="https://coda.io">Coda</a> | San Francisco ↔
+          Illinois
         </h2>
         <h2>
           Previously: Computer Science at UIUC | Hack4Impact UIUC Co-Director |
@@ -68,13 +82,13 @@
           <a href="https://harmonizer.arpanlaha.com">
             <div class="project card">
               <h3>Spectrum</h3>
-              <p>Random art with Rust + WebAssembly.</p>
+              <p>Random art with WebAssembly.</p>
             </div>
           </a>
           <a href="https://harmonizer.arpanlaha.com">
             <div class="project card">
               <h3>Vault</h3>
-              <p>Visualize your crates.io dependencies.</p>
+              <p>Visualize your Rust dependencies.</p>
             </div>
           </a>
         </div>
@@ -82,47 +96,87 @@
         <h2>Social media</h2>
         <div class="row">
           <a
-            class="social card"
+            class="social"
             href="https://www.facebook.com/arpan.laha99"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <div class="social social-white">
+              <img
+                class="social-filter"
+                src="/static/facebook-white.svg"
+                alt="Facebook"
+              />
+              <span>Facebook</span>
+            </div>
             <img src="/static/facebook.svg" alt="Facebook" />
             <span>Facebook</span>
           </a>
           <a
-            class="social card"
+            class="social"
             href="https://github.com/arpanlaha"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <div class="social social-white">
+              <img
+                class="social-filter"
+                src="/static/github-white.svg"
+                alt="GitHub"
+              />
+              <span>GitHub</span>
+            </div>
             <img class="social-filter" src="/static/github.svg" alt="GitHub" />
             <span>GitHub</span>
           </a>
           <a
-            class="social card"
+            class="social"
             href="https://www.instagram.com/arpanlahaha/"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <div class="social social-white">
+              <img
+                class="social-filter"
+                src="/static/instagram-white.svg"
+                alt="Instagram"
+              />
+              <span>Instagram</span>
+            </div>
             <img src="/static/instagram.svg" alt="Instagram" />
             <span>Instagram</span>
           </a>
           <a
-            class="social card"
+            class="social"
             href="https://www.linkedin.com/in/arpanlaha/"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <div class="social social-white">
+              <img
+                class="social-filter"
+                src="/static/linkedin-white.svg"
+                alt="LinkedIn"
+              />
+              <span>LinkedIn</span>
+            </div>
             <img src="/static/linkedin.svg" alt="Linkedin" />
             <span>LinkedIn</span>
           </a>
           <a
-            class="social card"
+            class="social"
             href="https://twitter.com/arpanlahaha"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <div class="social social-white">
+              <img
+                class="social-filter"
+                src="/static/twitter-white.svg"
+                alt="Twitter"
+              />
+              <span>Twitter</span>
+            </div>
             <img src="/static/twitter.svg" alt="Twitter" />
             <span>Twitter</span>
           </a>

@@ -1,18 +1,14 @@
 @font-face {
-  font-family: "Nunito Sans";
+  font-family: "Whitney Light";
   font-style: normal;
   font-display: swap;
   font-weight: 300;
-  src: local("Nunito Sans Light"), local("NunitoSans-Light"),
-    url("https://fonts.gstatic.com/s/nunitosans/v5/pe03MImSLYBIv1o4X1M8cc8WAc5tU1E.woff2")
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
+  src: local("Whitney Light"), url("/static/whitney.woff2") format("woff2");
 }
 
 body {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
+    sans-serif;
 
   position: absolute;
   margin: 0;
@@ -62,7 +58,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5vw;
+  font-size: 1.4vw;
 }
 
 h3 {
@@ -108,8 +104,16 @@ a {
 #right {
   box-sizing: border-box;
   width: 60vw;
-  height: 80vh;
-  padding: 3vw 4vh;
+  padding: 2vw;
+}
+
+#coda-link {
+  transition: color 0.2s;
+}
+
+#coda-link:hover {
+  color: #f63;
+  transition: color 0.1s;
 }
 
 .hr-container {
@@ -137,7 +141,7 @@ hr {
 
 .card:hover {
   background-color: rgba(153, 153, 153, 0.2);
-  transition: background-color 0.2s;
+  transition: background-color 0.1s;
 }
 
 #project-row {
@@ -157,9 +161,28 @@ hr {
 }
 
 .social {
-  height: 4vw;
-  width: 4vw;
-  padding: 0.2vw;
+  height: 5vw;
+  width: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  color: #ccc;
+}
+
+.social-white {
+  transition: opacity 0.2s;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.social-white:hover {
+  opacity: 0;
+  transition: opacity 0.1s;
 }
 
 .social img {
