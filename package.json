@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run build:move && npm run minify",
     "build:move": "mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && tsc && npm run inline-css",
+    "dev": "nodemon --ignore dist -e js,ts,html,css,svg,jpg,woff2 --exec npm start",
     "format": "prettier --write \"**/*.{ts,md,css,json}\"",
     "format:check": "prettier --check \"**/*.{ts,md,css,json}\"",
     "inline-css": "node scripts/inlineCss",
@@ -23,8 +24,8 @@
     "clean-css-cli": "^5.4.2",
     "eslint": "^7.5.0",
     "html-minifier-terser": "^6.0.2",
-    "inline-css": "^3.0.0",
     "markdownlint-cli": "^0.29.0",
+    "nodemon": "^2.0.14",
     "prettier": "^2.0.5",
     "static-server": "^2.2.1",
     "stylelint": "^14.0.1",
