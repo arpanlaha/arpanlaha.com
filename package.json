@@ -4,8 +4,8 @@
   "description": "Arpan Laha's personal website",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:move && npm run inline-css && npm run minify",
-    "build:move": "mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && tsc",
+    "build": "npm run build:move && npm run minify",
+    "build:move": "mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && tsc && npm run inline-css",
     "format": "prettier --write \"**/*.{ts,md,css,json}\"",
     "format:check": "prettier --check \"**/*.{ts,md,css,json}\"",
     "inline-css": "node scripts/inlineCss",

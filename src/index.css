@@ -10,6 +10,7 @@
   --glass-gradient: radial-gradient(#19191980, #19191910);
   --glass-border: #66666633;
   --coda-color: #f63;
+  --h4i-color: #339cff;
   --hr-color: #99999966;
   --project-background: #66666633;
   --project-background-hover: #99999933;
@@ -17,7 +18,7 @@
 
   --rounded-border-radius: 1vw;
   --h1-size: 3.5vw;
-  --h2-size: 1.4vw;
+  --h2-size: 1.5vw;
   --h3-size: 1.2vw;
   --text-size: 0.8vw;
 
@@ -88,7 +89,7 @@ h3 {
 }
 
 span {
-  font-size: var(--h4-size);
+  font-size: var(--text -size);
 }
 
 a {
@@ -127,13 +128,22 @@ a {
   padding: 2%;
 }
 
-#coda-link {
+#coda-link,
+#h4i-link {
   transition: color 0.2s;
+}
+
+#coda-link:hover,
+#h4i-link:hover {
+  transition: color 0.1s;
 }
 
 #coda-link:hover {
   color: var(--coda-color);
-  transition: color 0.1s;
+}
+
+#h4i-link:hover {
+  color: var(--h4i-color);
 }
 
 .hr-container {
