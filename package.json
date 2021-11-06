@@ -5,14 +5,12 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run build:move && npm run minify",
-    "build:move": "mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && tsc && npm run inline-css",
+    "build:move": "rm -rf dist && mkdir -p dist && cp src/*.html dist && cp src/*.css dist && cp -rf static dist && webpack && npm run inline-css",
     "dev": "nodemon --ignore dist -e js,ts,html,css,svg,jpg,woff2 --exec npm start",
     "format": "prettier --write \"**/*.{ts,md,css,json}\"",
     "format:check": "prettier --check \"**/*.{ts,md,css,json}\"",
     "inline-css": "node scripts/inlineCss",
-    "minify": "npm run minify:html && npm run minify:js",
-    "minify:html": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css --input-dir dist --output-dir dist --file-ext html",
-    "minify:js": "uglifyjs dist/index.js -c -m toplevel -o dist/index.js",
+    "minify": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css --input-dir dist --output-dir dist --file-ext html",
     "lint": "eslint src && stylelint \"src/**/*.css\" && markdownlint README.md",
     "lint:fix": "eslint src && stylelint \"src/**/*.css\" && markdownlint --fix README.md",
     "serve": "static-server dist",
@@ -21,6 +19,7 @@
   },
   "devDependencies": {
     "@hack4impact-uiuc/eslint-plugin": "^2.0.1",
+    "@vercel/ncc": "^0.31.1",
     "clean-css-cli": "^5.4.2",
     "eslint": "^7.5.0",
     "html-minifier-terser": "^6.0.2",
@@ -30,8 +29,10 @@
     "static-server": "^2.2.1",
     "stylelint": "^14.0.1",
     "stylelint-config-standard": "^23.0.0",
+    "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
-    "uglify-js": "^3.14.3"
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
   },
   "repository": {
     "type": "git",

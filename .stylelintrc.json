@@ -2,7 +2,6 @@
   "rules": {
     "indentation": null,
     "max-nesting-depth": null,
-    "order/properties-alphabetical-order": null,
     "string-quotes": "double"
   }
 }
