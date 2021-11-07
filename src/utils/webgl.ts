@@ -1,18 +1,41 @@
 import { ensure, ensureExists } from "./ensure";
 import { Ribbon } from "./ribbon";
-import { ShaderType } from "./types";
+import { CubicCoefficents, ShaderType } from "./types";
 
-const vertexSource = `
+const VERTEX_SOURCE = `
 attribute vec4 a_position;
 
 void main(void) {
   gl_Position = a_position;
 }
 `;
+
+const FRAGMENT_SOURCE = `
+precision highp float;
+
+uniform vec4 path;
+uniform vec4 width;
+uniform float canvas_width;
+uniform float canvas_height;
+
+void main() {
+  float x = (gl_FragCoord[0] / canvas_width) * 2. - 1.;
+  float y = (gl_FragCoord[1] / canvas_height) * 2. - 1.;
+
+  float ribbon_path = path[0] * pow(x, 3.) + path[1] * pow(x, 2.) + path[2] * x + path[3];
+  float ribbon_width = abs(width[0] * pow(x, 3.) + width[1] * pow(x, 2.) + width[2] * x + width[3]);
+  float ribbon_width_factor = 30. * ribbon_width / canvas_height;
+
+  float distance = max(abs(y - ribbon_path) - ribbon_width_factor, 0.);
+  float distance_factor = 1. / (10. * distance + 1.);
+  gl_FragColor = vec4(0., 0.415, 1., distance_factor);
+}
+`;
 export class WebGLWrapper {
   private readonly canvas: HTMLCanvasElement;
   private readonly context: WebGLRenderingContext;
   private readonly ribbon: Ribbon;
+  private program?: WebGLProgram;
   private width = 0;
   private height = 0;
 
@@ -36,19 +59,18 @@ export class WebGLWrapper {
   initializeWebglContext(): void {
     const { context } = this;
 
-    const fragmentSource = this.generateFragmentSource();
-
     const vertexShader = ensureExists(
-      this.compileShader(vertexSource, ShaderType.Vertex),
+      this.compileShader(VERTEX_SOURCE, ShaderType.Vertex),
       "Vertex shader"
     );
 
     const fragmentShader = ensureExists(
-      this.compileShader(fragmentSource, ShaderType.Fragment),
+      this.compileShader(FRAGMENT_SOURCE, ShaderType.Fragment),
       "Fragment shader"
     );
 
     const program = ensureExists(context.createProgram(), "WebGL program");
+    this.program = program;
 
     context.attachShader(program, vertexShader);
     context.attachShader(program, fragmentShader);
@@ -85,7 +107,7 @@ export class WebGLWrapper {
       0
     );
 
-    context.drawArrays(context.TRIANGLE_FAN, 0, 4);
+    this.draw();
   }
 
   private resizeCanvas(): void {
@@ -103,38 +125,6 @@ export class WebGLWrapper {
     canvas.style.width = `${document.body.clientWidth}px`;
     canvas.style.height = `${document.body.clientHeight}px`;
     context.viewport(0, 0, width, height);
-  }
-
-  private generateFragmentSource(): string {
-    const { ribbon, width, height } = this;
-
-    return `
-#define RPATH_A ${ribbon.path[0]}
-#define RPATH_B ${ribbon.path[1]}
-#define RPATH_C ${ribbon.path[2]}
-#define RPATH_D ${ribbon.path[3]}
-#define RWIDTH_A ${ribbon.width[0]}
-#define RWIDTH_B ${ribbon.width[1]}
-#define RWIDTH_C ${ribbon.width[2]}
-#define RWIDTH_D ${ribbon.width[3]}
-#define WIDTH ${Math.round(width)}.
-#define HEIGHT ${Math.round(height)}.
-
-precision highp float;
-
-void main() {
-  float x = (gl_FragCoord[0] / WIDTH) * 2. - 1.;
-  float y = (gl_FragCoord[1] / HEIGHT) * 2. - 1.;
-
-  float ribbon_path = RPATH_A * pow(x, 3.) + RPATH_B * pow(x, 2.) + RPATH_C * x + RPATH_D;
-  float ribbon_width = abs(RWIDTH_A * pow(x, 3.) + RWIDTH_B * pow(x, 2.) + RWIDTH_C * x + RWIDTH_D);
-  float ribbon_width_factor = 30. * ribbon_width / HEIGHT;
-
-  float distance = max(abs(y - ribbon_path) - ribbon_width_factor, 0.);
-  float distance_factor = 1. / (10. * distance + 1.);
-  gl_FragColor = vec4(0., 0.415, 1., distance_factor);
-}
-`;
   }
 
   private compileShader(source: string, type: ShaderType): WebGLShader | null {
@@ -156,5 +146,40 @@ void main() {
     return context.getShaderParameter(shader, context.COMPILE_STATUS)
       ? shader
       : null;
+  }
+
+  private attachCubicUniform(data: CubicCoefficents, name: string): void {
+    const { context } = this;
+    const program = ensureExists(this.program, "WebGL Program");
+
+    const location = ensureExists(
+      context.getUniformLocation(program, name),
+      `${name} uniform location`
+    );
+
+    context.uniform4f(location, ...data);
+  }
+
+  private attachFloatUniform(data: number, name: string): void {
+    const { context } = this;
+    const program = ensureExists(this.program, "WebGL Program");
+
+    const location = ensureExists(
+      context.getUniformLocation(program, name),
+      `${name} uniform location`
+    );
+
+    context.uniform1f(location, data);
+  }
+
+  private draw(): void {
+    const { context, ribbon, width, height } = this;
+
+    this.attachCubicUniform(ribbon.path, "path");
+    this.attachCubicUniform(ribbon.width, "width");
+    this.attachFloatUniform(width, "canvas_width");
+    this.attachFloatUniform(height, "canvas_height");
+
+    context.drawArrays(context.TRIANGLE_FAN, 0, 4);
   }
 }
