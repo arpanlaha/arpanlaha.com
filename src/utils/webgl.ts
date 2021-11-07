@@ -1,5 +1,6 @@
 import { ensure, ensureExists } from "./ensure";
-import { Ribbon, ShaderType } from "./types";
+import { Ribbon } from "./ribbon";
+import { ShaderType } from "./types";
 
 const vertexSource = `
 attribute vec4 a_position;
@@ -15,9 +16,9 @@ export class WebGLWrapper {
   private width = 0;
   private height = 0;
 
-  constructor(canvas: HTMLCanvasElement, ribbon: Ribbon) {
+  constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
-    this.ribbon = ribbon;
+    this.ribbon = new Ribbon();
 
     this.context = ensureExists(
       canvas.getContext("webgl", {
