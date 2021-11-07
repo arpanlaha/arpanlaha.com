@@ -126,8 +126,8 @@ void main() {
   float x = (gl_FragCoord[0] / WIDTH) * 2. - 1.;
   float y = (gl_FragCoord[1] / HEIGHT) * 2. - 1.;
 
-  float ribbon_path = RPATH_A * x * x * x + RPATH_B * x * x + RPATH_C * x + RPATH_D;
-  float ribbon_width = abs(RWIDTH_A * x * x * x + RWIDTH_B * x * x + RWIDTH_C * x + RWIDTH_D);
+  float ribbon_path = RPATH_A * pow(x, 3.) + RPATH_B * pow(x, 2.) + RPATH_C * x + RPATH_D;
+  float ribbon_width = abs(RWIDTH_A * pow(x, 3.) + RWIDTH_B * pow(x, 2.) + RWIDTH_C * x + RWIDTH_D);
   float ribbon_width_factor = 30. * ribbon_width / HEIGHT;
 
   float distance = max(abs(y - ribbon_path) - ribbon_width_factor, 0.);

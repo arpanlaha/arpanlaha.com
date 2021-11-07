@@ -106,7 +106,7 @@ a {
   height: var(--main-picture-size);
 }
 
-#right {
+#content {
   box-sizing: border-box;
   width: var(--right-panel-width);
   padding: 2%;
@@ -236,7 +236,7 @@ hr {
     --text-size: 2vw;
 
     --main-picture-size: 30vw;
-    --right-panel-width: 80vw;
+    --right-panel-width: 84vw;
     --project-width: 60vw;
     --social-size: 10vw;
   }
@@ -255,8 +255,8 @@ hr {
   }
 
   hr {
-    margin-top: 1vw;
-    margin-bottom: 3vw;
+    margin-top: 3vw;
+    margin-bottom: 4vw;
   }
 
   .with-orientation {
@@ -267,14 +267,13 @@ hr {
     flex-direction: row;
   }
 
-  #left {
+  #intro {
     width: 100%;
-
     margin: 5vh 0;
   }
 
-  #right {
-    padding: 3% 2%;
+  #content {
+    padding: 4%;
   }
 
   #previously {
@@ -285,9 +284,5 @@ hr {
   .project {
     padding: 5% 0;
     margin-bottom: 2vw;
-  }
-
-  #social-row {
-    flex-wrap: wrap;
   }
 }
