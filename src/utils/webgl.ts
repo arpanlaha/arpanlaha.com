@@ -81,31 +81,7 @@ export class WebGLWrapper {
       "Link status"
     );
 
-    const buffer = ensureExists(context.createBuffer(), "WebGL buffer");
-
-    context.bindBuffer(context.ARRAY_BUFFER, buffer);
-
-    const vertexArray = new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]);
-
-    context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
-
-    const positionAttributeLocation = context.getAttribLocation(
-      program,
-      "a_position"
-    );
-
-    context.useProgram(program);
-
-    context.enableVertexAttribArray(positionAttributeLocation);
-
-    context.vertexAttribPointer(
-      positionAttributeLocation,
-      2,
-      context.FLOAT,
-      false,
-      0,
-      0
-    );
+    this.initializeVertexShader();
 
     this.draw();
   }
@@ -148,19 +124,38 @@ export class WebGLWrapper {
       : null;
   }
 
-  private attachCubicUniform(data: CubicCoefficents, name: string): void {
+  private initializeVertexShader(): void {
     const { context } = this;
     const program = ensureExists(this.program, "WebGL Program");
 
-    const location = ensureExists(
-      context.getUniformLocation(program, name),
-      `${name} uniform location`
+    const buffer = ensureExists(context.createBuffer(), "WebGL buffer");
+
+    context.bindBuffer(context.ARRAY_BUFFER, buffer);
+
+    const vertexArray = new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]);
+
+    context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
+
+    const positionAttributeLocation = context.getAttribLocation(
+      program,
+      "a_position"
     );
 
-    context.uniform4f(location, ...data);
+    context.useProgram(program);
+
+    context.enableVertexAttribArray(positionAttributeLocation);
+
+    context.vertexAttribPointer(
+      positionAttributeLocation,
+      2,
+      context.FLOAT,
+      false,
+      0,
+      0
+    );
   }
 
-  private attachFloatUniform(data: number, name: string): void {
+  private setUniform(name: string, data: CubicCoefficents | number): void {
     const { context } = this;
     const program = ensureExists(this.program, "WebGL Program");
 
@@ -169,16 +164,20 @@ export class WebGLWrapper {
       `${name} uniform location`
     );
 
-    context.uniform1f(location, data);
+    if (typeof data === "number") {
+      context.uniform1f(location, data);
+    } else {
+      context.uniform4f(location, ...data);
+    }
   }
 
   private draw(): void {
     const { context, ribbon, width, height } = this;
 
-    this.attachCubicUniform(ribbon.path, "path");
-    this.attachCubicUniform(ribbon.width, "width");
-    this.attachFloatUniform(width, "canvas_width");
-    this.attachFloatUniform(height, "canvas_height");
+    this.setUniform("path", ribbon.path);
+    this.setUniform("width", ribbon.width);
+    this.setUniform("canvas_width", width);
+    this.setUniform("canvas_height", height);
 
     context.drawArrays(context.TRIANGLE_FAN, 0, 4);
   }

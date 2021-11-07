@@ -218,6 +218,10 @@ hr {
     flex-direction: column;
   }
 
+  #intro {
+    width: 25vw;
+  }
+
   #previously {
     font-size: var(--h2-size);
   }
