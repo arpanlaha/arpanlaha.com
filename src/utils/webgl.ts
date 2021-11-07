@@ -8,13 +8,106 @@ void main(void) {
   gl_Position = a_position;
 }
 `;
+export class WebGLWrapper {
+  private readonly canvas: HTMLCanvasElement;
+  private readonly context: WebGLRenderingContext;
+  private readonly ribbon: Ribbon;
+  private width = 0;
+  private height = 0;
 
-function generateFragmentSource(
-  ribbon: Ribbon,
-  width: number,
-  height: number
-): string {
-  return `
+  constructor(canvas: HTMLCanvasElement, ribbon: Ribbon) {
+    this.canvas = canvas;
+    this.ribbon = ribbon;
+
+    this.context = ensureExists(
+      canvas.getContext("webgl", {
+        preserveDrawingBuffer: true,
+        premultipliedAlpha: false,
+      }),
+      "WebGL context"
+    );
+
+    this.resizeCanvas();
+
+    window.addEventListener("resize", this.resizeCanvas.bind(this));
+  }
+
+  initializeWebglContext(): void {
+    const { context } = this;
+
+    const fragmentSource = this.generateFragmentSource();
+
+    const vertexShader = ensureExists(
+      this.compileShader(vertexSource, ShaderType.Vertex),
+      "Vertex shader"
+    );
+
+    const fragmentShader = ensureExists(
+      this.compileShader(fragmentSource, ShaderType.Fragment),
+      "Fragment shader"
+    );
+
+    const program = ensureExists(context.createProgram(), "WebGL program");
+
+    context.attachShader(program, vertexShader);
+    context.attachShader(program, fragmentShader);
+    context.linkProgram(program);
+
+    ensure(
+      context.getProgramParameter(program, context.LINK_STATUS),
+      "Link status"
+    );
+
+    const buffer = ensureExists(context.createBuffer(), "WebGL buffer");
+
+    context.bindBuffer(context.ARRAY_BUFFER, buffer);
+
+    const vertexArray = new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]);
+
+    context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
+
+    const positionAttributeLocation = context.getAttribLocation(
+      program,
+      "a_position"
+    );
+
+    context.useProgram(program);
+
+    context.enableVertexAttribArray(positionAttributeLocation);
+
+    context.vertexAttribPointer(
+      positionAttributeLocation,
+      2,
+      context.FLOAT,
+      false,
+      0,
+      0
+    );
+
+    context.drawArrays(context.TRIANGLE_FAN, 0, 4);
+  }
+
+  private resizeCanvas(): void {
+    const { canvas, context } = this;
+
+    const DEVICE_SCALE = window.devicePixelRatio;
+    const width = document.body.clientWidth * DEVICE_SCALE;
+    const height = document.body.clientHeight * DEVICE_SCALE;
+
+    this.width = width;
+    this.height = height;
+
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.width = `${document.body.clientWidth}px`;
+    canvas.style.height = `${document.body.clientHeight}px`;
+    context.viewport(0, 0, width, height);
+  }
+
+  private generateFragmentSource(): string {
+    const { ribbon, width, height } = this;
+
+    return `
 #define RPATH_A ${ribbon.path[0]}
 #define RPATH_B ${ribbon.path[1]}
 #define RPATH_C ${ribbon.path[2]}
@@ -41,87 +134,26 @@ void main() {
   gl_FragColor = vec4(0., 0.415, 1., distance_factor);
 }
 `;
-}
-
-function compileShader(
-  context: WebGLRenderingContext,
-  source: string,
-  type: ShaderType
-): WebGLShader | null {
-  const shader = context.createShader(
-    type === ShaderType.Fragment
-      ? context.FRAGMENT_SHADER
-      : context.VERTEX_SHADER
-  );
-
-  if (shader === null) {
-    return null;
   }
 
-  context.shaderSource(shader, source);
-  context.compileShader(shader);
+  private compileShader(source: string, type: ShaderType): WebGLShader | null {
+    const { context } = this;
 
-  return context.getShaderParameter(shader, context.COMPILE_STATUS)
-    ? shader
-    : null;
-}
+    const shader = context.createShader(
+      type === ShaderType.Fragment
+        ? context.FRAGMENT_SHADER
+        : context.VERTEX_SHADER
+    );
 
-export function initializeWebglContext(
-  context: WebGLRenderingContext,
-  ribbon: Ribbon,
-  WIDTH: number,
-  HEIGHT: number
-): void {
-  context.viewport(0, 0, WIDTH, HEIGHT);
+    if (shader === null) {
+      return null;
+    }
 
-  const fragmentSource = generateFragmentSource(ribbon, WIDTH, HEIGHT);
+    context.shaderSource(shader, source);
+    context.compileShader(shader);
 
-  const vertexShader = ensureExists(
-    compileShader(context, vertexSource, ShaderType.Vertex),
-    "Vertex shader"
-  );
-
-  const fragmentShader = ensureExists(
-    compileShader(context, fragmentSource, ShaderType.Fragment),
-    "Fragment shader"
-  );
-
-  const program = ensureExists(context.createProgram(), "WebGL program");
-
-  context.attachShader(program, vertexShader);
-  context.attachShader(program, fragmentShader);
-  context.linkProgram(program);
-
-  ensure(
-    context.getProgramParameter(program, context.LINK_STATUS),
-    "Link status"
-  );
-
-  const buffer = ensureExists(context.createBuffer(), "WebGL buffer");
-
-  context.bindBuffer(context.ARRAY_BUFFER, buffer);
-
-  const vertexArray = new Float32Array([-1, -1, 1, -1, 1, 1, -1, 1]);
-
-  context.bufferData(context.ARRAY_BUFFER, vertexArray, context.STATIC_DRAW);
-
-  const positionAttributeLocation = context.getAttribLocation(
-    program,
-    "a_position"
-  );
-
-  context.useProgram(program);
-
-  context.enableVertexAttribArray(positionAttributeLocation);
-
-  context.vertexAttribPointer(
-    positionAttributeLocation,
-    2,
-    context.FLOAT,
-    false,
-    0,
-    0
-  );
-
-  context.drawArrays(context.TRIANGLE_FAN, 0, 4);
+    return context.getShaderParameter(shader, context.COMPILE_STATUS)
+      ? shader
+      : null;
+  }
 }
