@@ -1,0 +1,13 @@
+{
+  "redirects": [
+    {
+      "src": "/favicon.ico",
+      "dest": "/static/logo.svg"
+    },
+    {
+      "src": ".*",
+      "status": 404,
+      "dest": "/index.html"
+    }
+  ]
+}
