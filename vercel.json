@@ -1,12 +1,18 @@
 {
-  "redirects": [
+  "routes": [
+    { "handle": "filesystem" },
     {
-      "source": "/favicon.ico",
-      "destination": "/static/logo.svg"
+      "src": "/favicon.ico",
+      "dest": "/static/logo.svg"
     },
     {
-      "source": ".*",
-      "destination": "/index.html"
+      "src": "/robots.txt",
+      "status": 404
+    },
+    {
+      "src": ".*",
+      "status": 404,
+      "dest": "/index.html"
     }
   ]
 }
