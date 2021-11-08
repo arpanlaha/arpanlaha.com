@@ -1,14 +1,27 @@
-// import { Ribbon } from "./types";
+/**
+ * Four numbers corresponding to coefficients of a cubic polynomial.
+ */
+export type CubicCoefficents = [number, number, number, number];
 
-type CubicCoefficents = [number, number, number, number];
-
-const D_MULTIPLIER = 0.001;
-
+/**
+ * A result from the `bound` function.
+ * - `value`: the new value.
+ * - `flipped`: whether the direction changed signs.
+ */
 interface BoundResult {
   value: number;
   flipped: boolean;
 }
 
+/**
+ * Multiplier for path/width change speed.
+ */
+const D_MULTIPLIER = 0.001;
+
+/**
+ * A class corresponding to a ribbon to render.
+ * `Ribbon` uses random cubic functions to determine both the path and width of the ribbon.
+ */
 export class Ribbon {
   private _path: CubicCoefficents;
   private _width: CubicCoefficents;
@@ -31,6 +44,9 @@ export class Ribbon {
     return this._width;
   }
 
+  /**
+   * Modifies the path and width coefficients by their speeds.
+   */
   tick(): void {
     this.tickCoefficients(this._path, this.dPath);
     this.tickCoefficients(this._width, this.dWidth);
@@ -43,6 +59,9 @@ export class Ribbon {
     return Math.random() * 2 - 1;
   }
 
+  /**
+   * Generates a random `CubicCoefficients`.
+   */
   private generateCubicCoefficients(): CubicCoefficents {
     return [
       this.generateCoefficient(),
@@ -52,22 +71,30 @@ export class Ribbon {
     ];
   }
 
+  /**
+   * Modifies a given cubic coefficient pair of values and speeds.
+   */
   private tickCoefficients(
     values: CubicCoefficents,
-    diffs: CubicCoefficents
+    speeds: CubicCoefficents
   ): void {
     for (let i = 0; i < 4; i += 1) {
       const { value, flipped } = this.bound(
-        values[i] + diffs[i] * D_MULTIPLIER
+        values[i] + speeds[i] * D_MULTIPLIER
       );
       values[i] = value;
 
       if (flipped) {
-        diffs[i] *= -1;
+        speeds[i] *= -1;
       }
     }
   }
 
+  /**
+   * Returns a bounded form of a number between [1, -1], with inputs outside the range being "reflected" back.
+   *
+   * Example: `bound(1.05) = 0.95`.
+   */
   private bound(number: number): BoundResult {
     if (number < -1) {
       return { value: -1 - ((number + 1) % 1), flipped: true };

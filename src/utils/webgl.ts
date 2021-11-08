@@ -1,6 +1,10 @@
 import { ensure, ensureExists } from "./ensure";
-import { Ribbon } from "./ribbon";
-import { CubicCoefficents, ShaderType } from "./types";
+import { CubicCoefficents, Ribbon } from "./ribbon";
+
+enum ShaderType {
+  Fragment = "Fragment",
+  Vertex = "Vertex",
+}
 
 const VERTEX_SOURCE = `
 attribute vec4 a_position;
@@ -31,6 +35,10 @@ void main() {
   gl_FragColor = vec4(0., 0.415 * distance_factor, distance_factor, 1);
 }
 `;
+
+/**
+ * A wrapper around the WebGL rendering behavior.
+ */
 export class WebGLWrapper {
   private readonly canvas: HTMLCanvasElement;
   private readonly context: WebGLRenderingContext;
@@ -56,9 +64,12 @@ export class WebGLWrapper {
     this.resizeCanvas = this.resizeCanvas.bind(this);
     this.renderLoop = this.renderLoop.bind(this);
 
-    window.addEventListener("resize", this.resizeCanvas.bind(this));
+    window.addEventListener("resize", this.resizeCanvas);
   }
 
+  /**
+   * Initializes the shaders and program, rendering to the canvas once.
+   */
   initializeWebglContext(): void {
     const { context } = this;
 
@@ -89,21 +100,18 @@ export class WebGLWrapper {
     this.draw();
   }
 
-  private renderLoop(): void {
-    this.ribbon.tick();
-    this.draw();
-
-    this.animationFrame = window.requestAnimationFrame(
-      this.renderLoop.bind(this)
-    );
-  }
-
+  /**
+   * Begins/resumes animation.
+   */
   play(): void {
     this.animationFrame = window.requestAnimationFrame(
       this.renderLoop.bind(this)
     );
   }
 
+  /**
+   * Pauses information.
+   */
   pause(): void {
     const { animationFrame } = this;
 
@@ -112,6 +120,9 @@ export class WebGLWrapper {
     }
   }
 
+  /**
+   * An event listener to resize the canvas upon window size changes.
+   */
   private resizeCanvas(): void {
     const { canvas, context } = this;
 
@@ -129,6 +140,9 @@ export class WebGLWrapper {
     context.viewport(0, 0, width, height);
   }
 
+  /**
+   * Generates a compiler shader by source and type, returning it on success or null on failure.
+   */
   private compileShader(source: string, type: ShaderType): WebGLShader | null {
     const { context } = this;
 
@@ -150,6 +164,9 @@ export class WebGLWrapper {
       : null;
   }
 
+  /**
+   * Initializes vertex attribute data.
+   */
   private initializeVertexShader(): void {
     const { context } = this;
     const program = ensureExists(this.program, "WebGL Program");
@@ -181,6 +198,35 @@ export class WebGLWrapper {
     );
   }
 
+  /**
+   * Draws to the canvas, updating shader parameters according to the `Ribbon`'s state.
+   */
+  private draw(): void {
+    const { context, ribbon, width, height } = this;
+
+    this.setUniform("path", ribbon.path);
+    this.setUniform("width", ribbon.width);
+    this.setUniform("canvas_width", width);
+    this.setUniform("canvas_height", height);
+
+    context.drawArrays(context.TRIANGLE_FAN, 0, 4);
+  }
+
+  /**
+   * A loop to animate the ribbon's rendering.
+   */
+  private renderLoop(): void {
+    this.ribbon.tick();
+    this.draw();
+
+    this.animationFrame = window.requestAnimationFrame(
+      this.renderLoop.bind(this)
+    );
+  }
+
+  /**
+   * A helper to set a WebGL uniform by name and data.
+   */
   private setUniform(name: string, data: CubicCoefficents | number): void {
     const { context } = this;
     const program = ensureExists(this.program, "WebGL Program");
@@ -195,16 +241,5 @@ export class WebGLWrapper {
     } else {
       context.uniform4f(location, ...data);
     }
-  }
-
-  private draw(): void {
-    const { context, ribbon, width, height } = this;
-
-    this.setUniform("path", ribbon.path);
-    this.setUniform("width", ribbon.width);
-    this.setUniform("canvas_width", width);
-    this.setUniform("canvas_height", height);
-
-    context.drawArrays(context.TRIANGLE_FAN, 0, 4);
   }
 }

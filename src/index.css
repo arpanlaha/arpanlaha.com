@@ -21,13 +21,6 @@
   --project-border-color: #66666666;
 }
 
-.with-orientation,
-.against-orientation {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
 body {
   font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
     sans-serif;
@@ -46,6 +39,13 @@ canvas {
   background: var(--glass-gradient), url("/static/noise.svg");
   backdrop-filter: blur(20px);
   border: 1px solid rgba(102, 102, 102, 0.2);
+}
+
+.with-orientation,
+.against-orientation {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .column {
@@ -92,6 +92,7 @@ a {
 
 button {
   border: none;
+  outline: none;
   background-color: var(--button-color);
   transition: background-color 0.2s;
   color: #fff;
@@ -100,7 +101,12 @@ button {
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
-  outline: none;
+  width: 50%;
+  height: 50%;
+}
+
+button img {
+  width: 50%;
 }
 
 button:hover,
@@ -119,6 +125,14 @@ button:focus {
 
 button:active {
   background-color: var(--button-active-color);
+}
+
+hr {
+  width: 90%;
+  margin: 0;
+  margin-bottom: 1vw;
+  border: 0.5px solid var(--hr-color);
+  border-radius: 0.25px;
 }
 
 #cover {
@@ -173,17 +187,8 @@ button:active {
 #main-picture,
 #animate-controls {
   position: absolute;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-
-button {
-  width: 50%;
-  height: 50%;
-}
-
-button img {
-  width: 50%;
+  -webkit-backface-visibility: hidden;
 }
 
 #content {
@@ -213,14 +218,6 @@ button img {
 
 .hr-container {
   width: 100%;
-}
-
-hr {
-  width: 90%;
-  margin: 0;
-  margin-bottom: 1vw;
-  border: 0.5px solid var(--hr-color);
-  border-radius: 0.25px;
 }
 
 #project-row {

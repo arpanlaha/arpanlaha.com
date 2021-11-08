@@ -1,3 +1,6 @@
+/**
+ * Throws an error if the passed value is not truthy.
+ */
 export function ensure<T>(
   maybeExists: T | null | undefined,
   name: string
@@ -7,6 +10,9 @@ export function ensure<T>(
   }
 }
 
+/**
+ * Throws an error if the passed value does not exist, otherwise returns the value.
+ */
 export function ensureExists<T>(
   maybeExists: T | null | undefined,
   name: string
