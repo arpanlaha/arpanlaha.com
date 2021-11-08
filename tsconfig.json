@@ -5,11 +5,11 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
-    "pretty": true,
+    "outDir": "dist",
     "removeComments": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es6"
+    "target": "es2017"
   },
   "include": ["src"]
 }
