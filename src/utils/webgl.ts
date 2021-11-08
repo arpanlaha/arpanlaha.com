@@ -28,7 +28,7 @@ void main() {
 
   float distance = max(abs(y - ribbon_path) - ribbon_width_factor, 0.);
   float distance_factor = 1. / (10. * distance + 1.);
-  gl_FragColor = vec4(0., 0.415, 1., distance_factor);
+  gl_FragColor = vec4(0., 0.415 * distance_factor, distance_factor, 1);
 }
 `;
 export class WebGLWrapper {
@@ -47,7 +47,6 @@ export class WebGLWrapper {
     this.context = ensureExists(
       canvas.getContext("webgl", {
         preserveDrawingBuffer: true,
-        premultipliedAlpha: false,
       }),
       "WebGL context"
     );
