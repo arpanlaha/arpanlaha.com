@@ -65,6 +65,8 @@ export class WebGLWrapper {
     this.renderLoop = this.renderLoop.bind(this);
 
     window.addEventListener("resize", this.resizeCanvas);
+
+    this.ribbon.print();
   }
 
   /**
@@ -141,6 +143,18 @@ export class WebGLWrapper {
   }
 
   /**
+   * A loop to animate the ribbon's rendering.
+   */
+  private renderLoop(): void {
+    this.ribbon.tick();
+    this.draw();
+
+    this.animationFrame = window.requestAnimationFrame(
+      this.renderLoop.bind(this)
+    );
+  }
+
+  /**
    * Generates a compiler shader by source and type, returning it on success or null on failure.
    */
   private compileShader(source: string, type: ShaderType): WebGLShader | null {
@@ -210,18 +224,6 @@ export class WebGLWrapper {
     this.setUniform("canvas_height", height);
 
     context.drawArrays(context.TRIANGLE_FAN, 0, 4);
-  }
-
-  /**
-   * A loop to animate the ribbon's rendering.
-   */
-  private renderLoop(): void {
-    this.ribbon.tick();
-    this.draw();
-
-    this.animationFrame = window.requestAnimationFrame(
-      this.renderLoop.bind(this)
-    );
   }
 
   /**

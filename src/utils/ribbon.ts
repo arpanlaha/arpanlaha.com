@@ -52,6 +52,16 @@ export class Ribbon {
     this.tickCoefficients(this._width, this.dWidth);
   }
 
+  print(): void {
+    const { path, width } = this;
+
+    console.log(`Ribbon path function: ${this.generateFunctionString(path)}`);
+    console.log(
+      `Ribbon width function: abs(${this.generateFunctionString(width)})`
+    );
+    console.log(`Click the image for animation controls!`);
+  }
+
   /**
    * Returns a random number between (-1, 1).
    */
@@ -88,6 +98,31 @@ export class Ribbon {
         speeds[i] *= -1;
       }
     }
+  }
+
+  private generateFunctionString(coefficients: CubicCoefficents): string {
+    const suffixes = ["x³", "x²", "x", ""];
+
+    function truncate(number: number): number {
+      return Math.round(number * 100) / 100;
+    }
+
+    const parts: string[] = [];
+
+    for (let i = 0; i < 4; i += 1) {
+      const coefficient = coefficients[i];
+      const suffix = suffixes[i];
+
+      const prefix = truncate(coefficient);
+      if (prefix === 0) {
+        continue;
+      }
+
+      parts.push(coefficient > 0 ? "+" : "-");
+      parts.push(`${Math.abs(prefix)}${suffix}`);
+    }
+
+    return parts.slice(1).join(" ");
   }
 
   /**
