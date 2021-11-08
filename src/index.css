@@ -11,6 +11,10 @@
   --glass-border: #66666633;
   --coda-color: #f63;
   --h4i-color: #339cff;
+  --button-color: #006aff;
+  --button-hover-color: #0060e6;
+  --button-focus-color: #38f;
+  --button-active-color: #05c;
   --hr-color: #99999966;
   --project-background: #66666633;
   --project-background-hover: #99999933;
@@ -42,7 +46,6 @@ canvas {
   background: var(--glass-gradient), url("/static/noise.svg");
   backdrop-filter: blur(20px);
   border: 1px solid rgba(102, 102, 102, 0.2);
-  border-radius: var(--rounded-border-radius);
 }
 
 .column {
@@ -87,6 +90,37 @@ a {
   color: #fff;
 }
 
+button {
+  border: none;
+  background-color: var(--button-color);
+  transition: background-color 0.2s;
+  color: #fff;
+  font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
+    sans-serif;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover,
+button:focus,
+button:active {
+  transition: background-color 0.1s;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+button:focus {
+  background-color: var(--button-focus-color);
+}
+
+button:active {
+  background-color: var(--button-active-color);
+}
+
 #cover {
   background-color: #000;
   position: fixed;
@@ -100,14 +134,61 @@ a {
   transition: opacity 0.2s;
 }
 
-#main-picture {
-  border-radius: 50%;
+#flip {
   width: var(--main-picture-size);
   height: var(--main-picture-size);
+  cursor: pointer;
+}
+
+#flip,
+#flip-inner,
+#main-picture,
+#animate-controls {
+  border-radius: 50%;
+}
+
+#flip-inner,
+#main-picture,
+#animate-controls {
+  width: 100%;
+  height: 100%;
+}
+
+#flip {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+#flip-inner {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+#flip-inner.flipped,
+#animate-controls {
+  transform: rotateY(180deg);
+}
+
+#main-picture,
+#animate-controls {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+button {
+  width: 50%;
+  height: 50%;
+}
+
+button img {
+  width: 50%;
 }
 
 #content {
   box-sizing: border-box;
+  border-radius: var(--rounded-border-radius);
   width: var(--right-panel-width);
   padding: 2%;
 }

@@ -50,13 +50,26 @@
     <main class="with-orientation">
       <section id="intro" class="against-orientation">
         <h1>Hi, I'm Arpan.</h1>
-        <img
-          id="main-picture"
-          src="/static/main.jpg"
-          width="500"
-          height="500"
-          alt="Arpan Laha"
-        />
+        <div id="flip">
+          <div id="flip-inner">
+            <img
+              id="main-picture"
+              src="/static/main.jpg"
+              width="500"
+              height="500"
+              alt="Arpan Laha"
+            />
+            <div id="animate-controls" class="glass column">
+              <button id="animate-button" class="column">
+                <img
+                  id="animate-button-icon"
+                  src="/static/play.svg"
+                  alt="Play"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
       <section id="content" class="glass">
         <h2>

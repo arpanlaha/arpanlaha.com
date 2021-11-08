@@ -38,6 +38,7 @@ export class WebGLWrapper {
   private program?: WebGLProgram;
   private width = 0;
   private height = 0;
+  private animationFrame?: number;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -52,6 +53,9 @@ export class WebGLWrapper {
     );
 
     this.resizeCanvas();
+
+    this.resizeCanvas = this.resizeCanvas.bind(this);
+    this.renderLoop = this.renderLoop.bind(this);
 
     window.addEventListener("resize", this.resizeCanvas.bind(this));
   }
@@ -84,6 +88,29 @@ export class WebGLWrapper {
     this.initializeVertexShader();
 
     this.draw();
+  }
+
+  private renderLoop(): void {
+    this.ribbon.tick();
+    this.draw();
+
+    this.animationFrame = window.requestAnimationFrame(
+      this.renderLoop.bind(this)
+    );
+  }
+
+  play(): void {
+    this.animationFrame = window.requestAnimationFrame(
+      this.renderLoop.bind(this)
+    );
+  }
+
+  pause(): void {
+    const { animationFrame } = this;
+
+    if (animationFrame !== undefined) {
+      cancelAnimationFrame(animationFrame);
+    }
   }
 
   private resizeCanvas(): void {

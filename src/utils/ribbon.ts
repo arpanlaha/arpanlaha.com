@@ -2,7 +2,7 @@
 
 type CubicCoefficents = [number, number, number, number];
 
-const D_MULTIPLIER = 0.01;
+const D_MULTIPLIER = 0.001;
 
 interface BoundResult {
   value: number;
