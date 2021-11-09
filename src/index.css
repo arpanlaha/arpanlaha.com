@@ -3,7 +3,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 300;
-  src: local("Whitney Light"), url("/static/whitney.woff2") format("woff2");
+  src: url("/static/whitney.subset.woff2") format("woff2");
 }
 
 :root {
