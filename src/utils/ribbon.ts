@@ -122,7 +122,11 @@ export class Ribbon {
       parts.push(`${Math.abs(prefix)}${suffix}`);
     }
 
-    return parts.slice(coefficients[0] < 0 ? 0 : 1).join(" ");
+    if (coefficients[0] < 0) {
+      parts[1] = `-${parts[1]}`;
+    }
+
+    return parts.slice(1).join(" ");
   }
 
   /**
