@@ -25,7 +25,6 @@ body {
   font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
     sans-serif;
   margin: 0;
-
   background-color: #000;
   color: #fff;
 }
@@ -148,6 +147,10 @@ hr {
   transition: opacity 0.2s;
 }
 
+#intro {
+  width: var(--intro-width);
+}
+
 #flip,
 #flip-inner,
 #main-picture,
@@ -161,7 +164,6 @@ hr {
   width: var(--main-picture-size);
   height: var(--main-picture-size);
   cursor: pointer;
-
   background-color: transparent;
   perspective: 1000px;
 }
@@ -209,8 +211,8 @@ hr {
 #content {
   box-sizing: border-box;
   border-radius: var(--rounded-border-radius);
-  width: var(--right-panel-width);
-  padding: 2%;
+  width: var(--content-width);
+  padding: var(--content-padding);
 }
 
 #coda-link,
@@ -243,9 +245,8 @@ hr {
   width: var(--project-width);
   border-radius: var(--rounded-border-radius);
   background-color: var(--project-background);
-
+  padding: var(--project-padding);
   border: 1px solid var(--project-border-color);
-
   transition: background-color 0.2s;
 }
 
@@ -282,15 +283,18 @@ hr {
 @media (orientation: landscape) {
   :root {
     --rounded-border-radius: 1vw;
-    --h1-size: 3.5vw;
-    --h2-size: 1.5vw;
-    --h3-size: 1.2vw;
-    --text-size: 0.8vw;
+    --h1-size: min(3.5vw, 7vh);
+    --h2-size: min(1.5vw, 3vh);
+    --h3-size: min(1.2vw, 2.4vh);
+    --text-size: min(0.8vw, 1.6vh);
 
-    --main-picture-size: 20vw;
-    --right-panel-width: 60vw;
-    --project-width: 15vw;
-    --social-size: 5vw;
+    --intro-width: min(25vw, 50vh);
+    --main-picture-size: min(20vw, 40vh);
+    --content-width: min(60vw, 120vh);
+    --content-padding: 2%;
+    --project-width: min(15vw, 30vh);
+    --project-padding: 10% 0;
+    --social-size: min(5vw, 10vh);
   }
 
   body {
@@ -311,16 +315,8 @@ hr {
     flex-direction: column;
   }
 
-  #intro {
-    width: 25vw;
-  }
-
   #previously {
     font-size: var(--h2-size);
-  }
-
-  .project {
-    padding: 10% 0;
   }
 }
 
@@ -332,9 +328,12 @@ hr {
     --h3-size: 2.5vw;
     --text-size: 2vw;
 
+    --intro-width: 100%;
     --main-picture-size: 30vw;
-    --right-panel-width: 84vw;
+    --content-width: 84vw;
+    --content-padding: 4%;
     --project-width: 60vw;
+    --project-padding: 5% 0;
     --social-size: 10vw;
   }
 
@@ -365,12 +364,7 @@ hr {
   }
 
   #intro {
-    width: 100%;
     margin: 5vh 0;
-  }
-
-  #content {
-    padding: 4%;
   }
 
   #previously {
@@ -379,7 +373,6 @@ hr {
   }
 
   .project {
-    padding: 5% 0;
     margin-bottom: 2vw;
   }
 }
