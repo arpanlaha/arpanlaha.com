@@ -53,13 +53,16 @@
         <h1>Hi, I'm Arpan.</h1>
         <div id="flip">
           <div id="flip-inner">
-            <img
-              id="main-picture"
-              src="/static/main.jpg"
-              width="500"
-              height="500"
-              alt="Arpan Laha"
-            />
+            <picture id="main-picture">
+              <source srcset="/static/main.avif" />
+              <source srcset="/static/main.webp" />
+              <img
+                src="/static/main.jpg"
+                width="500"
+                height="500"
+                alt="Arpan Laha"
+            /></picture>
+
             <div id="animate-controls" class="glass column">
               <button id="animate-button" class="column">
                 <img

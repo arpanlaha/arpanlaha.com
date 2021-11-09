@@ -157,6 +157,8 @@ hr {
 #flip,
 #flip-inner,
 #main-picture,
+#main-picture source,
+#main-picture img,
 #animate-controls {
   border-radius: 50%;
 }
@@ -177,6 +179,12 @@ hr {
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+}
+
+#main-picture source,
+#main-picture img {
+  width: 100%;
+  height: 100%;
 }
 
 #flip-inner.flipped,
