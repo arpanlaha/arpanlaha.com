@@ -3,7 +3,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 300;
-  src: url("/static/whitney.subset.woff2") format("woff2");
+  src: url("/static/whitney.woff2") format("woff2");
 }
 
 :root {
@@ -148,12 +148,6 @@ hr {
   transition: opacity 0.2s;
 }
 
-#flip {
-  width: var(--main-picture-size);
-  height: var(--main-picture-size);
-  cursor: pointer;
-}
-
 #flip,
 #flip-inner,
 #main-picture,
@@ -163,6 +157,15 @@ hr {
   border-radius: 50%;
 }
 
+#flip {
+  width: var(--main-picture-size);
+  height: var(--main-picture-size);
+  cursor: pointer;
+
+  background-color: transparent;
+  perspective: 1000px;
+}
+
 #flip-inner,
 #main-picture,
 #animate-controls {
@@ -170,21 +173,15 @@ hr {
   height: 100%;
 }
 
-#flip {
-  background-color: transparent;
-  perspective: 1000px;
-}
-
 #flip-inner {
   position: relative;
-  transition: transform 0.8s;
+  transition: transform 1s;
   transform-style: preserve-3d;
 }
 
-#main-picture source,
-#main-picture img {
-  width: 100%;
-  height: 100%;
+#flip-inner.flipped #main-picture {
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 #flip-inner.flipped,
@@ -197,6 +194,16 @@ hr {
   position: absolute;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+#main-picture {
+  transition: opacity 0.5s ease 0.5s;
+}
+
+#main-picture source,
+#main-picture img {
+  width: 100%;
+  height: 100%;
 }
 
 #content {
