@@ -63,6 +63,7 @@ export class WebGLWrapper {
 
     this.resizeCanvas = this.resizeCanvas.bind(this);
     this.renderLoop = this.renderLoop.bind(this);
+    this.initializeWebglContext = this.initializeWebglContext.bind(this);
 
     window.addEventListener("resize", this.resizeCanvas);
 

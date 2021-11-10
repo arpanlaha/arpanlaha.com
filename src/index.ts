@@ -5,7 +5,6 @@ const canvas = ensureExists(
   document.getElementById("canvas-webgl"),
   "WebGL canvas"
 ) as HTMLCanvasElement;
-const cover = ensureExists(document.getElementById("cover"), "Cover");
 const flip = ensureExists(document.getElementById("flip"), "Flip container");
 const flipInner = ensureExists(
   document.getElementById("flip-inner"),
@@ -22,10 +21,7 @@ const animateButtonIcon = ensureExists(
 
 const webglWrapper = new WebGLWrapper(canvas);
 
-setTimeout(() => {
-  webglWrapper.initializeWebglContext();
-  cover.classList.add("hide-cover");
-}, 0);
+setTimeout(webglWrapper.initializeWebglContext, 0);
 
 let flipped = false;
 let animated = false;

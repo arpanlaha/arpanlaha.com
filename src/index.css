@@ -31,7 +31,7 @@ body {
 
 canvas {
   position: fixed;
-  z-index: -2;
+  z-index: -1;
 }
 
 .glass {
@@ -132,14 +132,6 @@ hr {
   margin-bottom: 1vw;
   border: 0.5px solid var(--hr-color);
   border-radius: 0.25px;
-}
-
-#cover {
-  background-color: #000;
-  position: fixed;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
 }
 
 .hide-cover {
