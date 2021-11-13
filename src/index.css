@@ -1,9 +1,9 @@
 @font-face {
-  font-family: "Whitney Light";
+  font-family: "Custom";
   font-style: normal;
   font-display: swap;
   font-weight: 300;
-  src: local("Whitney Light"), url("/static/whitney.woff2") format("woff2");
+  src: url("/static/custom.woff2") format("woff2");
 }
 
 :root {
@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: "Whitney Light", "Open Sans light", Roboto, "Lato Light",
+  font-family: Custom, "Open Sans Light", "Roboto Light", "Lato Light",
     sans-serif;
   margin: 0;
   background-color: #000;
