@@ -132,6 +132,7 @@ hr {
   margin-bottom: 1vw;
   border: 0.5px solid var(--hr-color);
   border-radius: 0.25px;
+  background-color: var(--hr-color);
 }
 
 .hide-cover {
