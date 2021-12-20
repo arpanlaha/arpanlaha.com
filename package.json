@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@hack4impact-uiuc/eslint-plugin": "^2.0.1",
-    "@vercel/ncc": "^0.31.1",
     "clean-css-cli": "^5.4.2",
     "eslint": "^7.5.0",
     "html-minifier-terser": "^6.0.2",
