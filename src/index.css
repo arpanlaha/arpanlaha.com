@@ -180,6 +180,7 @@ hr {
 #flip-inner.flipped,
 #animate-controls {
   transform: rotateY(180deg);
+  -webkit-backdrop-filter: none;
 }
 
 #main-picture,
