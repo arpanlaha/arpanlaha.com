@@ -36,8 +36,8 @@ canvas {
 
 .glass {
   background: var(--glass-gradient), url("/static/noise.svg");
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(1.5vh);
+  -webkit-backdrop-filter: blur(1.5vh);
   border: 1px solid rgba(102, 102, 102, 0.2);
 }
 
